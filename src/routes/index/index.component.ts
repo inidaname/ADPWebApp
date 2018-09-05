@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faRocket, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-index',
@@ -9,6 +9,8 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 export class IndexComponent implements OnInit {
 
   arrowleft = faArrowLeft;
+  rocket = faRocket;
+  plane = faPaperPlane;
   constructor() { }
 
   ngOnInit() {

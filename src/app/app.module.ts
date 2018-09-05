@@ -6,19 +6,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RoutesModule } from '../routes/routes.module';
 import { FooterBarComponent } from '../components/footer-bar/footer-bar.component';
 import { HeadBarComponent } from '../components/head-bar/head-bar.component';
-import { SliderComponent } from '../components/slider/slider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterBarComponent,
-    HeadBarComponent,
-    SliderComponent
+    HeadBarComponent
   ],
   imports: [
     BrowserModule,
     RoutesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

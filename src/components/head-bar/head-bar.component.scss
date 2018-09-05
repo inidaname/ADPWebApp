@@ -3,7 +3,7 @@
 header{
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     .topBar {
         display: flex;
         flex-direction: row;
@@ -41,7 +41,7 @@ header{
     position: absolute;
     top: 0px;
     left: 0;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,10 +69,11 @@ header{
 .socialMedia{
     list-style-type: none;
     display: flex;
-    width: 100vw;
+    width: 100%;
     flex-direction: row;
     // background-color: #fff;
     justify-content: space-evenly;
+    box-sizing: border-box;
     li{
         margin: 10px 0;
         font-size: 15px;
@@ -116,7 +117,7 @@ header{
 }
 
 .menuCase{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
     margin: 10px 0;
@@ -158,7 +159,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 100vw;
+    width: 100%;
     li{
         margin: 15px 0;
         text-align: center;
