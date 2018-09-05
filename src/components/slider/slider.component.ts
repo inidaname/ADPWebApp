@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-slider',
@@ -8,7 +7,6 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 })
 export class SliderComponent implements OnInit {
 
-  arrowleft = faArrowLeft;
   constructor() { }
 
   ngOnInit() {

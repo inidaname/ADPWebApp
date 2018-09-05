@@ -1,121 +1,164 @@
 @import '../../sass/_variables';
 @import '../../sass/_mixins';
 .main{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
+    margin: 20px 0;
 }
 
-.slide{
-    position: relative;
+.about{
+    display: flex;
+    flex-direction: column-reverse;
     width: 100%;
-    height: 200px !important;
     @include mQ('1025px'){
-        height: 450px !important;
+        flex-direction: row;
+        width: 95%;
+        margin: 25px auto;
     }
-    .controls{
-        position: absolute;
-        top: 0;
-        left: 0;
+    .contents{
         display: flex;
         flex-direction: column;
-        height: 100%;
-        z-index: 3;
-        width: 100%;
-        color: #fff;
+        margin-top: 30px;
         @include mQ('1025px'){
-            width: 98.5vw;
-            margin: 0 auto;
+            flex-direction: row;
         }
-        .slideControls{
-            position: relative;
-            top: 50%;
-            display: flex;
-            justify-content: space-between;
-            .next{
-                position: relative;
-                left: 0;
-            }
-            .prev{
-                position: relative;
-                right: 0;
-            }
-        }
-        .slideList{
-            position: absolute;
-            bottom: 5px;
-            align-self: center;
-            display: inline-flex;
-            width: 20%;
-            justify-content: space-evenly;
-            list-style: none;
-        }
-    }
-    .slideImage{
-        background: url('/assets/slide.jpg') no-repeat;
-        background-size: 100% 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100% !important;
-        width: 100%;
-        z-index: 2;
-        .slideContent{
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background-color: transparentize($color: #000000, $amount: 0.5);
-            font-family: $fontForSlide;
-            text-align: center;
+        .aboutContent{
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            color: #fff;
-            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+            box-shadow: 0px 0px 1px 2px #ccc;
+            padding: 10px;
+            border-radius: 8px;
             box-sizing: border-box;
-            padding: 30px 0;
-            @include mQ('1025px'){
-                p{
-                    width:50%;
-                    margin-top: 10px;
-                    margin: auto;
-                    font-size: 20px;
-                }
-            }
-            h3{
-                font-weight: 900;
+            font-family: $fontForSlide;
+            img{
+                width: 80%;
+                margin: 0 auto;
                 @include mQ('1025px'){
-                    margin-bottom: 20px;
-                    font-size: 28px;
+                    width: 400px;
+                    height: 200px;
                 }
             }
-
-            .join{
+            @include mQ('1025px'){
+                flex-direction: row-reverse;
+            }
+            div{
+                margin-top: 10px;
+                padding: 18px;
+                h3{
+                    margin: 15px 0;
+                }
+                p{
+                    margin: 15px 0;
+                }
+            }
+        }
+        .mission{
+            text-align: center;
+            display: flex;
+            margin-top: 18px;
+            flex-direction: column;
+            .innerContent{
+                width: 90%;
+                margin: 0 auto;
+                box-shadow: 0px 0px 1px 2px #ccc;
+                padding: 10px;
+                border-radius: 8px;
+                box-sizing: border-box;
+                font-family: $fontForSlide;
+                margin-bottom: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                span{
+                    color: white;
+                    background: #7db9e8; /* Old browsers */
+                    // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+                    // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+                    font-size: 45px;
+                    padding: 30px 3px;
+                    border-radius: 50%;
+                    border: 1px white solid;
+                    box-sizing: border-box;
+                    margin: 20px;
+                    fa-icon{
+                        border: 1px solid white;
+                        border-radius: 50%;
+                        padding: 27px 27px;
+                    }
+                }
+                h4{
+                    margin: 12px;
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+                .description{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .news{
+        display: flex;
+        flex-direction: column;
+        background-color: #373435;
+        font-family: $fontForSlide;
+        color: #fff;
+        @include mQ('1025px'){
+            border-radius: 5px;
+            width: 450px;
+        }
+        h4{
+            text-align: center;
+            margin: 10px auto;
+            @include mQ('1025px'){
+                width: 80%;
+                text-align: left;
+                margin: 10px auto;
+            }
+        }
+        #newsContent{
+            display: flex;
+            flex-direction: row;
+            padding: 0 10px;
+            box-sizing: border-box;
+            figure{
                 display: flex;
                 flex-direction: row;
-                width: 70%;
-                margin: 0 auto;
-                justify-content: space-around;
-                @include mQ('1025px'){
-                    margin-top: 40px;
-                    width: 25%;
-                    justify-content: space-between;
+                height: 120px;
+                font-size: 11px;
+                justify-content: center;
+                align-content: center;
+                border-bottom: #777 solid 1px;
+                img{
+                    margin: 10px;
+                    width: 240px;
+                    height: 80px;
+                    border-radius: 8px;
                 }
-                input{
-                    width: 100px;
-                    padding: 10px 0;
-                    border: 1px #fff solid;
-                    color: #fff;
-                    border-radius: 22px;
-                    background-color: transparent;
-                    &:first-child{
-                        background: #7db9e8; /* Old browsers */
-                        // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
-                        // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
-                        background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+                figcaption{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    strong{
+                        font-size: 11px;
+                        color: red;
+                        text-transform: uppercase;
+                        margin-bottom: 5px;
+                    }
+                    p{
+                        padding-right: 10px;
+                        margin-bottom: 5px;
+                        box-sizing: border-box;
                     }
                 }
             }
