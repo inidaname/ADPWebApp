@@ -17,6 +17,7 @@
         flex-direction: row;
         width: 95%;
         margin: 25px auto;
+        height: 400px;
     }
     .contents{
         display: flex;
@@ -24,13 +25,14 @@
         margin-top: 30px;
         @include mQ('1025px'){
             flex-direction: row;
+            width: 70%;
         }
         .aboutContent{
             display: flex;
             flex-direction: column;
             width: 90%;
             margin: 0 auto;
-            box-shadow: 0px 0px 1px 2px #ccc;
+            box-shadow: 0px 0px 5px #ccc;
             padding: 10px;
             border-radius: 8px;
             box-sizing: border-box;
@@ -39,12 +41,15 @@
                 width: 80%;
                 margin: 0 auto;
                 @include mQ('1025px'){
-                    width: 400px;
-                    height: 200px;
+                    width: 200px;
+                    height: 230px;
                 }
             }
             @include mQ('1025px'){
                 flex-direction: row-reverse;
+                border-radius: 0;
+                justify-content: space-around;
+                align-items: center;
             }
             div{
                 margin-top: 10px;
@@ -55,6 +60,9 @@
                 p{
                     margin: 15px 0;
                 }
+                @include mQ('1025px'){
+                    width: 50%;
+                }
             }
         }
         .mission{
@@ -62,10 +70,13 @@
             display: flex;
             margin-top: 18px;
             flex-direction: column;
+            @include mQ('1025px'){
+                width: 40%;
+            }
             .innerContent{
                 width: 90%;
                 margin: 0 auto;
-                box-shadow: 0px 0px 1px 2px #ccc;
+                box-shadow: 0px 0px 5px #ccc;
                 padding: 10px;
                 border-radius: 8px;
                 box-sizing: border-box;
@@ -75,6 +86,10 @@
                 flex-direction: column;
                 justify-content: space-evenly;
                 align-items: center;
+                @include mQ('1025px'){
+                    border-radius: 0;
+                    height: 350px;
+                }
                 span{
                     color: white;
                     background: #7db9e8; /* Old browsers */
@@ -88,16 +103,28 @@
                     border: 1px white solid;
                     box-sizing: border-box;
                     margin: 20px;
+                    @include mQ('1025px'){
+                        font-size: 25px;
+                        padding: 15px 3px;
+                        margin: 10px;
+                    }
                     fa-icon{
                         border: 1px solid white;
                         border-radius: 50%;
                         padding: 27px 27px;
+                        @include mQ('1025px'){
+                            padding: 12px;
+                        }
                     }
                 }
                 h4{
                     margin: 12px;
                     font-size: 30px;
                     font-weight: bold;
+                    @include mQ('1025px'){
+                        margin: 2px;
+                        font-size: 25px;
+                    }
                 }
                 .description{
                     font-size: 15px;
