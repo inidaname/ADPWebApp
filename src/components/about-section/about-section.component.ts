@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-about-section',
   templateUrl: './about-section.component.html',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutSectionComponent implements OnInit {
 
-  constructor() { }
+  iniCon: boolean;
+  constructor(private router: Router, ) {
+    console.log(this.router.url);
+  }
 
   ngOnInit() {
+    if (this.router.url === '/') {
+      this.iniCon = true;
+    }
   }
 
 }

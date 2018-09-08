@@ -19,6 +19,8 @@ header{
                 position: static;
                 margin-left: 70px;
                 margin-top: 0px;
+                width: 325px;
+                height: 130px;
             }
         }
         @include mQ('1025px'){
@@ -31,10 +33,8 @@ header{
     width: 140px;
     height: 70px;
     margin: 10px;
-    @include mQ('1025px'){
-        width: 325px !important;
-        height: 130px;
-    }
+    // @include mQ('1025px'){
+    // }
 }
 
 .socials{

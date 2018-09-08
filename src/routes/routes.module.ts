@@ -13,6 +13,7 @@ import { NewsComponent } from '../components/news/news.component';
 import { MissionComponent } from '../components/mission/mission.component';
 import { AboutSectionComponent } from '../components/about-section/about-section.component';
 import { LoginSectionComponent } from '../components/login-section/login-section.component';
+import { QuicklinksComponent } from '../components/quicklinks/quicklinks.component';
 
 const appRoutes: Routes = [
   {
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     NewsComponent,
     MissionComponent,
     AboutSectionComponent,
-    LoginSectionComponent
+    LoginSectionComponent,
+    QuicklinksComponent
   ]
 })
 export class RoutesModule { }
