@@ -11,6 +11,8 @@ import { StructureComponent } from './structure/structure.component';
 import { SliderComponent } from '../components/slider/slider.component';
 import { NewsComponent } from '../components/news/news.component';
 import { MissionComponent } from '../components/mission/mission.component';
+import { AboutSectionComponent } from '../components/about-section/about-section.component';
+import { LoginSectionComponent } from '../components/login-section/login-section.component';
 
 const appRoutes: Routes = [
   {
@@ -63,7 +65,9 @@ const appRoutes: Routes = [
     StructureComponent,
     SliderComponent,
     NewsComponent,
-    MissionComponent
+    MissionComponent,
+    AboutSectionComponent,
+    LoginSectionComponent
   ]
 })
 export class RoutesModule { }

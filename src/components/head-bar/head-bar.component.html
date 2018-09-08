@@ -6,22 +6,22 @@
         <span id="mobileMenu"><fa-icon [icon]="bars"></fa-icon></span>
         <ul id="menuList" class="menuHide">
           <li class="menu">
-            Home
+            <a [routerLink]="['/']" routerLinkActive="active" >Home</a>
           </li>
           <li class="menu">
-            About Us
+            <a [routerLink]="['/about']" routerLinkActive="active" >About Us</a>
           </li>
           <li class="menu">
-            Structure
+            <a [routerLink]="['/structure']" routerLinkActive="router-link-active">Structure</a>
           </li>
           <li class="menu">
-            Register
+            <a [routerLink]="['/register']" routerLinkActive="router-link-active"> Register</a>
           </li>
           <li class="menu">
-            Secretariats
+            <a [routerLink]="['/secretariat']" routerLinkActive="router-link-active"> Secretariats</a>
           </li>
           <li class="menu">
-            Contact
+            <a [routerLink]="['/contact']" routerLinkActive="router-link-active"> Contact</a>
           </li>
         </ul>
       </div>

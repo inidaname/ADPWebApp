@@ -1,0 +1,65 @@
+@import '../../sass/_variables';
+@import '../../sass/_mixins';
+.about{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    h4{
+        margin-bottom: 20px;
+        font-size: 15px;
+        // font-variant: small-caps;
+        font-weight: 900;
+        @include mQ('1025px'){
+            font-size: 25px;
+        }
+    }
+    .theContent{
+        display: flex;
+        flex-direction: column;
+        @include mQ('1025px'){
+            flex-direction: row;
+            padding: 0 12px;
+        }
+        img{
+            width: 300px;
+            margin: 0 auto;
+            @include mQ('1025px'){
+                width: 400px;
+                height: 350px;
+            }
+        }
+        p{
+            margin: 12px 0;
+            padding: 12px;
+            box-sizing: border-box;
+            line-height: 20px;
+            @include mQ('1025px'){
+                margin: 1px;
+            }
+        }
+        .inner{
+            @include mQ('1025px'){
+                margin: 2px;
+                width: 450px;
+                font-size: 18px;
+            }
+        }
+        input{
+            width: 100px;
+            padding: 10px 0;
+            border: 1px #fff solid;
+            color: #fff;
+            border-radius: 22px;
+            background-color: transparent;
+            background: #7db9e8; /* Old browsers */
+            // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+            // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+            @include mQ('1025px'){
+                width: 200px;
+            }
+        }
+    }
+}

@@ -95,50 +95,46 @@
         padding: 15px;
         box-sizing: border-box;
     }
-    .about{
+}
+.theChairman{
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+    margin: 0 auto;
+    @include mQ('1025px'){
+        flex-direction: row;
+    }
+    .theContent{
         display: flex;
         flex-direction: column;
-        padding: 10px;
-        box-sizing: border-box;
-        h4{
-            margin-bottom: 20px;
-            font-size: 15px;
-            // font-variant: small-caps;
-            font-weight: 900;
-            @include mQ('1025px'){
-                font-size: 25px;
+        justify-content: space-around;
+        align-items: center;
+        @include mQ('1025px'){
+            margin-right: 20px;
+            flex-direction: row;
+            img{
+                margin-left: 100px;
             }
         }
-        .theContent{
+        .contents{
+            padding: 0 20px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            font-family: $fontForSlide;
             @include mQ('1025px'){
-                flex-direction: row;
-                padding: 0 12px;
+                width: 550px;
             }
-            img{
-                width: 300px;
-                margin: 0 auto;
+            h4{
+                margin: 10px 0;
+                letter-spacing: 5px;
                 @include mQ('1025px'){
-                    width: 400px;
-                    height: 350px;
+                    font-size: 25px;
                 }
             }
             p{
-                margin: 12px 0;
-                padding: 12px;
-                box-sizing: border-box;
-                line-height: 20px;
-                @include mQ('1025px'){
-                    margin: 1px;
-                }
-            }
-            .inner{
-                @include mQ('1025px'){
-                    margin: 2px;
-                    width: 450px;
-                    font-size: 18px;
-                }
+                margin: 10px 0;
+                line-height: 30px;
             }
             input{
                 width: 100px;
@@ -154,82 +150,39 @@
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
                 @include mQ('1025px'){
                     width: 200px;
+                    margin: 15px 0;
                 }
             }
         }
     }
-    .login{
+    .quicklinks{
         display: none;
         @include mQ('1025px'){
             display: flex;
-            width: 350px;
-            flex-direction: column;
-            background-color: #030D42;
-            box-shadow: 0px 0px 5px 1px #ccc;
-            height: 450px;
+            background: #030d42;
+            margin-left: 25px;
             border-radius: 12px;
-            .loginSection{
-                display: flex;
-                flex-direction: column;
-                figure{
-                    width: 100%;
-                    margin: 0;
-                    display: flex;
-                    flex-direction: column;
-                    img{
-                        width: 100%;
-                    }
-                    figcaption{
-                        text-align: center;
-                        font-weight: bold;
-                        padding: 5px 0;
-                        background-color: #fff;
-                    }
-                }
-                form{
-                    display: flex;
-                    flex-direction: column;
-                    padding: 12px;
-                    box-sizing: border-box;
-                    // box-shadow: 0px 0px 5px 1px #ccc;
-                    justify-content: space-evenly;
-                    input[type=text], input[type=password]{
-                        background-color: #030d42;
-                        margin: 10px 0;
-                        height: 30px;
-                        padding: 12px 20px;
-                        box-sizing: border-box;
-                        border-radius: 20px;
-                        border: 1px white solid;
-                        color: white;
-                    }
-                    .keep{
-                        margin: 12px;
-                        color: #fff;
-                    }
-
-                    button{
-                        width: 110px;
-                        margin: 10px;
-                        height: 30px;
-                        border: 0px;
-                        border-radius: 12px;
-                        background-color: #fff;
-                        box-shadow: 0 0 -5px 5px #ccc;
-                    }
-                    p{
-                        color: #ccc;
-                        font-size: 12px;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-between;
-                        margin-top: 15px;
-                        a{
-                            color: #ccc;
-                        }
-                    }
+            box-shadow: 0px 0px 5px 1px #ccc;
+            font-family: $fontForSlide;
+            width: 320px;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            flex-direction: column;
+            h4{
+                text-transform: uppercase;
+                margin: 20px 10px;
+                font-size: 22px;
+                letter-spacing: 3px;
+            }
+            ul{
+                list-style-type: disc;
+                padding-left: 20px;
+                li{
+                    padding: 10px;
+                    border-top: #ccc solid 1px;
                 }
             }
         }
-    }
+    }          
 }
