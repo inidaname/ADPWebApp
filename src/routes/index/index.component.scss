@@ -17,7 +17,7 @@
         flex-direction: row;
         width: 95%;
         margin: 25px auto;
-        height: 400px;
+        height: 500px;
     }
     .contents{
         display: flex;
@@ -26,13 +26,14 @@
         @include mQ('1025px'){
             flex-direction: row;
             width: 70%;
+            margin-top: 0;
         }
         .aboutContent{
             display: flex;
             flex-direction: column;
             width: 90%;
             margin: 0 auto;
-            box-shadow: 0px 0px 5px #ccc;
+            box-shadow: 0px 0px 5px 1px #ccc;
             padding: 10px;
             border-radius: 8px;
             box-sizing: border-box;
@@ -41,7 +42,7 @@
                 width: 80%;
                 margin: 0 auto;
                 @include mQ('1025px'){
-                    width: 200px;
+                    width: 250px;
                     height: 230px;
                 }
             }
@@ -50,6 +51,7 @@
                 border-radius: 0;
                 justify-content: space-around;
                 align-items: center;
+                height: 455px;
             }
             div{
                 margin-top: 10px;
@@ -68,124 +70,163 @@
         .mission{
             text-align: center;
             display: flex;
-            margin-top: 18px;
+            margin-top: 0px;
             flex-direction: column;
             @include mQ('1025px'){
                 width: 40%;
             }
-            .innerContent{
-                width: 90%;
+        }
+    }
+
+}
+.theParty{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 97%;
+    margin: 20px auto;
+    font-family: $fontForSlide;
+    @include mQ('1025px'){
+        flex-direction: row;
+        width: 95%;
+        margin: 20px auto;
+        height: 600px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    .about{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        box-sizing: border-box;
+        h4{
+            margin-bottom: 20px;
+            font-size: 15px;
+            // font-variant: small-caps;
+            font-weight: 900;
+            @include mQ('1025px'){
+                font-size: 25px;
+            }
+        }
+        .theContent{
+            display: flex;
+            flex-direction: column;
+            @include mQ('1025px'){
+                flex-direction: row;
+                padding: 0 12px;
+            }
+            img{
+                width: 300px;
                 margin: 0 auto;
-                box-shadow: 0px 0px 5px #ccc;
-                padding: 10px;
-                border-radius: 8px;
-                box-sizing: border-box;
-                font-family: $fontForSlide;
-                margin-bottom: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
                 @include mQ('1025px'){
-                    border-radius: 0;
+                    width: 400px;
                     height: 350px;
                 }
-                span{
-                    color: white;
-                    background: #7db9e8; /* Old browsers */
-                    // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
-                    // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
-                    background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
-                    font-size: 45px;
-                    padding: 30px 3px;
-                    border-radius: 50%;
-                    border: 1px white solid;
-                    box-sizing: border-box;
-                    margin: 20px;
-                    @include mQ('1025px'){
-                        font-size: 25px;
-                        padding: 15px 3px;
-                        margin: 10px;
-                    }
-                    fa-icon{
-                        border: 1px solid white;
-                        border-radius: 50%;
-                        padding: 27px 27px;
-                        @include mQ('1025px'){
-                            padding: 12px;
-                        }
-                    }
+            }
+            p{
+                margin: 12px 0;
+                padding: 12px;
+                box-sizing: border-box;
+                line-height: 20px;
+                @include mQ('1025px'){
+                    margin: 1px;
                 }
-                h4{
-                    margin: 12px;
-                    font-size: 30px;
-                    font-weight: bold;
-                    @include mQ('1025px'){
-                        margin: 2px;
-                        font-size: 25px;
-                    }
+            }
+            .inner{
+                @include mQ('1025px'){
+                    margin: 2px;
+                    width: 450px;
+                    font-size: 18px;
                 }
-                .description{
-                    font-size: 15px;
+            }
+            input{
+                width: 100px;
+                padding: 10px 0;
+                border: 1px #fff solid;
+                color: #fff;
+                border-radius: 22px;
+                background-color: transparent;
+                background: #7db9e8; /* Old browsers */
+                // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+                // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+                @include mQ('1025px'){
+                    width: 200px;
                 }
             }
         }
     }
-    .news{
-        display: flex;
-        flex-direction: column;
-        background-color: #373435;
-        font-family: $fontForSlide;
-        color: #fff;
+    .login{
+        display: none;
         @include mQ('1025px'){
-            border-radius: 5px;
-            width: 450px;
-        }
-        h4{
-            text-align: center;
-            margin: 10px auto;
-            @include mQ('1025px'){
-                width: 80%;
-                text-align: left;
-                margin: 10px auto;
-            }
-        }
-        #newsContent{
             display: flex;
-            flex-direction: row;
-            padding: 0 10px;
-            box-sizing: border-box;
-            figure{
+            width: 350px;
+            flex-direction: column;
+            background-color: #030D42;
+            box-shadow: 0px 0px 5px 1px #ccc;
+            height: 450px;
+            border-radius: 12px;
+            .loginSection{
                 display: flex;
-                flex-direction: row;
-                height: 120px;
-                font-size: 11px;
-                justify-content: center;
-                align-content: center;
-                border-bottom: #777 solid 1px;
-                img{
-                    margin: 10px;
-                    width: 240px;
-                    height: 80px;
-                    border-radius: 8px;
-                }
-                figcaption{
+                flex-direction: column;
+                figure{
+                    width: 100%;
+                    margin: 0;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-around;
-                    padding: 10px;
+                    img{
+                        width: 100%;
+                    }
+                    figcaption{
+                        text-align: center;
+                        font-weight: bold;
+                        padding: 5px 0;
+                        background-color: #fff;
+                    }
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 12px;
                     box-sizing: border-box;
-                    strong{
-                        font-size: 11px;
-                        color: red;
-                        text-transform: uppercase;
-                        margin-bottom: 5px;
+                    // box-shadow: 0px 0px 5px 1px #ccc;
+                    justify-content: space-evenly;
+                    input[type=text], input[type=password]{
+                        background-color: #030d42;
+                        margin: 10px 0;
+                        height: 30px;
+                        padding: 12px 20px;
+                        box-sizing: border-box;
+                        border-radius: 20px;
+                        border: 1px white solid;
+                        color: white;
+                    }
+                    .keep{
+                        margin: 12px;
+                        color: #fff;
+                    }
+
+                    button{
+                        width: 110px;
+                        margin: 10px;
+                        height: 30px;
+                        border: 0px;
+                        border-radius: 12px;
+                        background-color: #fff;
+                        box-shadow: 0 0 -5px 5px #ccc;
                     }
                     p{
-                        padding-right: 10px;
-                        margin-bottom: 5px;
-                        box-sizing: border-box;
+                        color: #ccc;
+                        font-size: 12px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        margin-top: 15px;
+                        a{
+                            color: #ccc;
+                        }
                     }
                 }
             }

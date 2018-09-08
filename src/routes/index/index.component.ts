@@ -8,9 +8,6 @@ import { faArrowLeft, faRocket, faPaperPlane } from '@fortawesome/free-solid-svg
 })
 export class IndexComponent implements OnInit {
 
-  arrowleft = faArrowLeft;
-  rocket = faRocket;
-  plane = faPaperPlane;
   constructor() { }
 
   ngOnInit() {
