@@ -153,20 +153,104 @@ input{
 .publications{
     display: flex;
     flex-direction: column;
+    @include mQ('1025px'){
+        flex-direction: row;
+        margin-bottom: 20px;
+    }
     .allseprate{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        @include mQ('1025px'){
+            flex-direction: row;
+            width: 71%;
+            margin-left: 20px;
+        }
         .listContents{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
             height: 250px;
-            width: 250px;
+            width: 280px;
             box-shadow: 0 0 5px 1px #ccc;
             margin: 12px;
+            @include mQ('1025px'){
+                width: 260px;
+                border-radius: 12px;
+            }
+            button{
+                width: 150px;
+                margin-top: 20px;
+                padding: 10px 0;
+                border: 1px #fff solid;
+                color: #fff;
+                border-radius: 22px;
+                background-color: transparent;
+                @include mQ('1025px'){
+                    width: 200px;
+                }
+            }            
+            &:nth-child(1){
+                span, button{
+                    background: #7db9e8; /* Old browsers */
+                    background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #4A9FFC 1%,#2858A2 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4A9FFC', endColorstr='#2858A2',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            &:nth-child(2){
+                span, button{
+                    background: #1f068b; /* Old browsers */
+                    background: -moz-linear-gradient(left, #E60000 1%, #B40606 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #E60000 1%,#B40606 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #E60000 1%,#B40606 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E60000', endColorstr='#B40606',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            &:nth-child(3){
+                span, button{
+                    background: #030D42; /* Old browsers */
+                    background: -moz-linear-gradient(left, #030D42 1%, #0B23A3 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #030D42 1%,#0B23A3 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #030D42 1%,#0B23A3 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#030D42', endColorstr='#0B23A3',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            span{
+                color: white;
+                // font-size: 45px;
+                padding: 30px 3px;
+                box-shadow: 0px 2px 5px 2px #ccc;
+                border-radius: 50%;
+                // border: 1px white solid;
+                box-sizing: border-box;
+                margin: 20px;
+                @include mQ('1025px'){
+                    font-size: 35px;
+                    padding: 23px 2px;
+                    margin: 2px;
+                }
+                fa-icon{
+                    border: 1px solid white;
+                    border-radius: 50%;
+                    padding: 27px 27px;
+                    @include mQ('1025px'){
+                        padding: 18px;
+                    }
+                }
+            }
+            h4{
+                margin: 12px;
+                font-size: 30px;
+                font-weight: bold;
+                @include mQ('1025px'){
+                    margin: 2px;
+                    font-size: 25px;
+                }
+            }
         }
     }
 }
