@@ -1,13 +1,5 @@
 @import '../../sass/_variables';
 @import '../../sass/_mixins';
-.main{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    // overflow: hidden;
-    position: relative;
-    margin: 20px 0;
-}
 
 .about{
     display: flex;
@@ -17,6 +9,7 @@
         flex-direction: row;
         width: 95%;
         margin: 25px auto;
+        height: 500px;
     }
     .contents{
         display: flex;
@@ -24,13 +17,15 @@
         margin-top: 30px;
         @include mQ('1025px'){
             flex-direction: row;
+            width: 70%;
+            margin-top: 0;
         }
         .aboutContent{
             display: flex;
             flex-direction: column;
             width: 90%;
             margin: 0 auto;
-            box-shadow: 0px 0px 1px 2px #ccc;
+            box-shadow: 0px 0px 5px 1px #ccc;
             padding: 10px;
             border-radius: 8px;
             box-sizing: border-box;
@@ -39,12 +34,16 @@
                 width: 80%;
                 margin: 0 auto;
                 @include mQ('1025px'){
-                    width: 400px;
-                    height: 200px;
+                    width: 250px;
+                    height: 230px;
                 }
             }
             @include mQ('1025px'){
                 flex-direction: row-reverse;
+                border-radius: 0;
+                justify-content: space-around;
+                align-items: center;
+                height: 455px;
             }
             div{
                 margin-top: 10px;
@@ -55,111 +54,95 @@
                 p{
                     margin: 15px 0;
                 }
+                @include mQ('1025px'){
+                    width: 50%;
+                }
             }
         }
         .mission{
             text-align: center;
             display: flex;
-            margin-top: 18px;
+            margin-top: 0px;
             flex-direction: column;
-            .innerContent{
-                width: 90%;
-                margin: 0 auto;
-                box-shadow: 0px 0px 1px 2px #ccc;
-                padding: 10px;
-                border-radius: 8px;
-                box-sizing: border-box;
-                font-family: $fontForSlide;
-                margin-bottom: 15px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: center;
-                span{
-                    color: white;
-                    background: #7db9e8; /* Old browsers */
-                    // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
-                    // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
-                    background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
-                    font-size: 45px;
-                    padding: 30px 3px;
-                    border-radius: 50%;
-                    border: 1px white solid;
-                    box-sizing: border-box;
-                    margin: 20px;
-                    fa-icon{
-                        border: 1px solid white;
-                        border-radius: 50%;
-                        padding: 27px 27px;
-                    }
-                }
-                h4{
-                    margin: 12px;
-                    font-size: 30px;
-                    font-weight: bold;
-                }
-                .description{
-                    font-size: 15px;
-                }
+            @include mQ('1025px'){
+                width: 40%;
             }
         }
     }
-    .news{
+
+}
+.theParty{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 97%;
+    margin: 20px auto;
+    font-family: $fontForSlide;
+    @include mQ('1025px'){
+        flex-direction: row;
+        width: 95%;
+        margin: 0px auto;
+        height: 600px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+}
+.theChairman{
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+    margin: 0 auto;
+    @include mQ('1025px'){
+        flex-direction: row;
+    }
+    .theContent{
         display: flex;
         flex-direction: column;
-        background-color: #373435;
-        font-family: $fontForSlide;
-        color: #fff;
+        justify-content: space-around;
+        align-items: center;
         @include mQ('1025px'){
-            border-radius: 5px;
-            width: 450px;
-        }
-        h4{
-            text-align: center;
-            margin: 10px auto;
-            @include mQ('1025px'){
-                width: 80%;
-                text-align: left;
-                margin: 10px auto;
+            margin-right: 20px;
+            flex-direction: row;
+            img{
+                margin-left: 100px;
             }
         }
-        #newsContent{
-            display: flex;
-            flex-direction: row;
-            padding: 0 10px;
+        .contents{
+            padding: 0 20px;
             box-sizing: border-box;
-            figure{
-                display: flex;
-                flex-direction: row;
-                height: 120px;
-                font-size: 11px;
-                justify-content: center;
-                align-content: center;
-                border-bottom: #777 solid 1px;
-                img{
-                    margin: 10px;
-                    width: 240px;
-                    height: 80px;
-                    border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            font-family: $fontForSlide;
+            @include mQ('1025px'){
+                width: 450px;
+            }
+            h4{
+                margin: 10px 0;
+                letter-spacing: 5px;
+                @include mQ('1025px'){
+                    font-size: 25px;
                 }
-                figcaption{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    padding: 10px;
-                    box-sizing: border-box;
-                    strong{
-                        font-size: 11px;
-                        color: red;
-                        text-transform: uppercase;
-                        margin-bottom: 5px;
-                    }
-                    p{
-                        padding-right: 10px;
-                        margin-bottom: 5px;
-                        box-sizing: border-box;
-                    }
+            }
+            p{
+                margin: 10px 0;
+                line-height: 30px;
+            }
+            input{
+                width: 100px;
+                padding: 10px 0;
+                border: 1px #fff solid;
+                color: #fff;
+                border-radius: 22px;
+                background-color: transparent;
+                background: #7db9e8; /* Old browsers */
+                // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+                // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+                @include mQ('1025px'){
+                    width: 200px;
+                    margin: 15px 0;
                 }
             }
         }

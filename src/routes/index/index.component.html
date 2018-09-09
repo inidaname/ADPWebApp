@@ -15,33 +15,27 @@
                     </p>
                 </div>
             </div>
-            <div class="mission">
-                <div class="innerContent">
-                    <span><fa-icon [icon]="rocket"></fa-icon></span>
-                    <h4>Mission</h4>
-                    <p class="description">To provide Responsive leadership that is transparent and accountable to the people.</p>
-                </div>
-                <div class="innerContent">
-                    <span><fa-icon [icon]="plane"></fa-icon></span>
-                    <h4>Vision</h4>
-                    <p class="description">A Secure, Stable and Egalitarian Nigeria where Democracy and Rule of Law Reign.</p>
-                </div>
+            <app-mission class="mission"></app-mission>
+        </div>
+        <app-news></app-news>
+    </div>
+
+    <div class="theParty">
+        <app-about-section></app-about-section>
+        <app-login-section></app-login-section>
+    </div>
+
+    <div class="theChairman">
+        <div class="theContent">
+            <img src="/assets/nChairman.jpg" alt="The ADP National Chairman">
+            <div class="contents">
+                <h4>Chairman's Desk</h4>
+                <p>
+                    The National Chairman of the Action Democratic Party (ADP), Engr. Yabagi Sani, spoke with Press men in Abuja. He expressed dissatisfaction with the way the economy of the country was being run, insisting that the interest of the masses do not feature in the decision made by the ruling party...
+                </p>
+                <input type="button" value="Read More">
             </div>
         </div>
-        <div class="news">
-            <h4>Latest News</h4>
-            <div id="newsContent">
-                <figure>
-                    <img src="/assets/inec.jpg" alt="News Caption" width="100px">
-                    <figcaption>
-                        <strong>Election</strong>
-                        <p>
-                            Increase facilities for voters registration in Oyo State, ADP tells INEC
-                        </p>
-                        <span><em>Aug 15th, 2018</em></span>
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
+        <app-quicklinks></app-quicklinks>
     </div>
 </div>
