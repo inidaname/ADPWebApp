@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-about-section',
   templateUrl: './about-section.component.html',

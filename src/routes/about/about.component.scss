@@ -56,6 +56,12 @@ input{
         flex-direction: row;
         margin: 0 auto;
     }
+    .inMobile{
+        display: none;
+        @include mQ('1025px'){
+            display: flex;
+        }
+    }
     .content{
         display: flex;
         flex-direction: column;
@@ -97,6 +103,70 @@ input{
             @include mQ('1025px'){
                 width: 30%;
             }
+        }
+    }
+}
+
+.theChairman{
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+    margin: 0 auto;
+    @include mQ('1025px'){
+        flex-direction: row;
+    }
+    .theContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        @include mQ('1025px'){
+            margin-right: 20px;
+            flex-direction: row;
+            img{
+                margin-left: 100px;
+            }
+        }
+        .contents{
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-family: $fontForSlide;
+            @include mQ('1025px'){
+                width: 510px;
+            }
+            h4{
+                margin: 10px 0;
+                letter-spacing: 5px;
+                @include mQ('1025px'){
+                    font-size: 25px;
+                }
+            }
+            p{
+                margin: 10px 0;
+                line-height: 30px;
+            }
+        }
+    }
+}
+.publications{
+    display: flex;
+    flex-direction: column;
+    .allseprate{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .listContents{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 250px;
+            width: 250px;
+            box-shadow: 0 0 5px 1px #ccc;
+            margin: 12px;
         }
     }
 }
