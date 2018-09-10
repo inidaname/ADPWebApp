@@ -15,9 +15,15 @@ export class HeadBarComponent implements OnInit {
   medium = faMedium;
   bars = faBars;
   search = faSearch;
+
+  navOpen = true;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMenu() {
+    this.navOpen = !this.navOpen;
   }
 
 

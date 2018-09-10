@@ -77,14 +77,14 @@
     justify-content: space-around;
     align-items: center;
     width: 97%;
-    margin: 20px auto;
+    margin: 0px auto;
     font-family: $fontForSlide;
     @include mQ('1025px'){
         flex-direction: row;
         width: 95%;
-        margin: 0px auto;
-        height: 600px;
-        padding: 15px;
+        margin: 10px auto;
+        height: auto;
+        padding: 25px 15px;
         box-sizing: border-box;
     }
 }
@@ -102,10 +102,16 @@
         justify-content: space-around;
         align-items: center;
         @include mQ('1025px'){
-            margin-right: 20px;
+            margin-right: 10px;
             flex-direction: row;
             img{
-                margin-left: 100px;
+                margin-left: 94px;
+            }
+        }
+        @include mQ('1025px', '1360px'){
+            margin-right: 10;
+            img{
+                margin-left: 47px;
             }
         }
         .contents{
@@ -115,7 +121,7 @@
             flex-direction: column;
             font-family: $fontForSlide;
             @include mQ('1025px'){
-                width: 450px;
+                width: 530px;
             }
             h4{
                 margin: 10px 0;

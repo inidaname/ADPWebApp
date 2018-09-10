@@ -5,6 +5,10 @@
     flex-direction: column;
     padding: 10px;
     box-sizing: border-box;
+    @include mQ('1025px'){
+        width: 880px;
+        margin-right: 20px;
+    }
     h4{
         margin-bottom: 20px;
         font-size: 15px;

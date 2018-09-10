@@ -3,8 +3,8 @@
     <img src="assets/adplogo.jpg" class="logo" alt="">
     <div class="menuCase">
       <div>
-        <span id="mobileMenu"><fa-icon [icon]="bars"></fa-icon></span>
-        <ul id="menuList" class="menuHide">
+        <span id="mobileMenu"><fa-icon (click)="toggleMenu()" [icon]="bars"></fa-icon></span>
+        <ul id="menuList" [ngClass]="{'menuHide': navOpen}">
           <li class="menu">
             <a [routerLink]="['/']" routerLinkActive="active" >Home</a>
           </li>
