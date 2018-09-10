@@ -159,6 +159,7 @@ input{
 .publications{
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     @include mQ('1025px'){
         flex-direction: row;
         margin-bottom: 20px;
@@ -183,6 +184,7 @@ input{
             align-items: center;
             height: 250px;
             width: 280px;
+            box-sizing: border-box;
             box-shadow: 0 0 5px 1px #ccc;
             margin: 12px;
             @include mQ('1025px'){
