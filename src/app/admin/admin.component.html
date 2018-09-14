@@ -1,0 +1,75 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="wrapper">
+  <div class="side-menu">
+    <h4 class="admin-title">Admin Panel</h4>
+    <section class="profile">
+      <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
+      <p>Hassan Uche K.</p>
+    </section>
+    <section class="list-menu">
+      <ul>
+        <li>Dashboard</li>
+        <li>Messages</li>
+        <li>Manage Members</li>
+        <li>Candidates</li>
+        <li>Admins and Excos</li>
+        <li>Elections</li>
+        <li>Log Out</li>
+      </ul>
+    </section>
+  </div>
+  <div class="main">
+    <div class="top-profile">
+      <span id="menu-bar"><fa-icon [icon]="bars"></fa-icon></span>
+      <ul class="user-details">
+        <li><fa-icon [icon]="message"></fa-icon></li>
+        <li><img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image"></li>
+        <li>Hassan Uche K</li>
+        <li><fa-icon [icon]="down"></fa-icon></li>
+      </ul>
+    </div>
+    <div class="statistics">
+      <section>
+        <fa-icon [icon]="threeDots"></fa-icon>
+        <div class="new-signups">
+          <h3>Sign Ups in last 24hrs</h3>
+          <h2 class="circle">
+            25
+          </h2>
+        </div>
+      </section>
+      <section>
+          <fa-icon [icon]="threeDots"></fa-icon>
+          <div>
+            <h3>Members Genda Distribution</h3>
+            <ngx-chartjs [data]="data" type="doughnut"></ngx-chartjs>
+          </div>
+      </section>
+      <section>
+          <fa-icon [icon]="threeDots"></fa-icon>
+          <div>
+            <div class="messages">
+              <span>
+                <fa-icon [icon]="message"></fa-icon>
+                <label>23</label>
+              </span>
+              
+              <span>
+                <fa-icon [icon]="male"></fa-icon>
+                <label>16</label>
+              </span>
+            </div>
+          </div>
+          <p>Unread Messages and Admin Request</p>
+      </section>
+    </div>
+    <div class="graphing">
+      <section>
+          <ngx-chartjs [data]="member" type="line"></ngx-chartjs>
+      </section>
+      <section>
+          <ngx-chartjs [data]="member" type="bar"></ngx-chartjs>
+      </section>
+    </div>
+  </div>
+</div>

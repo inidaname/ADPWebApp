@@ -14,34 +14,68 @@ import { MissionComponent } from '../components/mission/mission.component';
 import { AboutSectionComponent } from '../components/about-section/about-section.component';
 import { LoginSectionComponent } from '../components/login-section/login-section.component';
 import { QuicklinksComponent } from '../components/quicklinks/quicklinks.component';
+import { CandidatesComponent } from './candidates/candidates.component';
+import { HomeComponent } from '../app/home/home.component';
+import { MemberComponent } from '../app/member/member.component';
+import { AdminComponent } from '../app/admin/admin.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: IndexComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: IndexComponent
+      },
+
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+
+      {
+        path: 'contact',
+        component: ContactComponent,
+        data: {
+          title: 'Contact Us'
+        }
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'structure',
+        component: StructureComponent
+      },
+      {
+        path: 'candidates',
+        component: CandidatesComponent
+      }
+    ]
   },
 
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'member',
+    component: MemberComponent,
+    children: [
+      {
+        path: '',
+        component: IndexComponent
+      }
+    ]
   },
 
   {
-    path: 'contact',
-    component: ContactComponent,
-    data: {
-      title: 'Contact Us'
-    }
-  },
-
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-
-  {
-    path: 'structure',
-    component: StructureComponent
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        component: IndexComponent
+      }
+    ]
   }
 ];
 
@@ -52,7 +86,7 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true}
+      {enableTracing: false}
     )
   ],
   exports: [
@@ -69,7 +103,8 @@ const appRoutes: Routes = [
     MissionComponent,
     AboutSectionComponent,
     LoginSectionComponent,
-    QuicklinksComponent
+    QuicklinksComponent,
+    CandidatesComponent
   ]
 })
 export class RoutesModule { }

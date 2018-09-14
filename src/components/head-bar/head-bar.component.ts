@@ -17,10 +17,10 @@ export class HeadBarComponent implements OnInit {
   search = faSearch;
 
   navOpen = true;
-  constructor() { }
 
-  ngOnInit() {
-  }
+  constructor () {}
+
+  ngOnInit() {}
 
   toggleMenu() {
     this.navOpen = !this.navOpen;

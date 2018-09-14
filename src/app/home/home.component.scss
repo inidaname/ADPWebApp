@@ -1,0 +1,147 @@
+@import '../../sass/_variables';
+@import '../../sass/_mixins';
+.wrapper{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    .hang{
+        position: sticky;
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 10;
+        bottom: 0px;
+        height: 50px;
+        background: #fff;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        box-shadow: 0px -5px 5px 6px transparentize($color: #000000, $amount: 0.8);
+        background: #E60000;
+        padding: 12px 0;
+        .donate{
+            display: flex;
+            flex-direction: column;
+            ul{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-evenly;
+                list-style: none;
+                margin-top: 5px;
+                font-weight: bold;
+                padding-top: 7px;
+                :nth-child(1){
+                    background: #c9131399;
+                    color: white;
+                }
+                li{
+                    border: 1px solid #ccc;
+                    padding: 4px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    box-shadow: 0px 0px 3px 3px transparentize($color: #000000, $amount: 0.8);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.show{
+    display: none;
+}
+
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background-color: transparentize($color: #000000, $amount: 0.3);
+    .inner-modal{
+        background: #fff;
+        margin: auto;
+        height: 420px;
+        width: 80%;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        justify-content: space-around;
+        z-index: 12;
+        top: 60px;
+        border-radius: 20px;
+        @include mQ('1025px'){
+            width: 40%;
+        }
+        h4{
+            width: 70%;
+            margin: 0 auto;
+            text-align: center;
+            text-shadow: 0px 2px #ccc;
+            font-weight: bold;
+        }
+        input{
+            width: 70%;
+            border: 1px solid #000;
+        }
+        .disabledBTN{
+            box-shadow: 0px 0px 5px #000;
+            background-color: transparent;
+            background: #7db9e8; /* Old browsers */
+            // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+            // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            button{
+                width: 100px;
+                padding: 10px 0;
+                border: 1px #fff solid;
+                color: #fff;
+                margin: 12px auto;
+                border-radius: 22px;
+                background-color: #cccccc !important;
+                @include mQ('1025px'){
+                    width: 200px;
+                }
+            }
+            #close{
+                background-color: #ca1111 !important;
+                outline: none;
+                box-shadow: 0px 0px 2px #000;
+                border: 0 solid #000;
+            }
+        }
+        .donates{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            margin: 14px 0;
+            label{
+                align-self: flex-start;
+                margin-left: 35px;
+                font-variant: small-caps;
+            }
+            input{
+                margin-bottom: 20px;
+                margin-top: 5px;
+                line-height: 17px;
+                padding: 9px;
+                font-size: 15px;
+                border-radius: 10px;
+                background: #cccccc;
+                border: 1px solid #333;
+            }
+        }
+    }
+}

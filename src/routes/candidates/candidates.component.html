@@ -1,0 +1,20 @@
+<div class="main">
+  <h2>Candidate Section</h2>
+  <div class="top-candidate">
+    <h4>Presidential Aspirants</h4>
+    <div *ngFor="let key of objectKeys(candidateDetail)" class="list-candidates">
+      <div class="candidate-details">
+        <figure>
+          <img [src]="candidateDetail[key].picture.large" alt="">
+          <figcaption>{{candidateDetail[key].name.first.toUpperCase(1) +' '+ candidateDetail[key].name.last}}</figcaption>
+        </figure>
+        <div class="candidate-desc">
+          <h4>Profile</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem soluta delectus, voluptates inventore, ea magnam quibusdam accusamus ratione eum dolor cupiditate ex ipsa repellendus earum odio recusandae quo doloremque debitis!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, sequi? Eveniet, quaerat vel aliquam officia voluptatem minima perferendis quae unde assumenda dignissimos architecto nisi, eius ut nam blanditiis consequatur. Ad!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="other-candidate"></div>
+</div>
