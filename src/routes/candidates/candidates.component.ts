@@ -18,8 +18,6 @@ export class CandidatesComponent implements OnInit {
     const obs = this.candidate.get('https://randomuser.me/api/');
     obs.subscribe((res) => {
       this.candidateDetail = res.results;
-      console.log(this.candidateDetail);
-      
     });
   }
 
