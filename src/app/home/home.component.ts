@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   constructor (private route: Router) {
     this.route.events.subscribe(() => this.router = this.route.url );
-    console.log(this.route);
   }
 
   ngOnInit() {}

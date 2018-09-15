@@ -16,7 +16,7 @@ export class CandidatesComponent implements OnInit {
 
   ngOnInit() {
     const obs = this.candidate.get('https://randomuser.me/api/');
-    obs.subscribe((res) => {
+    obs.subscribe((res: any) => {
       this.candidateDetail = res.results;
     });
   }

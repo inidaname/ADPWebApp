@@ -18,10 +18,8 @@ export class AppComponent {
 
   constructor (private route: Router) {
     this.route.events.subscribe(() => this.router = this.route.url );
-    console.log(this.route);
-    
   }
-  
+
   toggleModal(theCon: String, shwAmt: any,  theSt: Boolean) {
     this.modalActive = !this.modalActive;
     this.theAmt = theCon;

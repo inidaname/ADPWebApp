@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faWhatsapp, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeOpen, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,15 +16,9 @@ export class FooterBarComponent implements OnInit {
 
   iniMemView: boolean;
 
-  constructor (private route: Router) {
-    console.log(this.route.url);
-  }
-  
+  constructor () {}
+
   ngOnInit() {
-    console.log(this.route);
-    if (this.route.url === '/member') {
-      console.log('This should work');
-    }
   }
 
 }

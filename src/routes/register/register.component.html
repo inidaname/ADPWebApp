@@ -1,9 +1,90 @@
 <div class="main" role="main">
-    <div class="about">
-        <app-about-section></app-about-section>
-        <div class="country">
-            <img src="assets/nigeria.jpg" alt="The Map of Nigeria">
-            <input type="button" value="Join Us">
-        </div>
-    </div>
+    <h2>Registration Page</h2>
+    <form action="" method="post" class="register">
+        <section>
+            <div class="intro">
+                <h4>Please fill the form</h4>
+                <ul>
+                    <li>Please note that Full Name must contain at least First and Last Name preferably, a third name may be added.</li>
+                    <li>Date of Birth must be at least 18 years old at the time of registration</li>
+                    <li>Please provide at least a phone number and/or email address</li>
+                </ul>
+            </div>
+            <div class="passport">
+                <figure id="preview"></figure>
+                <input type="file" aria-label="Passport" name="passport" id="passport">
+            </div>
+        </section>
+        <section>
+            <div class="input-field">
+                <label for="fullname">Full Name</label>
+                <input type="text" aria-label="Full Name" name="fullname" id="fullname" placeholder="Hassan Uche Oluwatoyin">
+            </div>
+            <div class="input-field">
+                <label for="vin">VIN</label>
+                <input type="text" name="vin" aria-label="VIN number" id="vin" placeholder="VIN 3075050" aria-placeholder="VIN 3075050">
+            </div>
+        </section>
+        <section class="contacts">
+            <div>
+                <div class="input-field">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="text" name="phonenumber" id="phonenumber" aria-label="Phone Number" placeholder="+2348021345678">
+                </div>
+                <div class="input-field">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" aria-label="Email Address" placeholder="contact@adp.ng">
+                </div>
+            </div>
+            <div>
+                <div class="input-field">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" aria-label="Gender">
+                        <option value="" aria-selected="true">Select Gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
+                </div>
+            </div>
+        </section>
+        <section class="voting-unit">
+            <div class="input-field">
+                <label for="state">State</label>
+                <select name="state" id="state">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="lga">Local Government</label>
+                <select name="lga" id="state">
+                    <option value="">Select LGA</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="ward">Ward</label>
+                <select name="ward" id="ward">
+                    <option value="">Select Ward</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="polling">Voting Unit</label>
+                <select name="polling" id="polling" aria-label="Voting Unit">
+                    <option value="">Select Voting Unit</option>
+                </select>
+            </div>
+        </section>
+        <section>
+            <div class="input-field">
+                <label for="address">Residential Address</label>
+                <textarea name="address" id="address" cols="30" rows="2" aria-label="Address" placeholder="Full Address"></textarea>
+            </div>
+        </section>
+        <section class="submit">
+            <button type="submit">Register ></button><button type="reset">Cancel</button>
+        </section>
+    </form>
 </div>
