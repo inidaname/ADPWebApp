@@ -10,7 +10,11 @@ import {  minimumAge } from './singleName.directive';
 })
 export class RegisterComponent implements OnInit {
   formReg: FormGroup;
-  state = ['ABIA', 'ADAMAWA', 'AKWA IBOM', 'ANAMBRA', 'BAUCHI', 'BAYELSA', 'BENUE', 'BORNO', 'CROSS RIVER', 'DELTA', 'EBONYI', 'EDO', 'EKITI', 'ENUGU', 'FCT', 'GOMBE', 'IMO', 'JIGAWA', 'KADUNA', 'KANO', 'KATSINA', 'KEBBI', 'KOGI', 'KWARA', 'LAGOS', 'NASARAWA', 'NIGER', 'OGUN', 'ONDO', 'OSUN', 'OYO', 'PLATEAU', 'RIVERS', 'SOKOTO', 'TARABA', 'YOBE', 'ZAMFARA'];
+  state = ['ABIA', 'ADAMAWA', 'AKWA IBOM', 'ANAMBRA', 'BAUCHI', 
+  'BAYELSA', 'BENUE', 'BORNO', 'CROSS RIVER', 'DELTA', 'EBONYI', 'EDO', 'EKITI', 
+  'ENUGU', 'FCT', 'GOMBE', 'IMO', 'JIGAWA', 'KADUNA', 'KANO', 'KATSINA', 'KEBBI', 'KOGI', 
+  'KWARA', 'LAGOS', 'NASARAWA', 'NIGER', 'OGUN', 'ONDO', 'OSUN', 'OYO', 'PLATEAU', 'RIVERS',
+   'SOKOTO', 'TARABA', 'YOBE', 'ZAMFARA'];
   localGovt: any;
   wardList: any;
   pollingList: any;
@@ -23,7 +27,7 @@ export class RegisterComponent implements OnInit {
       full_name: ['', [Validators.required, Validators.minLength(3)]], // @TODO check space in name
       pvc: [''],
       phone_number: ['', Validators.required],
-      email: ['', Validators.email('ad@k.l')],
+      email: [''/*, Validators.email('ad@k.l')*/],
       residenceAdd: [''],
       stateName: [''],
       lgaName: [''],
