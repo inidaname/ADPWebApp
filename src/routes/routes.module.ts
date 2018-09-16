@@ -18,6 +18,7 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { HomeComponent } from '../app/home/home.component';
 import { MemberComponent } from '../app/member/member.component';
 import { AdminComponent } from '../app/admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {
@@ -84,6 +85,8 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}
@@ -104,7 +107,7 @@ const appRoutes: Routes = [
     AboutSectionComponent,
     LoginSectionComponent,
     QuicklinksComponent,
-    CandidatesComponent
+    CandidatesComponent,
   ]
 })
 export class RoutesModule { }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     FormsModule,
     HttpClientModule,
     Angular4PaystackModule,
-    ChartjsModule
+    ChartjsModule,
+    ReactiveFormsModule,
     // ComponentsModule
   ],
   providers: [],
