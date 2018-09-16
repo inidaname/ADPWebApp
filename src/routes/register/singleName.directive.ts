@@ -1,5 +1,6 @@
 import { ValidatorFn, AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
-import moment from 'moment';
+import * as momentNs from 'moment';
+const moment = momentNs;
 
 export function justOneName(control: AbstractControl): {[key: string]: any} | null {
     const fullname = control.value.split(' ');
