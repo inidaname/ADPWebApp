@@ -14,7 +14,9 @@ export class FooterBarComponent implements OnInit {
   envelope = faEnvelopeOpen;
   phone = faPhone;
 
-  constructor() { }
+  iniMemView: boolean;
+
+  constructor () {}
 
   ngOnInit() {
   }

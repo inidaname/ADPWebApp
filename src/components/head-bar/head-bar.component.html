@@ -3,8 +3,8 @@
     <img src="assets/adplogo.jpg" class="logo" alt="">
     <div class="menuCase">
       <div>
-        <span id="mobileMenu"><fa-icon [icon]="bars"></fa-icon></span>
-        <ul id="menuList" class="menuHide">
+        <span id="mobileMenu"><fa-icon (click)="toggleMenu()" [icon]="bars"></fa-icon></span>
+        <ul id="menuList" [ngClass]="{'menuHide': navOpen}">
           <li class="menu">
             <a [routerLink]="['/']" routerLinkActive="active" >Home</a>
           </li>
@@ -18,7 +18,7 @@
             <a [routerLink]="['/register']" routerLinkActive="router-link-active"> Register</a>
           </li>
           <li class="menu">
-            <a [routerLink]="['/secretariat']" routerLinkActive="router-link-active"> Secretariats</a>
+            <a [routerLink]="['/candidates']" routerLinkActive="router-link-active"> Candidates</a>
           </li>
           <li class="menu">
             <a [routerLink]="['/contact']" routerLinkActive="router-link-active"> Contact</a>

@@ -127,6 +127,12 @@ input{
                 margin-left: 100px;
             }
         }
+        @include mQ('1025px', '1360px'){
+            margin-right: 10;
+            img{
+                margin-left: 47px;
+            }
+        }
         .contents{
             padding: 0 20px;
             box-sizing: border-box;
@@ -153,6 +159,7 @@ input{
 .publications{
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     @include mQ('1025px'){
         flex-direction: row;
         margin-bottom: 20px;
@@ -167,6 +174,9 @@ input{
             width: 71%;
             margin-left: 20px;
         }
+        @include mQ('1025px', '1360px'){
+            margin-left: 1px;
+        }
         .listContents{
             display: flex;
             flex-direction: column;
@@ -174,6 +184,7 @@ input{
             align-items: center;
             height: 250px;
             width: 280px;
+            box-sizing: border-box;
             box-shadow: 0 0 5px 1px #ccc;
             margin: 12px;
             @include mQ('1025px'){
