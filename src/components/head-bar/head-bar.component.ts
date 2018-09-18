@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTwitter, faFacebook, faInstagram, faMedium } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faFacebook, faInstagram, faMedium, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -15,6 +15,7 @@ export class HeadBarComponent implements OnInit {
   medium = faMedium;
   bars = faBars;
   search = faSearch;
+  youtube = faYoutube;
 
   navOpen = true;
 

@@ -3,7 +3,7 @@
         <app-about-section></app-about-section>
         <div class="country">
             <img src="assets/nigeria.jpg" alt="The Map of Nigeria">
-            <input type="button" value="Join Us">
+            <button (click)="btnClick('register')">Join Us</button>
         </div>
     </div>
     <div class="agenda">
@@ -21,7 +21,7 @@
                 <p>The keyword is democracy and this democracy is the same that is universally accepted and practiced all over; no one man or woman is greater than the party or one's view much better than the other member's when that view has not been examined and discussed. The ADP is the Nigeria's credible alternative with modern thinking and applications in its manifesto.</p>
 
                 <p>ADP is the party for every Nigerian who believes that the traditional and archaic methods of attending to the Nigerian quagmire should be revisited . ADP is the political party that is building a better future for a more unified Nigeria.</p>
-                <input type="button" value="Join Us">
+                <button (click)="btnClick('register')">Join Us</button>
             </div>
             <app-mission class="mission"></app-mission>
         </div>
@@ -32,7 +32,7 @@
             <div class="listContents">
                 <span><fa-icon [icon]="rocket"></fa-icon></span>
                 <h3>Structure</h3>
-                <button>View Structure</button>
+                <button (click)="btnClick('structure')">View Structure</button>
             </div>
             <div class="listContents">
                 <span><fa-icon [icon]="rocket"></fa-icon></span>
@@ -55,7 +55,7 @@
                 <p>
                     The National Chairman of the Action Democratic Party (ADP), Engr. Yabagi Sani, spoke with Press men in Abuja. He expressed dissatisfaction with the way the economy of the country was being run, insisting that the interest of the masses do not feature in the decision made by the ruling party...
                 </p>
-                <input type="button" value="Read More">
+                <button (click)="btnClick('structure')">Read More</button>
             </div>
         </div>
         <app-quicklinks></app-quicklinks>

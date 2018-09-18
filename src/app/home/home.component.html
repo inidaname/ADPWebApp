@@ -3,7 +3,7 @@
   <router-outlet></router-outlet>
   <div class="hang">
     <div class="donate">
-      <h5>DONATE: Help Build a Better Nigeria</h5>
+      <h4>DONATE: Help build a better Nigeria</h4>
       <ul>
         <li (click)="toggleModal('10000', '100', true)">N100</li>
         <li (click)="toggleModal('20000', '200', true)">N200</li>
@@ -19,8 +19,8 @@
     <div class="donates">
       <label for="fullname">Full Name</label>
       <input type="text" name="fullname" id="fullname">
-      <label for="email">Your Email</label>
-      <input type="email" name="email" id="email" #theEmail (keyup)="theemail = theEmail.value" placeholder="contact@adp.ng">
+      <label for="donoemail">Your Email</label>
+      <input type="email" name="donoemail" id="donoemail" #theEmail (keyup)="theemail = theEmail.value" placeholder="contact@adp.ng">
       <label for="amount">Amout</label>
       <input type="text" #amountDT [readonly]="theState" (keyup)="theAmt = amountDT.value +00" name="amount" id="amount" value="{{viewAmt}}">
     </div>
@@ -35,7 +35,7 @@
         (close)="paymentCancel()"
         [ngClass]="{disabledBTN: theEmail.value !== ''}"
         (callback)="paymentDone($event)">Donate</button>
-        <button id="close">Close</button>
+        <button id="close" (click)="closeModal($event)">Close</button>
     </div>
     <img src="assets/paystack.webp" alt="Pay With Paystack" width="100%" height="80px">
   </div>

@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Angular4PaystackModule } from 'angular4-paystack';
+import { NgxHmCarouselModule } from 'ngx-hm-carousel';
+import { AgmCoreModule } from '@agm/core';
+
 
 import { IndexComponent } from './index/index.component';
 import { AboutComponent } from './about/about.component';
@@ -18,7 +23,7 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { HomeComponent } from '../app/home/home.component';
 import { MemberComponent } from '../app/member/member.component';
 import { AdminComponent } from '../app/admin/admin.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragOneComponent } from './drag-one/drag-one.component';
 
 const appRoutes: Routes = [
   {
@@ -87,6 +92,11 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    Angular4PaystackModule,
+    NgxHmCarouselModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'Your_KEY'
+    }),
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}
@@ -108,6 +118,7 @@ const appRoutes: Routes = [
     LoginSectionComponent,
     QuicklinksComponent,
     CandidatesComponent,
+    DragOneComponent
   ]
 })
 export class RoutesModule { }

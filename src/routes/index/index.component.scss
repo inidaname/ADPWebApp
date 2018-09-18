@@ -7,9 +7,10 @@
     width: 100%;
     @include mQ('1025px'){
         flex-direction: row;
-        width: 95%;
+        width: 98%;
         margin: 25px auto;
         height: 500px;
+        justify-content: space-between;
     }
     .contents{
         display: flex;
@@ -18,12 +19,13 @@
         @include mQ('1025px'){
             flex-direction: row;
             width: 70%;
+            justify-content: space-between;
             margin-top: 0;
         }
         .aboutContent{
             display: flex;
             flex-direction: column;
-            width: 90%;
+            width: 65%;
             margin: 0 auto;
             box-shadow: 0px 0px 5px 1px #ccc;
             padding: 10px;
@@ -66,6 +68,8 @@
             flex-direction: column;
             @include mQ('1025px'){
                 width: 40%;
+                align-items: flex-end;
+                margin-right: 20px;
             }
         }
     }
@@ -134,7 +138,7 @@
                 margin: 10px 0;
                 line-height: 30px;
             }
-            input{
+            button{
                 width: 100px;
                 padding: 10px 0;
                 border: 1px #fff solid;

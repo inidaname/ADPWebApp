@@ -36,8 +36,6 @@ export function minimumAge(age: number): ValidatorFn {
 
 export function userAge(ageR: Date): ValidatorFn {
     return (control: AbstractControl): {[key: string]: boolean} | null => {
-        console.log(control);
-        
         const year = ageR.getFullYear() - control.value.getFullYear();
         if (year >= 18) {
             return {'ageRange': true};

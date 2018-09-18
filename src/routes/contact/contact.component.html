@@ -1,3 +1,71 @@
-<p>
-  contact works!
-</p>
+<div class="main">
+    <div class="office">
+        <div class="contact-details">
+            <div>
+                <h2>Contact Us</h2>
+                <p>
+                    We are here to answer any questions you might have with regards to our party,
+                    manifesto or elections. Use the contact form below to send us a message.
+                </p>
+            </div>
+            <div>
+                <h2>Address:</h2>
+                <address>
+                    Plot 3379A/3379B, No. 20 Mungo Park Close, <br>
+                    Off Jesse Jackson/Gimbya Street, <br>
+                    Asokoro/Area 11
+                    Abuja, Nigeria.
+                </address>
+            </div>
+            <div class="contacts">
+                <span><strong>Mobile:</strong> +234 906 000 0536</span>
+                <span><strong>WhatsApp:</strong> +234 906 182 5005</span>
+                <span><strong>Email:</strong>contact@adp.ng</span>
+            </div>
+            <div>
+            <ul class="socialMedia">
+              <li><a href="https://twitter.com/adpng" target="_blank"><fa-icon [icon]="twitter"></fa-icon></a></li>
+              <li><a href="https://fb.me/adpnigeria" target="_blank"><fa-icon [icon]="facebook"></fa-icon></a></li>
+              <li><a href="https://instagram.com/adpnigeria" target="_blank"><fa-icon [icon]="instagram"></fa-icon></a></li>
+              <li> <a href="https://medium.com/action-democratic-party"><fa-icon [icon]="medium"></fa-icon></a></li>
+              <li> <a href="https://youtube.com/action-democratic-party"><fa-icon [icon]="youtube"></fa-icon></a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-form">
+        <form [formGroup]="contactForm" (ngSubmit)="sendMessage()" method="post">
+            <h3>Send Us a Message</h3>
+            <div class="group-input">
+                <div class="input-field">
+                    <label for="contactName">Name</label>
+                    <input type="text" formControlName="contactName" name="contactName" id="contactName">
+                </div>
+                <div class="input-field">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" name="contactEmail" id="contactEmail" formControlName="contactEmail">
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="contactMessage">Message</label>
+                <textarea name="contactMessage" id="contactMessage" cols="30" rows="10" formControlName="contactMessage"></textarea>
+            </div>
+            <button type="submit">send message ></button>
+        </form>
+    </div>
+
+    <div class="map">
+        <h3>Use the Map to visit our Headquarters</h3>
+        <!-- <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map> -->
+        <!-- <img src="/assets/themap.jpg" alt=""> -->
+    </div>
+</div>
+
+<div class="modal-container" (click)="closeModal($event)" [ngClass]="{'show': !sentMessage}">
+  <div class="inner-modal">
+    <h4>Thank You for the message.</h4>
+    <button id="close" (click)="closeModal($event)">Close</button>
+  </div>
+</div>

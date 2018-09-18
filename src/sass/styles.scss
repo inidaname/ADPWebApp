@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 @import './_variables';
 @import './_mixins';
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Roboto', sans-serif;
+    outline: none;
 }
 .main{
     width: 100%;

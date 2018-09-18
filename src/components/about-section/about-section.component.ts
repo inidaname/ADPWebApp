@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-about-section',
   templateUrl: './about-section.component.html',
@@ -8,14 +9,17 @@ import { Router } from '@angular/router';
 export class AboutSectionComponent implements OnInit {
 
   iniCon: boolean;
-  constructor(private router: Router, ) {
-    console.log(this.router.url);
+  constructor(private router: Router ) {
   }
 
   ngOnInit() {
     if (this.router.url === '/') {
       this.iniCon = true;
     }
+  }
+
+  btnClick (route: string) {
+    this.router.navigateByUrl(route);
   }
 
 }

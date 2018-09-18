@@ -1,3 +1,30 @@
+<div class="modal-container" (click)="closeModal($event)" [ngClass]="{'show': !registered}">
+  <div class="inner-modal">
+    <h4>Thank You for registering. Pay Here</h4>
+    <div class="donates">
+      <label for="regfullname">Full Name</label>
+      <input type="text" name="regfullname" readonly id="regfullname" [value]="registered ? member.fullName : null">
+      <label for="regemail">Your Email</label>
+      <input type="email" name="regemail" id="regemail" readonly #regEmail [value]="registered ? member.email : null">
+      <label for="regamount">Amout</label>
+      <input type="text" #amountDT [readonly]="theState" name="regamount" id="regamount" value="750">
+    </div>
+    <div class="buttons">
+        <button
+        angular4-paystack
+        [key]="'pk_test_d718965961de7b1d678c7a70fbcfaef072800df9'"
+        [email]="registered ? member.email : 'contact@adp.ng'"
+        [amount]="75000"
+        [ref]="theRegRef"
+        (close)="paymentCancel()"
+        (callback)="paymentDone($event)">Pay Here</button>
+        <button id="close" (click)="closeModal($event)">Close</button>
+    </div>
+    <img src="assets/paystack.webp" alt="Pay With Paystack" width="100%" height="80px">
+  </div>
+</div>
+
+
 <div class="main" role="main">
     <h2>Registration Page</h2>
     <form action="" [formGroup]="formReg" class="register" (ngSubmit)="onSubmit()">
@@ -16,14 +43,14 @@
             </div>
         </section>
         <section>
-            <div class="input-field" [ngClass]="{ 'is-invalid': submitted && f.full_name.errors }">
-                <label for="full_name">Full Name </label>
-                <input type="text" aria-label="Full Name" name="full_name" formControlName="full_name" id="full_name" placeholder="Hassan Uche Oluwatoyin">
+            <div class="input-field">
+                <label for="fullName">Full Name </label>
+                <input type="text" aria-label="Full Name" name="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" formControlName="fullName" id="fullName" placeholder="Hassan Uche Oluwatoyin">
             </div>
             <div class="se">
                 <div class="input-field">
                     <label for="password">Passowrd</label>
-                    <input type="password" name="password" aria-label="VIN number" id="password" formControlName="password" placeholder="Password" aria-placeholder="Password">
+                    <input type="password" name="password" aria-label="Passowrd" id="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" placeholder="Password" aria-placeholder="Password">
                 </div>
                 <div class="input-field">
                     <label for="vin">VIN</label>
@@ -33,9 +60,9 @@
         </section>
         <section class="contacts">
             <div>
-                <div class="input-field" [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }">
-                    <label for="phone_number">Phone Number</label>
-                    <input type="text" name="phone_number" id="phone_number" aria-label="Phone Number" formControlName="phone_number" placeholder="+2348021345678">
+                <div class="input-field">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" name="phoneNumber" id="phoneNumber" aria-label="Phone Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" placeholder="+2348021345678">
                 </div>
                 <div class="input-field">
                     <label for="email">Email Address</label>
@@ -43,17 +70,17 @@
                 </div>
             </div>
             <div>
-                <div class="input-field" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
-                    <label for="gender">Gender</label>
+                <div class="input-field">
+                    <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender</label>
                     <select name="gender" formControlName="gender" id="gender" aria-label="Gender">
                         <option value="" aria-selected="true">Select Gender</option>
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
                     </select>
                 </div>
-                <div class="input-field" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }">
+                <div class="input-field">
                     <label for="dateOfBirth">Date of Birth</label>
-                    <input type="date" formControlName="dateofBirth" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
+                    <input type="date" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }" formControlName="dateofBirth" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
                 </div>
             </div>
         </section>

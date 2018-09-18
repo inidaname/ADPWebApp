@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.viewAmt = shwAmt;
   }
   closeModal(event) {
-    if (event.path[0].classList.contains('modal-container')) {
+    if (event.path[0].classList.contains('modal-container') || event.path[0].id === 'close') {
       this.modalActive = true;
     }
   }

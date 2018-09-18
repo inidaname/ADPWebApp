@@ -35,6 +35,7 @@ import { AdminComponent } from './admin/admin.component';
     Angular4PaystackModule,
     ChartjsModule,
     ReactiveFormsModule,
+    // NgxHmCarouselModule
     // ComponentsModule
   ],
   providers: [],

@@ -1,0 +1,48 @@
+<ngx-hm-carousel
+[(ngModel)]="index"
+(ngModelChange)="indexChanged($event)"
+[autoplay-speed]="3000"
+[autoplay]="true"
+[infinite]="infinite"
+[between-delay]="2000"
+class="carousel c-accent">
+
+<section ngx-hm-carousel-container class="content">
+  <article class="item cursor-pointer"
+    *ngFor="let avatar of avatars"
+    ngx-hm-carousel-item>
+    <div class="img"
+      [style.backgroundImage]="'url('+avatar.url+')'">
+      <div class="slideContent">
+        <div class="res">
+          <h3>One Destiny - Action Forward</h3>
+          <p>
+            To reenergize the polity, rekindle hope for economic Great Leap Forward and trust in a peaceful, prosperous and strong nation, a giant mega new political party, The Action Democratic Party of Nigeria - ADP.
+          </p>
+          <p class="join"><button (click)="btnClick('register')">Join Us</button> <button (click)="btnClick('about')">Read More</button> </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<ng-template #carouselPrev>
+  <div class="click-area">
+  </div>
+</ng-template>
+<ng-template #carouselNext>
+  <div class="click-area">
+  </div>
+</ng-template>
+
+<ng-template #carouselDot let-model>
+  <div class="ball bg-accent"
+    [class.visible]="model.index === model.currentIndex"></div>
+</ng-template>
+
+<ng-template #carouselProgress let-progress>
+  <div class="progress" *ngIf="progress > 0"
+  [style.width]="(direction==='right' ? progress : 100 - progress) + '%'"></div>
+</ng-template>
+
+</ngx-hm-carousel>

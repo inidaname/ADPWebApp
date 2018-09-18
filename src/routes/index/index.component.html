@@ -1,5 +1,5 @@
 <div class="main">
-    <app-slider></app-slider>
+    <app-drag-one></app-drag-one>
     <div class="about">
         <div class="contents">
             <div class="aboutContent">
@@ -33,7 +33,7 @@
                 <p>
                     The National Chairman of the Action Democratic Party (ADP), Engr. Yabagi Sani, spoke with Press men in Abuja. He expressed dissatisfaction with the way the economy of the country was being run, insisting that the interest of the masses do not feature in the decision made by the ruling party...
                 </p>
-                <input type="button" value="Read More">
+                <button (click)="btnClick('about')">Read More</button>
             </div>
         </div>
         <app-quicklinks></app-quicklinks>
