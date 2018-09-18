@@ -105,6 +105,7 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        margin-bottom: 20px;
         @include mQ('1025px'){
             margin-right: 10px;
             flex-direction: row;
@@ -150,6 +151,15 @@
                 // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
                 background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+                &:hover{
+                    background: linear-gradient(90deg, #428bd8 0%, #0c1b68 186.42%);
+                    box-shadow: 1px 2px 5px #ccc;
+                }
+                &:active{
+                    background: linear-gradient(90deg, #428bd8 0%, #0c1b68 186.42%);
+                    box-shadow: 1px 4px 5px #ccc;
+                    transform: translateY(2px);
+                }
                 @include mQ('1025px'){
                     width: 200px;
                     margin: 15px 0;
