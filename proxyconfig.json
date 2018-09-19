@@ -1,7 +1,7 @@
 {
     "/api":{
-        "target": "192.168.0.102:8800",
-        "secure": false,
+        "target": "https://medium.com",
+        "secure": true,
         "changeOrigin": true
     }
 }

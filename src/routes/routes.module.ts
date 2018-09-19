@@ -21,7 +21,7 @@ import { LoginSectionComponent } from '../components/login-section/login-section
 import { QuicklinksComponent } from '../components/quicklinks/quicklinks.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { HomeComponent } from '../app/home/home.component';
-import { MemberComponent } from '../app/member/member.component';
+import { MembersComponent } from '../app/members/members.component';
 import { AdminComponent } from '../app/admin/admin.component';
 import { DragOneComponent } from './drag-one/drag-one.component';
 
@@ -64,7 +64,7 @@ const appRoutes: Routes = [
 
   {
     path: 'member',
-    component: MemberComponent,
+    component: MembersComponent,
     children: [
       {
         path: '',

@@ -12,9 +12,8 @@ import { AppComponent } from './app.component';
 import { FooterBarComponent } from '../components/footer-bar/footer-bar.component';
 import { HeadBarComponent } from '../components/head-bar/head-bar.component';
 import { HomeComponent } from './home/home.component';
-import { MemberComponent } from './member/member.component';
+import { MembersComponent } from './members/members.component';
 import { AdminComponent } from './admin/admin.component';
-// import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { AdminComponent } from './admin/admin.component';
     FooterBarComponent,
     HeadBarComponent,
     HomeComponent,
-    MemberComponent,
+    MembersComponent,
     AdminComponent
   ],
   imports: [

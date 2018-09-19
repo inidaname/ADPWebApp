@@ -11,7 +11,7 @@ export class ContactService {
 
     sendMessage(content: any) {
         const send = this.http
-        .post(config.api + '/message', content);
+        .post(config.api.api + '/message', content);
         return send;
     }
 }

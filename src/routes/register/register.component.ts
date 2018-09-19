@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register/register.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import {  minimumAge } from './singleName.directive';
+import { minimumAge } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({

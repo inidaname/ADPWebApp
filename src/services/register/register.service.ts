@@ -11,25 +11,25 @@ export class RegisterService {
   constructor(private register: HttpClient) { }
   getLocalGovt(stateName: any) {
     const getState = this.register
-    .get(config.oldWeb + '/getLGA?statePlace=' + stateName);
+    .get(config.api.oldWeb + '/getLGA?statePlace=' + stateName);
     return getState;
   }
 
   getWard(lgaName: string, stateName: string) {
     const getWard = this.register
-    .get(config.oldWeb + '/getWARD?stateReg=' + stateName + '&lgaReg=' + lgaName);
+    .get(config.api.oldWeb + '/getWARD?stateReg=' + stateName + '&lgaReg=' + lgaName);
     return getWard;
   }
 
   getPolling(wardName: string, lgaName: string, stateName: string) {
     const getPolling = this.register
-    .get(config.oldWeb + '/getPolling?stateName=' + stateName + '&localgovtName=' + lgaName + '&wardName=' + wardName);
+    .get(config.api.oldWeb + '/getPolling?stateName=' + stateName + '&localgovtName=' + lgaName + '&wardName=' + wardName);
     return getPolling;
   }
 
   registerUser(data: object) {
     const regData = this.register
-    .post(config.api + '/register', data);
+    .post(config.api.api + '/register', data);
     return regData;
   }
 }

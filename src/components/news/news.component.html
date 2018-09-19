@@ -1,30 +1,10 @@
 <div class="news">
   <h4>Latest News</h4>
   <div id="newsContent">
-      <figure>
-          <img src="assets/inec.jpg" alt="News Caption" width="100px">
+      <figure *ngFor="let list of newsList | slice:0:3; let i=index"> 
+          <img [src]="list.thumbnail" alt="News Caption" width="100px">
           <figcaption>
-              <strong>Election</strong>
-              <p>
-                  Increase facilities for voters registration in Oyo State, ADP tells INEC
-              </p>
-              <span><em>Aug 15th, 2018</em></span>
-          </figcaption>
-      </figure>
-      <figure>
-          <img src="assets/inec.jpg" alt="News Caption" width="100px">
-          <figcaption>
-              <strong>Election</strong>
-              <p>
-                  Increase facilities for voters registration in Oyo State, ADP tells INEC
-              </p>
-              <span><em>Aug 15th, 2018</em></span>
-          </figcaption>
-      </figure>
-      <figure>
-          <img src="assets/inec.jpg" alt="News Caption" width="100px">
-          <figcaption>
-              <strong>Election</strong>
+              <strong>{{list.title}}</strong>
               <p>
                   Increase facilities for voters registration in Oyo State, ADP tells INEC
               </p>

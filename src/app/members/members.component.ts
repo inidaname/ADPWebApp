@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-member',
-  templateUrl: './member.component.html',
-  styleUrls: ['./member.component.scss']
+  templateUrl: './members.component.html',
+  styleUrls: ['./members.component.scss']
 })
-export class MemberComponent implements OnInit {
+export class MembersComponent implements OnInit {
 
   constructor() { }
 
