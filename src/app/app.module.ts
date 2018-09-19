@@ -2,27 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Angular4PaystackModule } from 'angular4-paystack';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutesModule } from '../routes/routes.module';
-import { ChartjsModule } from '@ctrl/ngx-chartjs';
+import { HomeModule } from './home/home.module';
+import { AdminModule } from './admin/admin.module';
+import { MembersModule } from './members/members.module';
 
 import { AppComponent } from './app.component';
-import { FooterBarComponent } from '../components/footer-bar/footer-bar.component';
-import { HeadBarComponent } from '../components/head-bar/head-bar.component';
-import { HomeComponent } from './home/home.component';
-import { MembersComponent } from './members/members.component';
-import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterBarComponent,
-    HeadBarComponent,
-    HomeComponent,
-    MembersComponent,
-    AdminComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +22,10 @@ import { AdminComponent } from './admin/admin.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
-    Angular4PaystackModule,
-    ChartjsModule,
     ReactiveFormsModule,
-    // NgxHmCarouselModule
-    // ComponentsModule
+    HomeModule,
+    AdminModule,
+    MembersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

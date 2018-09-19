@@ -6,7 +6,11 @@ import { MembersComponent } from './members.component';
   imports: [
     CommonModule
   ],
-  exports: [],
-  declarations: []
+  exports: [
+    MembersComponent
+  ],
+  declarations: [
+    MembersComponent
+  ]
 })
 export class MembersModule { }

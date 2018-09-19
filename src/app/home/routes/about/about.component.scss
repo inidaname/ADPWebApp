@@ -1,0 +1,280 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/_mixins';
+
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    @include mQ('1025px'){
+        flex-direction: row;
+        width: 95%;
+        margin: 25px auto;
+        height: 500px;
+    }
+    .country{
+        width: 360px;
+        padding: 24px;
+        // text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        img{
+            width: 80%;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+    }
+}
+button{
+    width: 150px;
+    margin-top: 20px;
+    padding: 10px 0;
+    border: 1px #fff solid;
+    color: #fff;
+    border-radius: 22px;
+    background-color: transparent;
+    background: #7db9e8; /* Old browsers */
+    // background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+    // background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #7db9e8 1%,#1e5799 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 */
+    &:hover{
+        background: linear-gradient(90deg, #428bd8 0%, #0c1b68 186.42%);
+        box-shadow: 1px 2px 5px #ccc;
+    }
+    &:active{
+        background: linear-gradient(90deg, #428bd8 0%, #0c1b68 186.42%);
+        box-shadow: 1px 4px 5px #ccc;
+        transform: translateY(2px);
+    }
+    @include mQ('1025px'){
+        width: 200px;
+    }
+}
+
+.agenda{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    @include mQ('1025px'){
+        flex-direction: row;
+        margin: 0 auto;
+    }
+    .inMobile{
+        display: none;
+        @include mQ('1025px'){
+            display: flex;
+        }
+    }
+    .content{
+        display: flex;
+        margin: 0 auto;
+        width: 100%;
+        flex-direction: column;
+        @include mQ('1025px'){
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .points{
+            box-shadow: 0px 0px 5px 1px #ccc;
+            margin: 10px auto;
+            width: 90%;
+            padding: 20px;
+            box-sizing: border-box;
+            @include mQ('1025px'){
+                margin-left: 20px;
+                margin-top: 0;
+                width: 60%;
+            }
+            h3{
+                margin: 10px 10px;
+            }
+            p{
+                margin: 5px 10px;
+            }
+            ol{
+                margin-left: 35px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                li{
+                    margin: 5px 0;
+                }
+            }
+        }
+        .mission{
+            text-align: center;
+            display: flex;
+            margin-top: 0px;
+            width: 100%;
+            flex-direction: column;
+            @include mQ('1025px'){
+                width: 30%;
+            }
+        }
+    }
+}
+
+.theChairman{
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+    margin: 0 auto;
+    @include mQ('1025px'){
+        flex-direction: row;
+    }
+    .theContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        @include mQ('1025px'){
+            margin-right: 20px;
+            flex-direction: row;
+            img{
+                margin-left: 100px;
+            }
+        }
+        @include mQ('1025px', '1360px'){
+            margin-right: 10;
+            img{
+                margin-left: 47px;
+            }
+        }
+        .contents{
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-family: $fontForSlide;
+            @include mQ('1025px'){
+                width: 510px;
+            }
+            h4{
+                margin: 10px 0;
+                letter-spacing: 5px;
+                @include mQ('1025px'){
+                    font-size: 25px;
+                }
+            }
+            p{
+                margin: 10px 0;
+                line-height: 30px;
+            }
+        }
+    }
+}
+.publications{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    @include mQ('1025px'){
+        flex-direction: row;
+        margin-bottom: 20px;
+    }
+    .allseprate{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        @include mQ('1025px'){
+            flex-direction: row;
+            width: 71%;
+            margin-left: 20px;
+        }
+        @include mQ('1025px', '1360px'){
+            margin-left: 1px;
+        }
+        .listContents{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 250px;
+            width: 280px;
+            box-sizing: border-box;
+            box-shadow: 0 0 5px 1px #ccc;
+            margin: 12px;
+            @include mQ('1025px'){
+                width: 260px;
+                border-radius: 12px;
+            }
+            button{
+                width: 150px;
+                margin-top: 20px;
+                padding: 10px 0;
+                border: 1px #fff solid;
+                color: #fff;
+                border-radius: 22px;
+                background-color: transparent;
+                @include mQ('1025px'){
+                    width: 200px;
+                }
+            }            
+            &:nth-child(1){
+                span, button{
+                    background: #7db9e8; /* Old browsers */
+                    background: -moz-linear-gradient(left, #7db9e8 1%, #1e5799 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #7db9e8 1%,#1e5799 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #4A9FFC 1%,#2858A2 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4A9FFC', endColorstr='#2858A2',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            &:nth-child(2){
+                span, button{
+                    background: #1f068b; /* Old browsers */
+                    background: -moz-linear-gradient(left, #E60000 1%, #B40606 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #E60000 1%,#B40606 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #E60000 1%,#B40606 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E60000', endColorstr='#B40606',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            &:nth-child(3){
+                span, button{
+                    background: #030D42; /* Old browsers */
+                    background: -moz-linear-gradient(left, #030D42 1%, #0B23A3 97%); /* FF3.6-15 */
+                    background: -webkit-linear-gradient(left, #030D42 1%,#0B23A3 97%); /* Chrome10-25,Safari5.1-6 */
+                    background: linear-gradient(to right, #030D42 1%,#0B23A3 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#030D42', endColorstr='#0B23A3',GradientType=1 ); /* IE6-9 */    
+                }
+            }
+            span{
+                color: white;
+                // font-size: 45px;
+                padding: 30px 3px;
+                box-shadow: 0px 2px 5px 2px #ccc;
+                border-radius: 50%;
+                // border: 1px white solid;
+                box-sizing: border-box;
+                margin: 20px;
+                @include mQ('1025px'){
+                    font-size: 35px;
+                    padding: 23px 2px;
+                    margin: 2px;
+                }
+                fa-icon{
+                    border: 1px solid white;
+                    border-radius: 50%;
+                    padding: 27px 27px;
+                    @include mQ('1025px'){
+                        padding: 18px;
+                    }
+                }
+            }
+            h4{
+                margin: 12px;
+                font-size: 30px;
+                font-weight: bold;
+                @include mQ('1025px'){
+                    margin: 2px;
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

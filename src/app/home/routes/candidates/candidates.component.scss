@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import '../../../../sass/variables';
+@import '../../../../sass/_mixins';
+.main{
+    width: 100%;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h2{
+        margin: 20px auto;
+        text-transform: uppercase;
+        margin-bottom: 45px;
+        font-size: 30px;
+        line-height: 24px;
+        font-weight: 500;
+        font-style: normal;
+        font-family: 'Roboto', sans-serif;
+    }
+    .top-candidate{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        >h4{
+            font-family: 'Roboto', sans-serif;
+            font-size: 26px;
+            line-height: 24px;
+            font-style: normal;
+            font-weight: 500;
+            margin-bottom: 24px;
+            @include mQ('1025px'){
+                align-self: flex-start;
+                margin-bottom: 16px;
+            }
+        }
+        .list-candidates{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .candidate-details{
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            @include mQ('1025px'){
+                flex-direction: row;
+
+            }
+            figure{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                margin-bottom: 24px;
+                @include mQ('1025px'){
+                    margin-right: 29px;
+                    box-sizing: border-box;
+                }
+                img{
+                    width: 298px;
+                    height: 316px;
+                    margin-bottom: 15px;
+
+                }
+                figcaption{
+                    width: 248px;
+                    height: 24px;
+                    line-height: 24px;
+                    font-size: 24px;
+                    font-weight: 500;
+                    font-family: 'Roboto', sans-serif;
+                }
+            }
+            .candidate-desc{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                @include mQ('1025px'){
+                    justify-content: start;
+                }
+                p{
+                    margin: 20px auto;
+                }
+                button{
+                    width: 180px;
+                    height: 42px;
+                    border-radius: 30px;
+                    background: linear-gradient(90deg, #4BA0FD 0%, #030D42 186.42%);
+                    outline: none;
+                    border: 0 solid #000;
+                    box-shadow: 2px 2px 2px #000;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+    .other-candidate{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-family: 'Roboto' serif;
+        align-items: center;
+        .other-views{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin: 24px auto;
+            @include mQ('1024px'){
+                flex-direction: row;
+            }
+            .sub-views{
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                width: 80%;
+                margin: 16px auto;
+                justify-content: space-around;
+                align-items: center;
+                @include mQ('1024px'){
+                    width: 474px;
+                    align-items: flex-start;
+                }
+                h3{
+                    // width: 382px;
+                    height: 24px;
+                    line-height: 24px;
+                    font-size: 26px;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: 9px auto;
+                    @include mQ('1025px'){
+                        margin: 21px auto;
+                    }
+                }
+                label{
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 24px;
+                    font-size: 24px;
+                    @include mQ('1025px'){
+                        align-self: flex-start;
+                    }
+                }
+                form{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    @include mQ('1025px'){
+                        flex-direction: row;
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                   select{
+                        border: 0 solid #000;
+                        border-bottom: 1px solid #ccc;
+                        outline: none;
+                        padding: 2px 5px;
+                        margin-bottom: 24px;
+                        margin-top: 21px;
+                        height: 48px;
+                        background: transparent;
+                        @include mQ('1025px'){
+                            width: 220px;
+                        }
+                    }
+                    button{
+                        height: 42px;
+                        width: 180px;
+                        outline: none;
+                        border-radius: 30px;
+                        border: 0 solid #000;
+                        color: #ffffff;
+                        background: linear-gradient(90deg, #4BA0FD 0%, #030D42 186.42%);
+                        @include mQ('1025px'){
+                            margin-bottom: 24px;
+                            margin-top: 21px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

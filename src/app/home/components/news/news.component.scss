@@ -1,0 +1,79 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/_mixins';
+.news{
+    display: flex;
+    flex-direction: column;
+    background-color: #373435;
+    font-family: $fontForSlide;
+    color: #fff;
+    overflow: hidden;
+    @include mQ('1025px'){
+        border-radius: 5px;
+        width: 350px;
+    }
+    h4{
+        text-align: center;
+        margin: 10px auto;
+        @include mQ('1025px'){
+            width: 80%;
+            text-align: left;
+            margin: 10px auto;
+        }
+    }
+    #newsContent{
+        display: flex;
+        flex-direction: row;
+        padding: 0 10px;
+        box-sizing: border-box;
+        width: 100%;
+        @include mQ('1025px'){
+            flex-direction: column;
+            width: 336px;
+        }
+        figure{
+            height: 120px;
+            border: 1px solid #000;
+            font-size: 11px;
+            justify-content: center;
+            align-content: center;
+            width: 3300px;
+            border-bottom: #777 solid 1px;
+            @include mQ('1025px'){
+                margin-bottom: 5px;
+                padding-bottom: 15px;
+            }
+            a{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+            img{
+                margin: 10px;
+                height: 80px;
+                width: 120px;
+                border-radius: 8px;
+                @include mQ('1025px'){
+                    width: 120px;
+                }
+            }
+            figcaption{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding: 2px;
+                box-sizing: border-box;
+                strong{
+                    font-size: 11px;
+                    color: red;
+                    text-transform: uppercase;
+                    margin-bottom: 5px;
+                }
+                p{
+                    padding-right: 10px;
+                    margin-bottom: 5px;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+}

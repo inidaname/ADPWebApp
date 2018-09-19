@@ -4,26 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Angular4PaystackModule } from 'angular4-paystack';
-import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { AgmCoreModule } from '@agm/core';
+import { HomeModule } from '../app/home/home.module';
 
 
-import { IndexComponent } from './index/index.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { RegisterComponent } from './register/register.component';
-import { StructureComponent } from './structure/structure.component';
-import { SliderComponent } from '../components/slider/slider.component';
-import { NewsComponent } from '../components/news/news.component';
-import { MissionComponent } from '../components/mission/mission.component';
-import { AboutSectionComponent } from '../components/about-section/about-section.component';
-import { LoginSectionComponent } from '../components/login-section/login-section.component';
-import { QuicklinksComponent } from '../components/quicklinks/quicklinks.component';
-import { CandidatesComponent } from './candidates/candidates.component';
+import { IndexComponent } from '../app/home/routes/index/index.component';
+import { AboutComponent } from '../app/home/routes/about/about.component';
+import { ContactComponent } from '../app/home/routes/contact/contact.component';
+import { RegisterComponent } from '../app/home/routes/register/register.component';
 import { HomeComponent } from '../app/home/home.component';
 import { MembersComponent } from '../app/members/members.component';
 import { AdminComponent } from '../app/admin/admin.component';
-import { DragOneComponent } from './drag-one/drag-one.component';
+import { StructureComponent } from '../app/home/routes/structure/structure.component';
+import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
 
 const appRoutes: Routes = [
   {
@@ -93,32 +86,18 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     Angular4PaystackModule,
-    NgxHmCarouselModule,
+    HomeModule,
     AgmCoreModule.forRoot({
       apiKey: 'Your_KEY'
     }),
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false}
+      { enableTracing: false }
     )
   ],
   exports: [
     RouterModule
   ],
-  declarations: [
-    IndexComponent,
-    RegisterComponent,
-    AboutComponent,
-    ContactComponent,
-    StructureComponent,
-    SliderComponent,
-    NewsComponent,
-    MissionComponent,
-    AboutSectionComponent,
-    LoginSectionComponent,
-    QuicklinksComponent,
-    CandidatesComponent,
-    DragOneComponent
-  ]
+  declarations: []
 })
 export class RoutesModule { }
