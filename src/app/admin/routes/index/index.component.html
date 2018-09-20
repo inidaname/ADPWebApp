@@ -1,0 +1,42 @@
+<app-top-profile></app-top-profile>
+<div class="statistics">
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div class="new-signups">
+      <h3>Sign Ups in last 24hrs</h3>
+      <h2 class="circle">25</h2>
+    </div>
+  </section>
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div>
+      <h3>Members Genda Distribution</h3>
+      <ngx-chartjs [data]="data" type="doughnut"></ngx-chartjs>
+    </div>
+  </section>
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div>
+      <div class="messages">
+        <span>
+          <fa-icon [icon]="message"></fa-icon>
+          <label>23</label>
+        </span>
+
+        <span>
+          <fa-icon [icon]="male"></fa-icon>
+          <label>16</label>
+        </span>
+      </div>
+    </div>
+    <p>Unread Messages and Admin Request</p>
+  </section>
+</div>
+<div class="graphing">
+  <section>
+    <ngx-chartjs [data]="member" type="line"></ngx-chartjs>
+  </section>
+  <section>
+    <ngx-chartjs [data]="member" type="bar"></ngx-chartjs>
+  </section>
+</div>

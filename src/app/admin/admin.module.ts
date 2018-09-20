@@ -6,8 +6,10 @@ import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AdminComponent } from './admin.component';
-import { ElectionTrackingComponent } from './election-tracking/election-tracking.component';
-import { IndexComponent } from './index/index.component';
+import { ElectionTrackingComponent } from './routes/election-tracking/election-tracking.component';
+import { IndexComponent } from './routes/index/index.component';
+import { SideMuneComponent } from './components/side-menu/side-menu.component';
+import { TopProfileComponent } from './components/top-profile/top-profile.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { IndexComponent } from './index/index.component';
   declarations: [
     AdminComponent,
     ElectionTrackingComponent,
-    IndexComponent
+    IndexComponent,
+    SideMuneComponent,
+    TopProfileComponent
   ]
 })
 export class AdminModule { }

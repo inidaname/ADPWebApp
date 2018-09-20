@@ -21,7 +21,7 @@ import { LoginSectionComponent } from '../../components/login-section/login-sect
 import { QuicklinksComponent } from './components/quicklinks/quicklinks.component';
 import { RouterModule } from '@angular/router';
 import { IndexComponent } from './routes/index/index.component';
-import { DragOneComponent } from './routes/drag-one/drag-one.component';
+import { DragOneComponent } from './components/drag-one/drag-one.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { AboutComponent } from './routes/about/about.component';
 import { ContactComponent } from './routes/contact/contact.component';

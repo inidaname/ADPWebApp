@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
     down = faCaretDown;
     threeDots = faEllipsisH;
     male = faMale;
-  
+
     data = {
       labels: ['Male', 'Female'],
       datasets: [

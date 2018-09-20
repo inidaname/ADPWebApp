@@ -1,0 +1,100 @@
+<app-top-profile></app-top-profile>
+<div class="category-selection">
+  <label for="elections">Select Election Category</label>
+  <select name="elections" id="elections">
+    <option value="">Select Election</option>
+    <option value="Primaries">Primaries</option>
+    <option value="General">General Election</option>
+  </select>
+</div>
+<div class="election-results">
+    <section>
+      <div class="top-content">
+        <fa-icon [icon]="threeDots"></fa-icon>
+        <div class="election-name">
+          <h4>Presidential Primaries</h4>
+          <span>Voting Concluded</span>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Candidates Name</th>
+            <th>Total Votes</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Prof. Usman Sani</td>
+            <td>5,455</td>
+            <td>Won</td>
+          </tr>
+          <tr>
+            <td>Prof. Usman Sani</td>
+            <td>5,455</td>
+            <td>Won</td>
+          </tr>
+          <tr>
+            <td>Prof. Usman Sani</td>
+            <td>5,455</td>
+            <td>Won</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <svg width="74" height="83" viewBox="0 0 74 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M54.8077 54.244H3.32617V83H54.8077V54.244Z" fill="white" />
+        <path d="M57.8355 46.6307H0V51.8818H57.8355V46.6307Z" fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M42.2902 37.59L46.5668 30.4527L44.6661 29.0252L38.964 31.4043C38.0137 31.8801 37.5385 31.8801 36.5882 31.8801C34.6875 31.8801 33.262 30.9285 32.3116 28.5494C31.3613 27.5977 31.3613 26.1702 31.8364 25.2186C32.3116 24.2669 32.7868 23.3153 33.7371 22.8395L30.8861 20.9362C30.4109 20.9362 30.4109 20.4603 30.4109 20.4603H29.9358L17.5813 38.5417H41.3399L42.2902 37.59Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M47.9923 37.5901H45.1413L44.191 38.5417H46.0916V41.3967H16.1558H12.8296H11.8793V38.5417H14.2552L15.2055 37.5901H9.97862L1.42554 43.7758H56.0702L47.9923 37.5901Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M54.6447 7.13732C51.3185 7.13732 48.4674 6.66149 44.6661 5.70984C44.1909 5.70984 44.1909 5.70984 43.7157 5.70984C41.815 5.70984 39.9144 7.61314 38.4888 9.99227C36.5882 13.323 36.113 14.2747 35.6378 15.2263C35.1626 16.178 34.2123 17.1297 33.262 19.5088L36.113 21.4121L38.0137 20.4604C38.4888 20.4604 38.964 19.5088 39.9144 18.5571C40.3895 18.0813 40.8647 17.1297 41.3399 16.6538C41.815 16.178 42.2902 15.7022 42.7654 15.7022C43.2406 15.2263 43.7157 15.2263 44.1909 15.2263C45.6164 15.2263 47.5171 15.7022 48.4674 17.1297C48.4674 17.6055 48.9426 17.6055 48.4674 18.0813C48.4674 18.5571 48.4674 18.5571 47.9923 19.033L39.4392 22.8396C38.964 22.8396 38.964 22.8396 38.964 23.3154L36.113 24.267C35.1626 24.7429 34.6875 25.2187 34.2123 25.6945C34.2123 26.6462 34.2123 27.122 34.2123 27.122C35.1626 29.5011 36.113 29.5011 36.5882 29.5011C37.0633 29.5011 37.5385 29.0253 38.0137 29.0253L46.5668 25.2187C48.9426 24.7429 50.3681 24.267 52.744 24.7429H53.2192C55.1198 24.7429 56.5454 23.7912 57.9709 22.8396C58.446 22.3637 58.9212 22.3637 59.3964 21.8879L65.5736 18.0813L59.3964 7.13732C57.4957 7.13732 56.0702 7.13732 54.6447 7.13732Z"
+          fill="white" />
+        <path d="M64.896 3.6422e-05L59.7319 2.98474L68.836 18.7797L74 15.795L64.896 3.6422e-05Z" fill="white" />
+      </svg>
+      <h4>
+        12,564
+      </h4>
+      <p>
+        Total Votes
+      </p>
+
+    </section>
+  </div>
+  <div class="statistics">
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div class="new-signups">
+      <h3>Sign Ups in last 24hrs</h3>
+      <h2 class="circle">25</h2>
+    </div>
+  </section>
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div>
+      <h3>Members Genda Distribution</h3>
+      <ngx-chartjs [data]="data" type="doughnut"></ngx-chartjs>
+    </div>
+  </section>
+  <section>
+    <fa-icon [icon]="threeDots"></fa-icon>
+    <div>
+      <div class="messages">
+        <span>
+          <fa-icon [icon]="message"></fa-icon>
+          <label>23</label>
+        </span>
+
+        <span>
+          <fa-icon [icon]="male"></fa-icon>
+          <label>16</label>
+        </span>
+      </div>
+    </div>
+    <p>Unread Messages and Admin Request</p>
+  </section>
+</div>

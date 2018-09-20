@@ -16,8 +16,8 @@ import { StructureComponent } from '../app/home/routes/structure/structure.compo
 import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
 import { AdminModule } from '../app/admin/admin.module';
 import { MembersModule } from '../app/members/members.module';
-import { IndexComponent as AdminIndex } from '../app/admin/index/index.component';
-import { ElectionTrackingComponent } from '../app/admin/election-tracking/election-tracking.component';
+import { IndexComponent as AdminIndex } from '../app/admin/routes/index/index.component';
+import { ElectionTrackingComponent } from '../app/admin/routes/election-tracking/election-tracking.component';
 
 const appRoutes: Routes = [
   {

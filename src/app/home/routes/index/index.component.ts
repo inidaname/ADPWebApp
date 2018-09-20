@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faArrowLeft, faRocket, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({

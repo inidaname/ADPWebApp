@@ -24,9 +24,9 @@ export class DragOneComponent {
       title: `${num}`
     };
   });
- 
+
   constructor(private router: Router) { }
- 
+
   indexChanged(index) {
     console.log(index);
   }

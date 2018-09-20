@@ -1,22 +1,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="wrapper">
-  <div class="side-menu">
-    <h4 class="admin-title">Admin Panel</h4>
-    <section class="profile">
-      <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
-      <p>Hassan Uche K.</p>
-    </section>
-    <section class="list-menu">
-      <ul>
-        <li> <a [routerLink]="['/admin/']" routerLinkActive="router-link-active">Dashboard</a></li>
-        <li>Messages</li>
-        <li>Manage Members</li>
-        <li>Candidates</li>
-        <li>Admins and Excos</li>
-        <li><a [routerLink]="['/admin/elections']" routerLinkActive="router-link-active">Elections</a></li>
-        <li>Log Out</li>
-      </ul>
-    </section>
+  <app-side-menu></app-side-menu>
+  <div class="main">
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
 </div>
