@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { Angular4PaystackModule } from 'angular4-paystack';
 
+import { FormatPipe } from './pipes/format/format.pipe';
+import { TruncatePipe } from './pipes/truncate/truncate.pipe';
+
 import { HomeComponent } from './home.component';
 import { HeadBarComponent } from './components/head-bar/head-bar.component';
 import { FooterBarComponent } from './components/footer-bar/footer-bar.component';
@@ -53,7 +56,9 @@ import { CandidatesComponent } from './routes/candidates/candidates.component';
     AboutComponent,
     ContactComponent,
     StructureComponent,
-    CandidatesComponent
+    CandidatesComponent,
+    TruncatePipe,
+    FormatPipe
   ],
   exports: [
     HomeComponent

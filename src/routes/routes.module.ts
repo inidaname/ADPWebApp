@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Angular4PaystackModule } from 'angular4-paystack';
 import { AgmCoreModule } from '@agm/core';
 import { HomeModule } from '../app/home/home.module';
 
@@ -17,6 +14,10 @@ import { MembersComponent } from '../app/members/members.component';
 import { AdminComponent } from '../app/admin/admin.component';
 import { StructureComponent } from '../app/home/routes/structure/structure.component';
 import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
+import { AdminModule } from '../app/admin/admin.module';
+import { MembersModule } from '../app/members/members.module';
+import { IndexComponent as AdminIndex } from '../app/admin/index/index.component';
+import { ElectionTrackingComponent } from '../app/admin/election-tracking/election-tracking.component';
 
 const appRoutes: Routes = [
   {
@@ -72,9 +73,17 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        component: IndexComponent
+        component: AdminIndex
+      },
+      {
+        path: 'elections',
+        component: ElectionTrackingComponent
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: '/'
   }
 ];
 
@@ -82,11 +91,9 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    FontAwesomeModule,
-    FormsModule,
-    ReactiveFormsModule,
-    Angular4PaystackModule,
     HomeModule,
+    AdminModule,
+    MembersModule,
     AgmCoreModule.forRoot({
       apiKey: 'Your_KEY'
     }),
