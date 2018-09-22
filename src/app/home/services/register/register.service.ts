@@ -11,19 +11,19 @@ export class RegisterService {
   constructor(private register: HttpClient) { }
   getLocalGovt(stateName: any) {
     const getState = this.register
-    .get(config.api.oldWeb + '/getLGA?statePlace=' + stateName);
+    .get(config.api.api + '/getLGA?statePlace=' + stateName);
     return getState;
   }
 
   getWard(lgaName: string, stateName: string) {
     const getWard = this.register
-    .get(config.api.oldWeb + '/getWARD?stateReg=' + stateName + '&lgaReg=' + lgaName);
+    .get(config.api.api + '/getWARD?stateReg=' + stateName + '&lgaReg=' + lgaName);
     return getWard;
   }
 
   getPolling(wardName: string, lgaName: string, stateName: string) {
     const getPolling = this.register
-    .get(config.api.oldWeb + '/getPolling?stateName=' + stateName + '&localgovtName=' + lgaName + '&wardName=' + wardName);
+    .get(config.api.api + '/getPolling?stateName=' + stateName + '&localgovtName=' + lgaName + '&wardName=' + wardName);
     return getPolling;
   }
 

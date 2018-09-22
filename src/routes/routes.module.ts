@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AgmCoreModule } from '@agm/core';
 import { HomeModule } from '../app/home/home.module';
 
 
@@ -94,9 +93,6 @@ const appRoutes: Routes = [
     HomeModule,
     AdminModule,
     MembersModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'Your_KEY'
-    }),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }

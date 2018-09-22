@@ -30,7 +30,7 @@
     <form action="" [formGroup]="formReg" class="register" (ngSubmit)="onSubmit()">
         <section>
             <div class="intro">
-                <h4>Please fill the form</h4>
+                <h4>All fields marked * must be filled</h4>
                 <ul>
                     <li>Please note that Full Name must contain at least First and Last Name preferably, a third name may be added.</li>
                     <li>Date of Birth must be at least 18 years old at the time of registration</li>
@@ -44,25 +44,33 @@
         </section>
         <section>
             <div class="input-field">
-                <label for="fullName">Full Name </label>
+                <label for="fullName">Full Name * </label>
                 <input type="text" aria-label="Full Name" name="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" formControlName="fullName" id="fullName" placeholder="Hassan Uche Oluwatoyin">
             </div>
             <div class="se">
                 <div class="input-field">
-                    <label for="password">Passowrd</label>
+                    <label for="password">Passowrd *</label>
                     <input type="password" name="password" aria-label="Passowrd" id="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" placeholder="Password" aria-placeholder="Password">
                 </div>
                 <div class="input-field">
                     <label for="vin">VIN</label>
-                    <input type="text" name="vin" aria-label="VIN number" id="vin" formControlName="pvc" placeholder="VIN 3075050" aria-placeholder="VIN 3075050">
+                    <input type="text" name="vin" aria-label="VIN number" id="vin" formControlName="pvc" placeholder="VIN 3075050" aria-placeholder="3075050">
                 </div>
             </div>
         </section>
         <section class="contacts">
             <div>
                 <div class="input-field">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="text" name="phoneNumber" id="phoneNumber" aria-label="Phone Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" placeholder="+2348021345678">
+                    <label for="phoneNumber">Phone Number *</label>
+                    <!-- <input type="text" name="phoneNumber" id="phoneNumber" aria-label="Phone Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" placeholder="+2348021345678"> -->
+                    <international-phone-number 
+                    id="phoneNumber"
+                    formControlName="phoneNumber"
+                    placeholder="Enter phone number" 
+                    [maxlength]="20" [defaultCountry]="'ng'"
+                    aria-label="Phone Number"
+                    [required]="true" 
+                    name="phoneNumber"></international-phone-number>
                 </div>
                 <div class="input-field">
                     <label for="email">Email Address</label>
@@ -71,7 +79,7 @@
             </div>
             <div>
                 <div class="input-field">
-                    <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender</label>
+                    <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender *</label>
                     <select name="gender" formControlName="gender" id="gender" aria-label="Gender">
                         <option value="" aria-selected="true">Select Gender</option>
                         <option value="Female">Female</option>
@@ -79,21 +87,21 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <label for="dateOfBirth">Date of Birth</label>
+                    <label for="dateOfBirth">Date of Birth *</label>
                     <input type="date" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }" formControlName="dateofBirth" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
                 </div>
             </div>
         </section>
         <section class="voting-unit">
             <div class="input-field">
-                <label for="state">State</label>
+                <label for="state">State *</label>
                 <select name="state"  id="state" formControlName="stateName" (change)="setStateName($event)">
                     <option value="">Select State</option>
                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
                 </select>
             </div>
             <div class="input-field">
-                <label for="lga">Local Government</label>
+                <label for="lga">Local Government *</label>
                 <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, f.stateName.value)">
                     
                     <option value="">Select Local Govt</option>
@@ -101,7 +109,7 @@
                 </select>
             </div>
             <div class="input-field">
-                <label for="ward">Ward</label>
+                <label for="ward">Ward *</label>
                 <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
                     <option value="">Select Ward</option>
                     <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>

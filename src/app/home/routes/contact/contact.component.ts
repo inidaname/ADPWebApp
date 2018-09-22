@@ -17,8 +17,8 @@ export class ContactComponent implements OnInit {
   medium = faMedium;
   youtube = faYoutube;
   sentMessage = false;
-  lat = 51.678129;
-  lng = 7.29823;
+  lat = 9.0442358;
+  lng = 7.5100474;
 
 
   constructor(

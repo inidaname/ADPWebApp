@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
+import { AgmCoreModule } from '@agm/core';
 
 import { FormatPipe } from './pipes/format/format.pipe';
 import { TruncatePipe } from './pipes/truncate/truncate.pipe';
@@ -38,7 +40,13 @@ import { CandidatesComponent } from './routes/candidates/candidates.component';
     HttpClientModule,
     Angular4PaystackModule,
     BrowserModule,
-    NgxHmCarouselModule
+    NgxHmCarouselModule,
+    InternationalPhoneNumberModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAExzfabnjIXukdy3X8Q1hYMb1DFJTXxzY'
+    }),
+
+
   ],
   declarations: [
     FooterBarComponent,

@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   error = false;
   registered = false;
   member: any;
+  formOk = false;
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
 
 
@@ -53,6 +54,7 @@ export class RegisterComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+    this.formReg.touched.valueOf();
     // @TODO: Disable submit til completed form
   }
 
@@ -110,6 +112,7 @@ export class RegisterComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.formReg.invalid) {
+      event.preventDefault();
         return;
     }
 
