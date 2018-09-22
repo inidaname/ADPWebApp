@@ -5,16 +5,7 @@
             <figcaption>Member Corner</figcaption>
         </figure>
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-            <!-- <input type="text" formControlName="loginPhone" placeholder="Phone Number"> -->
-            <international-phone-number 
-            id="loginPhone"
-            formControlName="loginPhone"
-            placeholder="Enter phone number" 
-            [maxlength]="20" [defaultCountry]="'ng'"
-            aria-label="Phone Number"
-            [required]="true" 
-            name="loginPhone"></international-phone-number>
-
+            <input type="text" formControlName="loginPhone" placeholder="Phone Number">
             <input type="password" placeholder="Password" formControlName="loginPassword">
             <span class="keep"><input type="checkbox"> Keep me logged.</span>
             <button (click)="loginUser()">Login</button>
