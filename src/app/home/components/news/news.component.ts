@@ -16,9 +16,9 @@ export class NewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newsService.headLines().subscribe((news: any) => {
+    const obs = this.newsService.headLines();
+    obs.subscribe((news: any) => {
       this.readyState = true;
-      console.log(news.items);
       return this.newsList = news.items;
     });
   }

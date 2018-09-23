@@ -43,25 +43,25 @@
             </div>
         </section>
         <section>
-            <div class="input-field">
-                <label for="fullName">Full Name * </label>
+            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.fullName.invalid && formReg.controls.fullName.touched}">
+                <label for="fullName">Full Name * <span *ngIf="formReg.controls.fullName.errors && formReg.controls.fullName.errors.required">required</span> <span *ngIf="formReg.controls.fullName.errors">Provide Full Names</span></label>
                 <input type="text" aria-label="Full Name" name="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" formControlName="fullName" id="fullName" placeholder="Hassan Uche Oluwatoyin">
             </div>
             <div class="se">
-                <div class="input-field">
-                    <label for="password">Passowrd *</label>
+                <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.password.invalid && formReg.controls.password.touched}">
+                    <label for="password">Passowrd * <span *ngIf="formReg.controls.password.errors.required">required</span> <span *ngIf="formReg.controls.password.errors.minLength">Password must be more than 6 char</span> </label>
                     <input type="password" name="password" aria-label="Passowrd" id="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" placeholder="Password" aria-placeholder="Password">
                 </div>
                 <div class="input-field">
-                    <label for="vin">VIN</label>
-                    <input type="text" name="vin" aria-label="VIN number" id="vin" formControlName="pvc" placeholder="VIN 3075050" aria-placeholder="3075050">
+                    <label for="vin">PVC Number</label>
+                    <input type="text" name="vin" aria-label="PVC number" id="vin" formControlName="pvc" placeholder="3075050" aria-placeholder="3075050">
                 </div>
             </div>
         </section>
         <section class="contacts">
             <div>
-                <div class="input-field">
-                    <label for="phoneNumber">Phone Number *</label>
+                <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched}">
+                    <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
                     <!-- <input type="text" name="phoneNumber" id="phoneNumber" aria-label="Phone Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" placeholder="+2348021345678"> -->
                     <international-phone-number 
                     id="phoneNumber"
@@ -78,38 +78,40 @@
                 </div>
             </div>
             <div>
-                <div class="input-field">
-                    <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender *</label>
+                <div class="input-field" 
+                [ngClass]="{'is-invalid':  formReg.controls.gender.invalid && formReg.controls.gender.touched}">
+                    <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender <em *ngIf="formReg.controls.gender.untouched || formReg.controls.gender.valid;else spanError">*</em> <ng-template #spanError><em style="color: red;">*</em></ng-template> </label>
                     <select name="gender" formControlName="gender" id="gender" aria-label="Gender">
                         <option value="" aria-selected="true">Select Gender</option>
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
                     </select>
                 </div>
-                <div class="input-field">
-                    <label for="dateOfBirth">Date of Birth *</label>
+                <div class="input-field"
+                [ngClass]="{'is-invalid': formReg.controls.dateofBirth.invalid && formReg.controls.dateofBirth.touched}">
+                    <label for="dateOfBirth">Date of Birth *<span *ngIf="formReg.controls.dateofBirth.errors">Must be at least 18</span></label>
                     <input type="date" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }" formControlName="dateofBirth" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
                 </div>
             </div>
         </section>
         <section class="voting-unit">
-            <div class="input-field">
-                <label for="state">State *</label>
+            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.stateName.invalid && formReg.controls.stateName.touched}">
+                <label for="state">State <em *ngIf="formReg.controls.stateName.untouched || formReg.controls.stateName.valid;else stateError">*</em> <ng-template #stateError><em style="color: red;">*</em></ng-template></label>
                 <select name="state"  id="state" formControlName="stateName" (change)="setStateName($event)">
                     <option value="">Select State</option>
                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
                 </select>
             </div>
-            <div class="input-field">
-                <label for="lga">Local Government *</label>
+            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.lgaName.invalid && formReg.controls.lgaName.touched}">
+                <label for="lga">Local Government <em *ngIf="formReg.controls.lgaName.untouched || formReg.controls.lgaName.valid;else lgaError">*</em> <ng-template #lgaError><em style="color: red;">*</em></ng-template></label>
                 <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, f.stateName.value)">
                     
                     <option value="">Select Local Govt</option>
                     <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
                 </select>
             </div>
-            <div class="input-field">
-                <label for="ward">Ward *</label>
+            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.wardName.invalid && formReg.controls.wardName.touched}">
+                <label for="ward">Ward <em *ngIf="formReg.controls.wardName.untouched || formReg.controls.wardName.valid;else wardError">*</em> <ng-template #wardError><em style="color: red;">*</em></ng-template></label>
                 <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
                     <option value="">Select Ward</option>
                     <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>
@@ -130,7 +132,7 @@
             </div>
         </section>
         <section class="submit">
-            <button type="submit">Register ></button><button type="reset">Cancel</button>
+            <button type="submit" [disabled]="!formReg.valid">Register ></button><button type="reset">Cancel</button>
         </section>
     </form>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register/register.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { minimumAge } from './singleName.directive';
+import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -34,14 +34,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.formReg = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(3)]], // @TODO check space in name
+      fullName: ['', [Validators.required, Validators.minLength(3), justOneName]],
       pvc: [''],
       phoneNumber: ['', Validators.required],
       email: [''/*, Validators.email('ad@k.l')*/],
       residenceAdd: [''],
-      stateName: [''],
-      lgaName: [''],
-      wardName: [''],
+      stateName: ['', Validators.required],
+      lgaName: ['', Validators.required],
+      wardName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       dateofBirth: ['', [Validators.required, minimumAge(18)]],
       gender: ['', Validators.required],
@@ -54,8 +54,6 @@ export class RegisterComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
-    this.formReg.touched.valueOf();
-    // @TODO: Disable submit til completed form
   }
 
   setStateName(event) {

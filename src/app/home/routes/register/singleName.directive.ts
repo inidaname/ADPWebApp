@@ -4,9 +4,17 @@ const moment = momentNs;
 
 export function justOneName(control: AbstractControl): {[key: string]: any} | null {
     const fullname = control.value.split(' ');
-    if (fullname.length > 1) {
-        return {'fullname': fullname};
+    let result = null;
+    if (fullname.length <= 1) {
+        result = {'fullname': fullname};
+    } else {
+      const theSecondName = fullname[1].split('');
+      if (theSecondName.length < 1) {
+
+        result = {'fullname': fullname};
+      }
     }
+    return result;
 }
 
 export function minimumAge(age: number): ValidatorFn {
