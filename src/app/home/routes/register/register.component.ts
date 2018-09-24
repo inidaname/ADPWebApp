@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
     if (event.target.value) {
       const obs = this.register.getWard(event.target.value, stateName);
       obs.subscribe((res: any) => {
-        this.wardList = res.docs;
+        this.wardList = res;
       });
     }
   }

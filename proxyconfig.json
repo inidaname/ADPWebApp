@@ -1,6 +1,6 @@
 {
     "/api":{
-        "target": "https://medium.com",
+        "target": "https://api.adp.ng",
         "secure": true,
         "changeOrigin": true
     }

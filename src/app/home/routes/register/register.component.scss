@@ -52,11 +52,9 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            &:not(.contacts){
-                @include mQ('1025px'){
-                    width: 90%;
-                    margin: 25px auto;
-                }
+            @include mQ('1025px'){
+                width: 90%;
+                margin: 25px auto;
             }
             .se{
                 @include mQ('1025px'){
@@ -105,6 +103,8 @@
                     margin-bottom: 7px;
                     font-weight: 500;
                     font-size: 20px;
+                    font-family: 'Roboto', sans-serif;
+                    color: #373535
                     span{
                         display: none;
                     }
@@ -169,16 +169,20 @@
         .contacts{
             @include mQ('1025px'){
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
                 >div{
-                    width: 45%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                     .input-field{
                         margin-bottom: 45px;
-                        margin-left: auto;
-                        margin-right: auto;
                         box-sizing: border-box;
-                        width: 75%;
+                        width: 40%;
+                        select{
+                            width: 220px;
+                        }
                     }
                 }
             }

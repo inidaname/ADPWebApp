@@ -49,12 +49,12 @@
             </div>
             <div class="se">
                 <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.password.invalid && formReg.controls.password.touched}">
-                    <label for="password">Passowrd * <span *ngIf="formReg.controls.password.errors.required">required</span> <span *ngIf="formReg.controls.password.errors.minLength">Password must be more than 6 char</span> </label>
+                    <label for="password">Passowrd * <span *ngIf="formReg.controls.password.errors && formReg.controls.password.errors.required">required</span> <span *ngIf="formReg.controls.password.errors && formReg.controls.password.errors.minLength">Password must be more than 6 char</span> </label>
                     <input type="password" name="password" aria-label="Passowrd" id="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" formControlName="password" placeholder="Password" aria-placeholder="Password">
                 </div>
                 <div class="input-field">
                     <label for="vin">PVC Number</label>
-                    <input type="text" name="vin" aria-label="PVC number" id="vin" formControlName="pvc" placeholder="3075050" aria-placeholder="3075050">
+                    <input type="text" name="vin" aria-label="PVC number" id="vin" formControlName="pvc" placeholder="Enter your PVC Number" aria-placeholder="3075050">
                 </div>
             </div>
         </section>
@@ -62,7 +62,6 @@
             <div>
                 <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched}">
                     <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
-                    <!-- <input type="text" name="phoneNumber" id="phoneNumber" aria-label="Phone Number" formControlName="phoneNumber"  [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" placeholder="+2348021345678"> -->
                     <international-phone-number 
                     id="phoneNumber"
                     formControlName="phoneNumber"
@@ -79,7 +78,7 @@
             </div>
             <div>
                 <div class="input-field" 
-                [ngClass]="{'is-invalid':  formReg.controls.gender.invalid && formReg.controls.gender.touched}">
+                [ngClass]="{'is-invalid': formReg.controls.gender.invalid && formReg.controls.gender.touched}">
                     <label for="gender"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Gender <em *ngIf="formReg.controls.gender.untouched || formReg.controls.gender.valid;else spanError">*</em> <ng-template #spanError><em style="color: red;">*</em></ng-template> </label>
                     <select name="gender" formControlName="gender" id="gender" aria-label="Gender">
                         <option value="" aria-selected="true">Select Gender</option>
@@ -102,26 +101,38 @@
                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
                 </select>
             </div>
+
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.lgaName.invalid && formReg.controls.lgaName.touched}">
                 <label for="lga">Local Government <em *ngIf="formReg.controls.lgaName.untouched || formReg.controls.lgaName.valid;else lgaError">*</em> <ng-template #lgaError><em style="color: red;">*</em></ng-template></label>
                 <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, f.stateName.value)">
                     
-                    <option value="">Select Local Govt</option>
-                    <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+                    <option value="" *ngIf="localGovt == undefined || localGovt.length === 0; else lgaOptions">Select State First</option>
+                    <ng-template #lgaOptions>
+                        <option value="">Select Local Government</option>
+                        <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+                    </ng-template>
                 </select>
             </div>
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.wardName.invalid && formReg.controls.wardName.touched}">
                 <label for="ward">Ward <em *ngIf="formReg.controls.wardName.untouched || formReg.controls.wardName.valid;else wardError">*</em> <ng-template #wardError><em style="color: red;">*</em></ng-template></label>
                 <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
-                    <option value="">Select Ward</option>
-                    <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>
+                    <option value="" *ngIf="wardList == undefined || wardList.length === 0; else wardOptions">Select Local Govt First</option>
+
+                    <ng-template #wardOptions>
+                        <option value="">Select Ward Area</option>
+                        <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>
+                    </ng-template>
                 </select>
             </div>
             <div class="input-field">
                 <label for="polling">Voting Unit</label>
                 <select name="polling" formControlName="pollingUnit" id="polling" aria-label="Voting Unit">
-                    <option value="">Select Voting Unit</option>
-                    <option *ngFor="let item of pollingList" [value]="item._id">{{item._id}}</option>
+                    <option value="" *ngIf="pollingList == undefined || pollingList.length === 0; else pollingOptions">Select Ward Area First</option>
+
+                    <ng-template #pollingOptions>
+                        <option value="">Select Voting Unit</option>
+                        <option *ngFor="let item of pollingList" [value]="item._id">{{item._id}}</option>
+                    </ng-template>
                 </select>
             </div>
         </section>
