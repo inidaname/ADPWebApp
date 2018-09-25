@@ -29,6 +29,7 @@ import { AboutComponent } from './routes/about/about.component';
 import { ContactComponent } from './routes/contact/contact.component';
 import { StructureComponent } from './routes/structure/structure.component';
 import { CandidatesComponent } from './routes/candidates/candidates.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { CandidatesComponent } from './routes/candidates/candidates.component';
     StructureComponent,
     CandidatesComponent,
     TruncatePipe,
-    FormatPipe
+    FormatPipe,
+    PaymentComponent
   ],
   exports: [
     HomeComponent

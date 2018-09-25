@@ -3,6 +3,7 @@ import { RegisterService } from '../../services/register/register.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
+import { SharedService } from '../../services/shared/shared.service';
 
 @Component({
   selector: 'app-register',
@@ -24,13 +25,15 @@ export class RegisterComponent implements OnInit {
   registered = false;
   member: any;
   formOk = false;
+  message: string;
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
 
 
   constructor(
     private fb: FormBuilder,
     private register: RegisterService,
-    private router: Router) {}
+    private router: Router,
+    private share: SharedService) {}
 
   ngOnInit() {
     this.formReg = this.fb.group({
@@ -48,6 +51,7 @@ export class RegisterComponent implements OnInit {
       pollingUnit: ['']
     });
 
+    this.share.currentStatus.subscribe(state => this.registered = state);
     this.router.events.subscribe((evnt) => {
       if (!(evnt instanceof NavigationEnd)) {
         return;
@@ -63,6 +67,10 @@ export class RegisterComponent implements OnInit {
         this.localGovt = res;
       });
     }
+  }
+
+  letSeeWe(event) {
+    this.share.changeState(false)
   }
 
   setWardname(event, stateName) {

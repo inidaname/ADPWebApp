@@ -2,7 +2,6 @@
 @import '../../../../sass/_variables';
 @import '../../../../sass/_mixins';
 .main{
-    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -212,7 +211,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 11;
+    z-index: 21;
     background-color: transparentize($color: #000000, $amount: 0.3);
     .inner-modal{
         background: #fff;

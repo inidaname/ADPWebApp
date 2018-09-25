@@ -1,3 +1,4 @@
+<app-payment (closeModals)="letSeeWe($event)" class="modal-container"></app-payment>
 <div class="modal-container" (click)="closeModal($event)" [ngClass]="{'show': !registered}">
   <div class="inner-modal">
     <h4>Thank You for registering. Pay Here</h4>
@@ -26,7 +27,7 @@
 
 
 <div class="main" role="main">
-    <h2>Registration Page</h2>
+    <h2>Registration Page {{message}}</h2>
     <form action="" [formGroup]="formReg" class="register" (ngSubmit)="onSubmit()">
         <section>
             <div class="intro">
@@ -61,7 +62,7 @@
         <section class="contacts">
             <div>
                 <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched}">
-                    <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
+                    <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
                     <international-phone-number 
                     id="phoneNumber"
                     formControlName="phoneNumber"
