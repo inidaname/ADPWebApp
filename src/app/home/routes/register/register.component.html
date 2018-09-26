@@ -1,35 +1,8 @@
-<app-payment (closeModals)="letSeeWe($event)" class="modal-container"></app-payment>
-<div class="modal-container" (click)="closeModal($event)" [ngClass]="{'show': !registered}">
-  <div class="inner-modal">
-    <h4>Thank You for registering. Pay Here</h4>
-    <div class="donates">
-      <label for="regfullname">Full Name</label>
-      <input type="text" name="regfullname" readonly id="regfullname" [value]="registered ? member.fullName : null">
-      <label for="regemail">Your Email</label>
-      <input type="email" name="regemail" id="regemail" readonly #regEmail [value]="registered ? member.email : null">
-      <label for="regamount">Amout</label>
-      <input type="text" #amountDT [readonly]="theState" name="regamount" id="regamount" value="750">
-    </div>
-    <div class="buttons">
-        <button
-        angular4-paystack
-        [key]="'pk_test_d718965961de7b1d678c7a70fbcfaef072800df9'"
-        [email]="registered ? member.email : 'contact@adp.ng'"
-        [amount]="75000"
-        [ref]="theRegRef"
-        (close)="paymentCancel()"
-        (callback)="paymentDone($event)">Pay Here</button>
-        <button id="close" (click)="closeModal($event)">Close</button>
-    </div>
-    <img src="assets/paystack.webp" alt="Pay With Paystack" width="100%" height="80px">
-  </div>
-</div>
-
 
 <div class="main" role="main">
-    <h2>Registration Page {{message}}</h2>
+    <h2>Registration Page</h2>
     <form action="" [formGroup]="formReg" class="register" (ngSubmit)="onSubmit()">
-        <section>
+        <section class="top-display">
             <div class="intro">
                 <h4>All fields marked * must be filled</h4>
                 <ul>
@@ -38,10 +11,13 @@
                     <li>Please provide at least a phone number and/or email address</li>
                 </ul>
             </div>
-            <div class="passport">
-                <figure id="preview"></figure>
-                <!-- <input type="file" aria-label="Passport" name="passport" id="passport"> -->
-            </div>
+            <!-- <div class="passport">
+                <input type="file" aria-label="Passport" name="passport" id="passport">
+                <button (click)="">upload passport <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.94922 6.875L1.92578 9.5H10.0742L7.44922 6L5.42578 8.625L3.94922 6.875ZM11.25 10.0742C11.25 10.3841 11.1315 10.6576 10.8945 10.8945C10.6576 11.1315 10.3841 11.25 10.0742 11.25H1.92578C1.61589 11.25 1.34245 11.1315 1.10547 10.8945C0.86849 10.6576 0.75 10.3841 0.75 10.0742V1.92578C0.75 1.61589 0.86849 1.34245 1.10547 1.10547C1.34245 0.86849 1.61589 0.75 1.92578 0.75H10.0742C10.3841 0.75 10.6576 0.86849 10.8945 1.10547C11.1315 1.34245 11.25 1.61589 11.25 1.92578V10.0742Z" fill="white"/>
+                    </svg>
+                    </button>
+            </div> -->
         </section>
         <section>
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.fullName.invalid && formReg.controls.fullName.touched}">
@@ -144,7 +120,7 @@
             </div>
         </section>
         <section class="submit">
-            <button type="submit" [disabled]="!formReg.valid">Register ></button><button type="reset">Cancel</button>
+            <button type="submit" [disabled]="!formReg.valid">Register</button>
         </section>
     </form>
 </div>

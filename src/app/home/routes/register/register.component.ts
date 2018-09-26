@@ -4,6 +4,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
+import { ModalService } from '../../services/modals/modals.service';
 
 @Component({
   selector: 'app-register',
@@ -27,13 +28,16 @@ export class RegisterComponent implements OnInit {
   formOk = false;
   message: string;
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
+  activateModal: boolean;
+  objectData: any;
 
 
   constructor(
     private fb: FormBuilder,
     private register: RegisterService,
     private router: Router,
-    private share: SharedService) {}
+    private share: SharedService,
+    private modalService: ModalService) {}
 
   ngOnInit() {
     this.formReg = this.fb.group({
@@ -51,7 +55,7 @@ export class RegisterComponent implements OnInit {
       pollingUnit: ['']
     });
 
-    this.share.currentStatus.subscribe(state => this.registered = state);
+    this.share.currentStatus.subscribe((state: any) => this.activateModal = state.state);
     this.router.events.subscribe((evnt) => {
       if (!(evnt instanceof NavigationEnd)) {
         return;
@@ -67,10 +71,6 @@ export class RegisterComponent implements OnInit {
         this.localGovt = res;
       });
     }
-  }
-
-  letSeeWe(event) {
-    this.share.changeState(false)
   }
 
   setWardname(event, stateName) {
@@ -91,13 +91,28 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+
   // finally register user
-  regUser(data: object) {
+  regUser(data: any) {
     const obs = this.register.registerUser(data);
     obs.subscribe((res: any) => {
       if (res.message) {
         this.registered = true;
-        this.member = data;
+        this.member = res.body;
+        this.objectData = {
+          Email: data.email,
+          Name: data.fullName,
+          Phone: data.phoneNumber,
+          user: data._id,
+          state: true,
+          purpose: 'Membership Registration'
+        };
+        this.share.changeModalState(this.objectData);
+        this.openModal('app-payment');
       } else {
         this.error = true;
       }

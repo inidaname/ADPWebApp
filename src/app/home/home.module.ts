@@ -30,6 +30,8 @@ import { ContactComponent } from './routes/contact/contact.component';
 import { StructureComponent } from './routes/structure/structure.component';
 import { CandidatesComponent } from './routes/candidates/candidates.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ModalService } from './services/modals/modals.service';
+import { ModalComponent } from './components/payment/modal.component';
 
 @NgModule({
   imports: [
@@ -46,8 +48,6 @@ import { PaymentComponent } from './components/payment/payment.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAExzfabnjIXukdy3X8Q1hYMb1DFJTXxzY'
     }),
-
-
   ],
   declarations: [
     FooterBarComponent,
@@ -68,8 +68,13 @@ import { PaymentComponent } from './components/payment/payment.component';
     CandidatesComponent,
     TruncatePipe,
     FormatPipe,
-    PaymentComponent
+    PaymentComponent,
+    ModalComponent
   ],
+  providers: [
+    ModalService
+  ],
+
   exports: [
     HomeComponent
   ]

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from './services/shared/shared.service';
+import { ModalService } from './services/modals/modals.service';
 
 @Component({
   selector: 'app-home',
@@ -8,30 +10,44 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   title = 'adpwebapp';
-  modalActive = true;
-  theAmt: String;
+  activateModal = true;
   theState: Boolean = false;
-  theemail: any;
+  objectData: object;
   viewAmt: any;
   theRef: number = Math.floor((Math.random() * 1000000000) + 1);
   router: string;
 
-  constructor (private route: Router) {
-    this.route.events.subscribe(() => this.router = this.route.url );
+  constructor(
+    private route: Router,
+    private share: SharedService,
+    private modalService: ModalService) {
+    this.route.events.subscribe(() => this.router = this.route.url);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.share.currentStatus.subscribe((obj: any) => this.activateModal = obj.state);
+  }
 
-  toggleModal(theCon: String, shwAmt: any,  theSt: Boolean) {
-    this.modalActive = !this.modalActive;
-    this.theAmt = theCon;
-    this.theState = theSt;
-    this.viewAmt = shwAmt;
+  openModal(id: string) {
+    this.modalService.open(id);
   }
-  closeModal(event) {
-    if (event.path[0].classList.contains('modal-container') || event.path[0].id === 'close') {
-      this.modalActive = true;
-    }
+
+  toggleModal(theCon: number, shwAmt: number) {
+    this.objectData = {
+      theAmt: theCon,
+      viewAmt: shwAmt,
+      state: true,
+      purpose: 'Donation'
+    };
+    this.share.changeModalState(this.objectData);
+    this.openModal('app-payment');
+    // const Payment = new PaymentComponent(this.share);
+    // Payment.ngOnInit();
   }
+  // closeModal(event) {
+  //   if (event.path[0].classList.contains('modal-container') || event.path[0].id === 'close') {
+  //     this.modalActive = true;
+  //   }
+  // }
 
 }

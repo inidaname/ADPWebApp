@@ -6,13 +6,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
 
-    private trigger = new BehaviorSubject<boolean>(false);
+    private trigger = new BehaviorSubject<object>({
+        theAmt: null,
+        viewAmt: null,
+        state: false,
+        purpose: null,
+        Email: null,
+        Name: null,
+        user: null,
+        Phone: null
+    });
     currentStatus = this.trigger.asObservable();
     constructor() {}
 
-    changeState(state: boolean) {
+    changeModalState(state: object) {
         this.trigger.next(state);
-        console.log(state);
     }
 
 }

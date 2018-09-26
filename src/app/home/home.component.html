@@ -4,41 +4,44 @@
   <div class="hang">
     <div class="donate">
       <h4>DONATE: Help build a better Nigeria</h4>
-      <ul>
-        <li (click)="toggleModal('10000', '100', true)">N100</li>
-        <li (click)="toggleModal('20000', '200', true)">N200</li>
-        <li (click)="toggleModal('30000', '300', true)">N300</li>
-        <li (click)="toggleModal('', '', false)">others</li>
-      </ul>
+      <div class="amount">
+        <h5>Amount</h5>
+        <ul>
+          <li (click)="toggleModal('10000', '100')"> 
+              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="9" height="11" rx="1.5" stroke="#A8A8A8"/>
+                </svg>
+             N100
+            </li>
+          <li (click)="toggleModal('20000', '200')">
+              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="9" height="11" rx="1.5" stroke="#A8A8A8"/>
+                </svg>
+                N200
+              </li>
+          <li (click)="toggleModal('30000', '300')">
+              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="9" height="11" rx="1.5" stroke="#A8A8A8"/>
+                </svg>
+                 N300
+                </li>
+          <li (click)="toggleModal('50000', '500')">
+              <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="9" height="11" rx="1.5" stroke="#A8A8A8"/>
+                </svg>
+                 N500
+                </li>
+          <li>
+                <input type="text" name="otherAmunt" placeholder="Enter other amount" #otherAmount id="otherAmunt" class="others">
+              </li>
+          <li><button (click)="(otherAmount.value !== '') ? toggleModal(otherAmount.value + '00', otherAmount.value) : false">Donate</button></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-<div class="modal-container" (click)="closeModal($event)" [ngClass]="{'show': modalActive}">
-  <div class="inner-modal">
-    <h4>Make Donation</h4>
-    <div class="donates">
-      <label for="fullname">Full Name</label>
-      <input type="text" name="fullname" id="fullname">
-      <label for="donoemail">Your Email</label>
-      <input type="email" name="donoemail" id="donoemail" #theEmail (keyup)="theemail = theEmail.value" placeholder="contact@adp.ng">
-      <label for="amount">Amout</label>
-      <input type="text" #amountDT [readonly]="theState" (keyup)="theAmt = amountDT.value +00" name="amount" id="amount" value="{{viewAmt}}">
-    </div>
-    <div class="buttons">
-        <button
-        angular4-paystack
-        [key]="'pk_test_d718965961de7b1d678c7a70fbcfaef072800df9'"
-        [email]="theemail"
-        [amount]="theAmt"
-        [ref]="theRef"
-        [disabled]="theEmail.value == ''"
-        (close)="paymentCancel()"
-        [ngClass]="{disabledBTN: theEmail.value !== ''}"
-        (callback)="paymentDone($event)">Donate</button>
-        <button id="close" (click)="closeModal($event)">Close</button>
-    </div>
-    <img src="assets/paystack.webp" alt="Pay With Paystack" width="100%" height="80px">
-  </div>
-</div>
+<app-modal id="app-payment" class="modal-container show">
+  <app-payment ></app-payment>
+</app-modal>
 <app-footer-bar></app-footer-bar>
 
