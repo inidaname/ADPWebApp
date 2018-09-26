@@ -3,6 +3,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
+import { PaymentService } from '../../services/payment/payment.service';
 
 @Component({
     selector: 'app-payment',
@@ -23,12 +24,14 @@ export class PaymentComponent implements OnInit, DoCheck {
     payPhone: any;
     payEmail: any;
     purpose: any;
+    topMessage: string;
     objectData: any;
 
     constructor(
         private share: SharedService,
         private fb: FormBuilder,
-        private modalService: ModalService
+        private modalService: ModalService,
+        private payment: PaymentService
         ) {}
 
     ngOnInit() {
@@ -41,6 +44,7 @@ export class PaymentComponent implements OnInit, DoCheck {
             this.payName = state.Name;
             this.purpose = state.purpose;
             this.payPhone = state.Phone;
+            this.topMessage = state.topMessage;
             this.viewAmount = state.viewAmt;
         });
         this.paymentForm = this.fb.group({
@@ -67,6 +71,20 @@ export class PaymentComponent implements OnInit, DoCheck {
     }
     paymentDone(event) {
         console.log(event);
+        const paymentData = {
+            amount: this.paymentForm.value.payAmount,
+            purpose: this.paymentForm.value.purpose,
+            fullName: this.paymentForm.value.payName,
+            phoneNumber: this.paymentForm.value.payPhone,
+            // message: event.message,
+            reference: event.reference,
+            status: event.status,
+            // trans: event.trans,
+            // transaction: event.transaction,
+            trxref: event.trxref
+        };
+        const obs = this.payment.makePayment(paymentData, paymentData.purpose);
+        obs.subscribe(res => this.closeModal('app-payment'));
     }
 
     closeModal(id: string) {

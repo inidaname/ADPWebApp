@@ -107,9 +107,9 @@ export class RegisterComponent implements OnInit {
           Email: data.email,
           Name: data.fullName,
           Phone: data.phoneNumber,
-          user: data._id,
           state: true,
-          purpose: 'Membership Registration'
+          purpose: 'Membership Registration',
+          topMessage: 'Membership Online Payment'
         };
         this.share.changeModalState(this.objectData);
         this.openModal('app-payment');

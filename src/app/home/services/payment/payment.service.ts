@@ -1,16 +1,21 @@
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../../../config';
+
+@Injectable({
+    providedIn: 'root'
+})
 
 export class PaymentService {
     constructor(
         private http: HttpClient,
-        private token
     ) {}
 
-    makePayment(body: Object, type: String) {
+    makePayment(body: any, type: String) {
         const headers = new HttpHeaders;
-        const theToken = (type === 'donation') ? null : headers.append('token', this.token);
-        const postPay = this.http.post(config.api.api + '/' + type, body, {headers: theToken});
+        const theToken = (type === 'donation') ? null : null;
+        const theType = (type === 'donation') ? 'donation' : 'payment';
+        const postPay = this.http.post(config.api.api + '/' + theType, body);
         return postPay;
     }
 }

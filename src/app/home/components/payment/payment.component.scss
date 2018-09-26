@@ -16,8 +16,15 @@
     justify-content: space-around;
     align-items: center;
     .inner-side{
+        background-color: #fff;
+        width: 90%;
+        margin: 0 auto;
+        height: 90%;
+        left: 0;
+        top: 0;
+        overflow: scroll;
         @include mQ('1025px') {
-            background-color: #fff;
+            overflow: hidden;
             width: 582px;
             height: 530px;
             top: 129px;
@@ -76,11 +83,13 @@
     form{
         position: relative;
         width: 100%;
-        height: calc(100% - 160px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+        @include mQ('1025px'){
+            height: calc(100% - 160px);
+        }
         .paycontacts{
             width: 80%;
             display: flex;

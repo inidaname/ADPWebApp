@@ -6,7 +6,7 @@
         </div>
         <div class="logo-side">
             <img src="/assets/adplogo.jpg" alt="ADP Logo">
-            <p> Donate: Help build a better Future </p>
+            <p> {{topMessage || 'Donate: Help build a better Future'}} </p>
         </div>
         <form [formGroup]="paymentForm">
             <div class="input-field">
@@ -15,7 +15,14 @@
             </div>
             <div class="input-field">
                 <label for="payPurpose">Purpose of Payment</label>
-                <input type="text" disabled value="Donation">
+                <span *ngIf="purpose == 'Donation';else notDonationName">
+                    <input type="text" disabled value="Donation">
+                </span>
+                <ng-template #notDonationName>
+                    <select name="payPurpose" formControlName="payPurpose" id="payPurpose">
+                        <option value="Membership Plus 3"></option>
+                    </select>
+                </ng-template>
             </div>
             <div class="input-field">
                 <label for="payAmount">Amount Due</label>
