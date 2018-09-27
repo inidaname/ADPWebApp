@@ -15,14 +15,15 @@
             </div>
             <div class="input-field">
                 <label for="payPurpose">Purpose of Payment</label>
+                <span>{{memberInst || ''}}</span>
                 <span *ngIf="purpose == 'Donation';else notDonationName">
                     <input type="text" disabled value="Donation">
                 </span>
-                <ng-template #notDonationName>
+                <!-- <ng-template #notDonationName>
                     <select name="payPurpose" formControlName="payPurpose" id="payPurpose">
                         <option value="Membership Plus 3"></option>
                     </select>
-                </ng-template>
+                </ng-template> -->
             </div>
             <div class="input-field">
                 <label for="payAmount">Amount Due</label>

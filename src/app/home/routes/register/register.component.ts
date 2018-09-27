@@ -109,7 +109,8 @@ export class RegisterComponent implements OnInit {
           Phone: data.phoneNumber,
           state: true,
           purpose: 'Membership Registration',
-          topMessage: 'Membership Online Payment'
+          topMessage: 'Membership Online Payment',
+          memberInst: 'Membership Registration is N100 only'
         };
         this.share.changeModalState(this.objectData);
         this.openModal('app-payment');

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, DoCheck, OnChanges } from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SharedService } from '../../services/shared/shared.service';
@@ -10,7 +10,7 @@ import { PaymentService } from '../../services/payment/payment.service';
     templateUrl: './payment.component.html',
     styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit, DoCheck {
+export class PaymentComponent implements OnInit {
     @Input() id: string;
     private element: any;
     closeX = faTimes;
@@ -20,12 +20,14 @@ export class PaymentComponent implements OnInit, DoCheck {
     viewAmount: any;
     purposeFor = 'Donation';
     payName: any;
+    memberInst: any;
     payAmount: any;
     payPhone: any;
     payEmail: any;
     purpose: any;
     topMessage: string;
     objectData: any;
+    triggedState: boolean;
 
     constructor(
         private share: SharedService,
@@ -46,6 +48,12 @@ export class PaymentComponent implements OnInit, DoCheck {
             this.payPhone = state.Phone;
             this.topMessage = state.topMessage;
             this.viewAmount = state.viewAmt;
+            this.memberInst = state.memberInst;
+        });
+        this.share.currentTrigger.subscribe((state: boolean) => {
+            if (state === true) {
+                this.startForm();
+            }
         });
         this.paymentForm = this.fb.group({
             payName: ['', Validators.required],
@@ -56,7 +64,7 @@ export class PaymentComponent implements OnInit, DoCheck {
         });
     }
 
-    ngDoCheck() {
+    startForm() {
         this.paymentForm.controls.payAmount.setValue(this.viewAmount);
         this.paymentForm.controls.payEmail.setValue(this.payEmail);
         this.paymentForm.controls.payPhone.setValue(this.payPhone);

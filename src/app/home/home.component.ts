@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       purpose: 'Donation'
     };
     this.share.changeModalState(this.objectData);
+    this.share.triggerState(true);
     this.openModal('app-payment');
     // const Payment = new PaymentComponent(this.share);
     // Payment.ngOnInit();
