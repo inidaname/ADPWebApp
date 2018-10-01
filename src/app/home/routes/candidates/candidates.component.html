@@ -34,34 +34,20 @@
     <div class="other-views">
       <div class="sub-views">
         <h3>View Aspirants by State</h3>
-        <label for="state">State Level</label>
-        <form action="">
-          <select type="text" name="state" id="state">
-            <option value="Select Ward">Select Ward</option>
+        <form [formGroup]="candidatesForm">
+          <select type="text" name="state" id="state" formControlName="candidateState">
+            <option value="">Select State</option>
+            <option *ngFor="let item of states" [value]="item">{{item}}</option>
           </select>
-          <button>View Aspirants</button>
-        </form>
-      </div>
-    </div>
-    <div class="other-views">
-      <div class="sub-views">
-        <h3>View Aspirants by LGA</h3>
-        <label for="state">LGA Level</label>
-        <form action="">
-          <select type="text" name="LGA" id="LGA">
-            <option value="Select LGA">Select LGA</option>
+          <select type="text" name="state" id="state" formControlName="candidatePosition">
+            <option value="">Select Position</option>
+            <option value="Presidential">Presidential</option>
+            <option value="Governorship">Governorship</option>
+            <option value="Senatorila">Senatorial</option>
+            <option value="House Of Reps">House of Reps</option>
+            <option value="House of Assembly">House of Assembly</option>
           </select>
-          <button>View Aspirants</button>
-        </form>
-      </div>
-      <div class="sub-views">
-        <h3>View Aspirants by Ward</h3>
-        <label for="ward">Ward Level</label>
-        <form action="">
-          <select type="text" name="ward" id="ward">
-            <option value="Select Ward">Select Ward</option>
-          </select>
-          <button>View Aspirants</button>
+          <button (click)="ngSubmit()">View Aspirants</button>
         </form>
       </div>
     </div>

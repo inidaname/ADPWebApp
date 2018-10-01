@@ -2,19 +2,32 @@
     <app-drag-one></app-drag-one>
     <div class="about">
         <div class="contents">
-            <div class="aboutContent">
-                <img src="assets/nigeria.jpg" alt="The Nigeria Map">
+            <div class="aboutContent" *ngIf="newsList;else noNews">
+                <img [src]="newsList.thumbnail" [alt]="newsList.title">
                 <div>
-                    <h3>Join ADP Today</h3>
-                    <p>
-                            The One Destiny Family of more than 200,000+ Nigerians ready to build a better Nigeria what are you waiting for Join the Family.
+                    <h3> <a [href]="newsList.guid" target="_blank">{{newsList.title}}</a></h3>
+                    <p [innerHTML]='newsList.content | format : 350 : true'>
                     </p>
-
                     <p>
-                            Nigeria must rise again and live up to the true meaning of its creed. As the giant of Africa Nigeria must move beyond the current political quagmire of today.
+                        {{newsList.pubDate | date: 'dd MMM, yyyy'}}
                     </p>
                 </div>
             </div>
+            <ng-template #noNews>
+                <div class="aboutContent">
+                    <img src="assets/nigeria.jpg" alt="The Nigeria Map">
+                    <div>
+                        <h3>Join ADP Today</h3>
+                        <p>
+                                The One Destiny Family of more than 200,000+ Nigerians ready to build a better Nigeria what are you waiting for Join the Family.
+                        </p>
+
+                        <p>
+                                Nigeria must rise again and live up to the true meaning of its creed. As the giant of Africa Nigeria must move beyond the current political quagmire of today.
+                        </p>
+                    </div>
+                </div>
+            </ng-template>
             <app-mission class="mission"></app-mission>
         </div>
         <app-news></app-news>

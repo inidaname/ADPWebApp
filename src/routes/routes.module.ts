@@ -17,6 +17,7 @@ import { AdminModule } from '../app/admin/admin.module';
 import { MembersModule } from '../app/members/members.module';
 import { IndexComponent as AdminIndex } from '../app/admin/routes/index/index.component';
 import { ElectionTrackingComponent } from '../app/admin/routes/election-tracking/election-tracking.component';
+import { MemberIndexComponent } from '../app/members/routes/member-index/member-index.component';
 
 const appRoutes: Routes = [
   {
@@ -61,11 +62,14 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
-        component: IndexComponent
-      }
+        component: MemberIndexComponent
+      },
     ]
   },
-
+  {
+    path: 'member/:user',
+    component: MemberIndexComponent
+  },
   {
     path: 'admin',
     component: AdminComponent,
@@ -82,7 +86,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/'
+    redirectTo: '/member/:user'
   }
 ];
 
