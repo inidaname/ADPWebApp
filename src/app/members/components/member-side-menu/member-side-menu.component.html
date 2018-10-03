@@ -1,17 +1,17 @@
 <div class="side-menu">
-  <h4 class="admin-title">Admin Panel</h4>
+  <h4 class="admin-title">Member Dashboard</h4>
   <section class="profile">
     <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
     <p>Hassan Uche K.</p>
   </section>
   <section class="list-menu">
     <ul>
-      <li> <a [routerLink]="['/member/']" routerLinkActive="router-link-active">Dashboard</a></li>
-      <li>Messages</li>
-      <li>Secretariat</li>
-      <li>Candidates</li>
+      <li><a [routerLink]="['/member/']" routerLinkActive="router-link-active">Dashboard</a></li>
+      <li><a [routerLink]="['/member/message']" routerLinkActive="router-link-active">Messages</a></li>
+      <li><a [routerLink]="['/member/secretariat']" routerLinkActive="router-link-active">Secretariat</a></li>
+      <li><a [routerLink]="['/member/candidates']" routerLinkActive="router-link-active">Candidates</a></li>
       <li><a [routerLink]="['/admin/elections']" routerLinkActive="router-link-active">Elections</a></li>
-      <li>Settings</li>
+      <li><a [routerLink]="['/member/settings']" routerLinkActive="router-link-active">Settings</a></li>
       <li>Log Out</li>
     </ul>
   </section>

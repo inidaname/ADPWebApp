@@ -28,4 +28,8 @@ export class AboutComponent implements OnInit {
     this.router.navigateByUrl(route);
   }
 
+  getFile(fileLink: string) {
+    location.href = fileLink;
+  }
+
 }

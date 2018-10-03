@@ -10,6 +10,8 @@ import { ElectionTrackingComponent } from './routes/election-tracking/election-t
 import { IndexComponent } from './routes/index/index.component';
 import { SideMuneComponent } from './components/side-menu/side-menu.component';
 import { TopProfileComponent } from './components/top-profile/top-profile.component';
+import { AdminManagementComponent } from './routes/admin-management/admin-management.component';
+import { AdminMessagesComponent } from './routes/admin-messages/admin-messages.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { TopProfileComponent } from './components/top-profile/top-profile.compon
     ElectionTrackingComponent,
     IndexComponent,
     SideMuneComponent,
-    TopProfileComponent
+    TopProfileComponent,
+    AdminManagementComponent,
+    AdminMessagesComponent
   ]
 })
 export class AdminModule { }

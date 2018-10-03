@@ -18,6 +18,8 @@ import { MembersModule } from '../app/members/members.module';
 import { IndexComponent as AdminIndex } from '../app/admin/routes/index/index.component';
 import { ElectionTrackingComponent } from '../app/admin/routes/election-tracking/election-tracking.component';
 import { MemberIndexComponent } from '../app/members/routes/member-index/member-index.component';
+import { AdminManagementComponent } from '../app/admin/routes/admin-management/admin-management.component';
+import { AdminMessagesComponent } from '../app/admin/routes/admin-messages/admin-messages.component';
 
 const appRoutes: Routes = [
   {
@@ -81,12 +83,20 @@ const appRoutes: Routes = [
       {
         path: 'elections',
         component: ElectionTrackingComponent
+      },
+      {
+        path: 'members',
+        component: AdminManagementComponent
+      },
+      {
+        path: 'messages',
+        component: AdminMessagesComponent
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/member/:user'
+    redirectTo: '/:user'
   }
 ];
 

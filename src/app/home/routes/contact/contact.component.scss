@@ -235,6 +235,43 @@
     display: none;
 }
 
+.other-sec{
+    width: 100%;
+    height: auto;
+    margin-bottom: 21px;
+    border-top: 1px solid #000;
+    padding-top: 29px;
+    h3{
+        width: 318px;
+        line-height: 24px;
+        font-style: normal;
+        font-size: 30px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        height: 24px;
+        color: #373535;
+        margin-bottom: 41px;
+    }
+    ul{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        justify-content: space-evenly;
+        li{
+            width: 245px;
+            margin: 12px 0;
+            text-align: center;
+            box-shadow: 0px 0px 5px 1px #ccc;
+            height: 140px;
+            border-radius: 12px;
+            padding: 12px;
+        }
+    }
+}
+
 .modal-container{
     position: fixed;
     top: 0;
