@@ -20,10 +20,16 @@ import { ElectionTrackingComponent } from '../app/admin/routes/election-tracking
 import { MemberIndexComponent } from '../app/members/routes/member-index/member-index.component';
 import { AdminManagementComponent } from '../app/admin/routes/admin-management/admin-management.component';
 import { AdminMessagesComponent } from '../app/admin/routes/admin-messages/admin-messages.component';
+import { UserpageComponent } from '../app/userpage/userpage.component';
+import { MemberMessageComponent } from '../app/members/routes/member-message/member-message.component';
+import { MemberSecretariatComponent } from '../app/members/routes/member-secretariat/member-secretariat.component';
+import { MemberCandidatesComponent } from '../app/members/routes/member-candidates/member-candidates.component';
+import { MemberSettingsComponent } from '../app/members/routes/member-settings/member-settings.component';
 
 const appRoutes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: HomeComponent,
     children: [
       {
@@ -33,11 +39,13 @@ const appRoutes: Routes = [
 
       {
         path: 'about',
+        pathMatch: 'full',
         component: AboutComponent
       },
 
       {
         path: 'contact',
+        pathMatch: 'full',
         component: ContactComponent,
         data: {
           title: 'Contact Us'
@@ -45,10 +53,12 @@ const appRoutes: Routes = [
       },
       {
         path: 'register',
+        pathMatch: 'full',
         component: RegisterComponent
       },
       {
         path: 'structure',
+        pathMatch: 'full',
         component: StructureComponent
       },
       {
@@ -60,17 +70,33 @@ const appRoutes: Routes = [
 
   {
     path: 'member',
+    pathMatch: 'full',
     component: MembersComponent,
     children: [
       {
         path: '',
         component: MemberIndexComponent
       },
+      {
+        path: 'message',
+        pathMatch: 'full',
+        component: MemberMessageComponent
+      },
+      {
+        path: 'secretariat',
+        pathMatch: 'full',
+        component: MemberSecretariatComponent
+      },
+      {
+        path: 'candidates',
+        component: MemberCandidatesComponent
+      },
+      {
+        path: 'settings',
+        pathMatch: 'full',
+        component: MemberSettingsComponent
+      }
     ]
-  },
-  {
-    path: 'member/:user',
-    component: MemberIndexComponent
   },
   {
     path: 'admin',
@@ -95,8 +121,12 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: ':user',
+    component: UserpageComponent
+  },
+  {
     path: '**',
-    redirectTo: '/:user'
+    redirectTo: '/'
   }
 ];
 

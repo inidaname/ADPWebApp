@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { RoutesModule } from '../routes/routes.module';
 
 import { AppComponent } from './app.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
