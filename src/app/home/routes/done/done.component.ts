@@ -21,7 +21,7 @@ export class DoneComponent implements OnInit {
       this.userData = res;
     });
 
-    if (this.userData === null) {
+    if (this.userData == null) {
       this.router.navigate(['/register']);
     }
   }

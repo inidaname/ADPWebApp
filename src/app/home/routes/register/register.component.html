@@ -12,7 +12,7 @@
                 </ul>
             </div>
             <div class="passport">
-                <input type="file" aria-label="Passport" name="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader" formControlName="passport">
+                <input type="file" aria-label="Passport" name="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader">
                 <button (click)="clickUpload()">upload passport <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.94922 6.875L1.92578 9.5H10.0742L7.44922 6L5.42578 8.625L3.94922 6.875ZM11.25 10.0742C11.25 10.3841 11.1315 10.6576 10.8945 10.8945C10.6576 11.1315 10.3841 11.25 10.0742 11.25H1.92578C1.61589 11.25 1.34245 11.1315 1.10547 10.8945C0.86849 10.6576 0.75 10.3841 0.75 10.0742V1.92578C0.75 1.61589 0.86849 1.34245 1.10547 1.10547C1.34245 0.86849 1.61589 0.75 1.92578 0.75H10.0742C10.3841 0.75 10.6576 0.86849 10.8945 1.10547C11.1315 1.34245 11.25 1.61589 11.25 1.92578V10.0742Z" fill="white"/>
                     </svg>

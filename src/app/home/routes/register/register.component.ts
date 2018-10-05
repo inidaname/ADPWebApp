@@ -46,16 +46,20 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService) {}
 
   ngOnInit() {
-    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
-      // Add Cloudinary's unsigned upload preset to the upload form
-      form.append('adpnigeria', this.cloudinary.config().upload_preset);
-      return { fileItem, form };
-    };
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    this.uploader.onBuildItemForm = (file: any, form: FormData): any => {
+
+      // Add Cloudinary's unsigned upload preset to the upload form
+      form.append('upload_preset', this.cloudinary.config().upload_preset);
+
+      return { file, form };
+    };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any ) => {
       if (response) {
-         this.passportValue = response.url;
-      }
+        const responeded = JSON.parse(response);
+        console.log(responeded)
+         this.passportValue = responeded.url;
+        }
      };
     this.formReg = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(3), justOneName]],
@@ -70,7 +74,8 @@ export class RegisterComponent implements OnInit {
       dateofBirth: ['', [Validators.required, minimumAge(18)]],
       gender: ['', Validators.required],
       pollingUnit: [''],
-      passport: [this.passportValue]
+      passport: [''],
+      idNumber: [this.theRegRef]
     });
 
     this.share.currentStatus.subscribe((state: any) => this.activateModal = state.state);
@@ -122,7 +127,9 @@ export class RegisterComponent implements OnInit {
   regUser(data: any) {
     const obs = this.register.registerUser(data);
     obs.subscribe((res: any) => {
+      console.log(data);
       if (res.message) {
+        this.formReg.value.passport = this.passportValue;
         this.registered = true;
         this.member = res.body;
         this.objectData = {
@@ -136,7 +143,8 @@ export class RegisterComponent implements OnInit {
           memberInst: 'Membership Registration is N100 only'
         };
         this.share.changeModalState(this.objectData);
-        this.share.sendData(res.user);
+        this.share.sendData(data);
+        this.router.navigate(['/done']);
         // this.openModal('app-payment');
       } else {
         this.error = true;
