@@ -9,5 +9,7 @@ export const config = {
 
     'apiKey': {
         'google' : 'AIzaSyAExzfabnjIXukdy3X8Q1hYMb1DFJTXxzY'
-    }
+    },
 };
+
+

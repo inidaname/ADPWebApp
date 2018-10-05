@@ -25,27 +25,23 @@ import { MemberMessageComponent } from '../app/members/routes/member-message/mem
 import { MemberSecretariatComponent } from '../app/members/routes/member-secretariat/member-secretariat.component';
 import { MemberCandidatesComponent } from '../app/members/routes/member-candidates/member-candidates.component';
 import { MemberSettingsComponent } from '../app/members/routes/member-settings/member-settings.component';
+import { DoneComponent } from '../app/home/routes/done/done.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: HomeComponent,
     children: [
       {
         path: '',
         component: IndexComponent
       },
-
       {
         path: 'about',
-        pathMatch: 'full',
         component: AboutComponent
       },
-
       {
         path: 'contact',
-        pathMatch: 'full',
         component: ContactComponent,
         data: {
           title: 'Contact Us'
@@ -53,12 +49,14 @@ const appRoutes: Routes = [
       },
       {
         path: 'register',
-        pathMatch: 'full',
         component: RegisterComponent
       },
       {
+        path: 'done',
+        component: DoneComponent
+      },
+      {
         path: 'structure',
-        pathMatch: 'full',
         component: StructureComponent
       },
       {
