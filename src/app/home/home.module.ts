@@ -32,6 +32,8 @@ import { CandidatesComponent } from './routes/candidates/candidates.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ModalService } from './services/modals/modals.service';
 import { ModalComponent } from './components/payment/modal.component';
+import { DoneComponent } from './routes/done/done.component';
+import { config } from '../../config';
 
 @NgModule({
   imports: [
@@ -46,7 +48,7 @@ import { ModalComponent } from './components/payment/modal.component';
     NgxHmCarouselModule,
     InternationalPhoneNumberModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAExzfabnjIXukdy3X8Q1hYMb1DFJTXxzY'
+      apiKey: config.apiKey.google
     }),
   ],
   declarations: [
@@ -69,7 +71,8 @@ import { ModalComponent } from './components/payment/modal.component';
     TruncatePipe,
     FormatPipe,
     PaymentComponent,
-    ModalComponent
+    ModalComponent,
+    DoneComponent
   ],
   providers: [
     ModalService

@@ -12,13 +12,14 @@ import { MemberSecretariatComponent } from './routes/member-secretariat/member-s
 import { MemberCandidatesComponent } from './routes/member-candidates/member-candidates.component';
 import { MemberSettingsComponent } from './routes/member-settings/member-settings.component';
 import { MemberTopProfileComponent } from './components/member-top-profile/member-top-profile.component';
+import { config } from '../../config';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAExzfabnjIXukdy3X8Q1hYMb1DFJTXxzY'
+      apiKey: config.apiKey.google
     }),
     FontAwesomeModule
   ],
