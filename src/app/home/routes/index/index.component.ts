@@ -19,7 +19,6 @@ export class IndexComponent implements OnInit {
     let headlines;
     const obs = this.news.headLines();
     obs.subscribe((news: any) => {
-      console.log(news.items);
       news.items.forEach((element: any, io) => {
         const categories: Array<string> = element.categories;
         categories.find(function(v: string, i: number) {

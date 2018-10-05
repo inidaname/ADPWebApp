@@ -36,7 +36,7 @@ import { ModalService } from './services/modals/modals.service';
 import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   imports: [
@@ -53,6 +53,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
+    FileUploadModule,
     CloudinaryModule.forRoot(Cloudinary, {
       cloud_name: config.apiKey.cloudinary,
       api_key: config.apiKey.clKey,
@@ -81,8 +82,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
     FormatPipe,
     PaymentComponent,
     ModalComponent,
-    DoneComponent,
-    FileSelectDirective
+    DoneComponent
   ],
   providers: [
     ModalService
