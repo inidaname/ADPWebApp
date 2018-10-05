@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     this.modalService.open(id);
   }
 
-  toggleModal(theCon: number, shwAmt: number) {
+  toggleModal(theCon: string, shwAmt: string) {
     this.objectData = {
       theAmt: theCon,
       viewAmt: shwAmt,

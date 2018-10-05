@@ -11,6 +11,7 @@ export class TopProfileComponent implements OnInit {
 
     bars = faBars;
     message = faComments;
+    down = faCaretDown;
 
     constructor () {}
 

@@ -74,8 +74,7 @@ export class PaymentComponent implements OnInit {
     }
 
 
-    paymentCancel(event) {
-        console.log(event);
+    paymentCancel() {
     }
     paymentDone(event) {
         console.log(event);

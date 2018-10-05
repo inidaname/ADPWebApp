@@ -9,6 +9,9 @@ import { faBars, faComments, faCaretDown, faEllipsisH, faMale } from '@fortaweso
 })
 export class ElectionTrackingComponent implements OnInit {
   threeDots = faEllipsisH;
+  male = faMale;
+  message = faComments;
+  
 
   constructor() { }
 
