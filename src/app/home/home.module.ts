@@ -8,6 +8,8 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { AgmCoreModule } from '@agm/core';
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 
 import { FormatPipe } from './pipes/format/format.pipe';
 import { TruncatePipe } from './pipes/truncate/truncate.pipe';
@@ -34,6 +36,7 @@ import { ModalService } from './services/modals/modals.service';
 import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   imports: [
@@ -49,6 +52,12 @@ import { config } from '../../config';
     InternationalPhoneNumberModule,
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
+    }),
+    CloudinaryModule.forRoot(Cloudinary, {
+      cloud_name: config.apiKey.cloudinary,
+      api_key: config.apiKey.clKey,
+      api_secret: config.apiKey.clSe,
+      upload_preset: 'adpnigeria'
     }),
   ],
   declarations: [
@@ -72,7 +81,8 @@ import { config } from '../../config';
     FormatPipe,
     PaymentComponent,
     ModalComponent,
-    DoneComponent
+    DoneComponent,
+    FileSelectDirective
   ],
   providers: [
     ModalService

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../services/shared/shared.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-done',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoneComponent implements OnInit {
 
-  constructor() { }
+  userData: any = null;
+
+  constructor(
+    private share: SharedService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.share.currentData.subscribe((res: any) => {
+      this.userData = res;
+    });
+
+    if (this.userData === null) {
+      this.router.navigate(['/register']);
+    }
   }
 
 }

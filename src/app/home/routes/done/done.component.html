@@ -1,11 +1,17 @@
 <div class="main">
-  <div class="contents">
+  <div class="contents" *ngIf="!userData;else newTemplate">
     <figure>
-      <img src="" alt="">
-      <figcaption>You here</figcaption>
+      <img [src]="userData.passport" [alt]="userData.fullname">
+      <figcaption>{{userData.fullname}}</figcaption>
     </figure>
     <div class="details">
-      
+      <h4>{{userData.fullname}} <small>ID: {{userData.ID}}</small></h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid distinctio eaque non, magnam sit tempore earum unde maxime praesentium suscipit hic totam voluptatem nesciunt accusamus at natus cum qui ducimus.</p>
     </div>
   </div>
+  <ng-template #newTemplate>
+    <div class="contents">
+      We are yet to recieve your data
+    </div>
+  </ng-template>
 </div>

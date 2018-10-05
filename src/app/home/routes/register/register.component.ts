@@ -5,6 +5,10 @@ import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { Observable } from 'rxjs';
+import { Cloudinary } from '@cloudinary/angular-5.x';
+import { config } from '../../../../config';
 
 @Component({
   selector: 'app-register',
@@ -30,9 +34,11 @@ export class RegisterComponent implements OnInit {
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
   activateModal: boolean;
   objectData: any;
-
+  passportValue: string = null;
+  public uploader: FileUploader = new FileUploader({url: config.api.cloudinary});
 
   constructor(
+    private cloudinary: Cloudinary,
     private fb: FormBuilder,
     private register: RegisterService,
     private router: Router,
@@ -40,6 +46,17 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService) {}
 
   ngOnInit() {
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      // Add Cloudinary's unsigned upload preset to the upload form
+      form.append('adpnigeria', this.cloudinary.config().upload_preset);
+      return { fileItem, form };
+    };
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      if (response) {
+         this.passportValue = response.url;
+      }
+     };
     this.formReg = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(3), justOneName]],
       pvc: [''],
@@ -52,7 +69,8 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       dateofBirth: ['', [Validators.required, minimumAge(18)]],
       gender: ['', Validators.required],
-      pollingUnit: ['']
+      pollingUnit: [''],
+      passport: [this.passportValue]
     });
 
     this.share.currentStatus.subscribe((state: any) => this.activateModal = state.state);
@@ -71,6 +89,10 @@ export class RegisterComponent implements OnInit {
         this.localGovt = res;
       });
     }
+  }
+
+  clickUpload() {
+    document.getElementById('passport').click();
   }
 
   setWardname(event, stateName) {
@@ -104,6 +126,7 @@ export class RegisterComponent implements OnInit {
         this.registered = true;
         this.member = res.body;
         this.objectData = {
+          idNum: Math.floor((Math.random() * 1000000000) + 1),
           Email: data.email,
           Name: data.fullName,
           Phone: data.phoneNumber,
@@ -113,7 +136,8 @@ export class RegisterComponent implements OnInit {
           memberInst: 'Membership Registration is N100 only'
         };
         this.share.changeModalState(this.objectData);
-        this.openModal('app-payment');
+        this.share.sendData(res.user);
+        // this.openModal('app-payment');
       } else {
         this.error = true;
       }
