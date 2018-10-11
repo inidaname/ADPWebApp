@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="contents" *ngIf="!userData;else newTemplate">
+  <div class="contents" *ngIf="userData;else newTemplate">
     <div class="userDetail">
       <figure>
         <img [src]="userData.passport" [alt]="userData.fullName">
