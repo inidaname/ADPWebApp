@@ -1,13 +1,48 @@
 <div class="main">
-  <div class="contents" *ngIf="userData;else newTemplate">
-    <figure>
-      <img [src]="userData.passport" [alt]="userData.fullName">
-      <figcaption>{{userData.fullName}}</figcaption>
-    </figure>
-    <div class="details">
-      <h4>{{userData.fullName}} <small>ID: {{userData.idNumber}}</small></h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid distinctio eaque non, magnam sit tempore earum unde maxime praesentium suscipit hic totam voluptatem nesciunt accusamus at natus cum qui ducimus.</p>
-    </div>
+  <div class="contents" *ngIf="!userData;else newTemplate">
+    <div class="userDetail">
+      <!-- <figure>
+        <img [src]="userData.passport" [alt]="userData.fullName">
+        <figcaption>{{userData.fullName}}</figcaption>
+      </figure>
+      <div class="details">
+        <h4>{{userData.fullName}} <small>ID: {{userData.idNumber}}</small></h4>
+        <p>Hello {{userData.fullName}}, <br> Welcome to the One Destiny Family, below are the required amount to pay.</p>
+      </div>
+    </div> -->
+    <section class="regPayment" [formGroup]="regPayment">
+        <p>
+          Membership registration is =N=100 only with =N=50 monthly fee
+        </p>
+        <div class="forms">
+          <div class="input-field">
+            <label for="forPurpose">Payment For:</label>
+            <select formControlName="forPurpose" name="forPurpose" id="forPurpose">
+              <option value="">Select</option>
+              <option value="Membership Registration">Membership Registration</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label for="monthly">Monthly Fee of N50</label>
+            <select (change)="changeValue()" formControlName="monthly" name="monthly" id="monthly">
+              <option value="">Select One</option>
+              <option value="3 months">Plus 3 months</option>
+              <option value="6 months">Plus 6 months</option>
+              <option value="12 months">1 Year</option>
+            </select>
+          </div>
+          <div class="totalAmount">
+            <p>
+              <strong>Total Amount:</strong> <br>
+              <span>{{payMent}}</span>
+            </p>
+          </div>
+          <div class="sub">
+            <button (click)="MakePayment()">Make Payment</button>
+          </div>
+        </div>
+      </section>
+
   </div>
   <ng-template #newTemplate>
     <div class="contents">

@@ -5,8 +5,7 @@ import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-import { Observable } from 'rxjs';
+import {  FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { config } from '../../../../config';
 
@@ -35,6 +34,7 @@ export class RegisterComponent implements OnInit {
   activateModal: boolean;
   objectData: any;
   passportValue: string = null;
+  progressBar = ' ';
   public uploader: FileUploader = new FileUploader({url: config.api.cloudinary});
 
   constructor(
@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService) {}
 
   ngOnInit() {
+    this.passportValue = 'https://avatars.io/static/default_128.jpg';
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onBuildItemForm = (file: any, form: FormData): any => {
 
@@ -54,10 +55,12 @@ export class RegisterComponent implements OnInit {
 
       return { file, form };
     };
+    this.uploader.onProgressItem = (progress: any) => {
+      this.progressBar = progress['progress'] + '%';
+    };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any ) => {
       if (response) {
         const responeded = JSON.parse(response);
-        console.log(responeded)
          this.passportValue = responeded.url;
         }
      };

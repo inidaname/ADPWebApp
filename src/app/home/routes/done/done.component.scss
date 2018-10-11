@@ -19,18 +19,67 @@
         box-sizing: border-box;
         @include  mQ('1025px'){
             box-sizing: content-box;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
             width: 540px;
-            height: 330px;
+            height: auto;
             margin: 20px;
         }
+        .userDetail{
+            display: flex;
+            flex-direction: column;
+            @include mQ('1025px'){
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+            }
+        }
+        .regPayment{
+            width: 100%;
+            padding: 20px;
+            margin: 0;
+            margin-top: 32px;
+            border-top: 1px solid #000;
+            box-sizing: border-box;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            .forms{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+            }
+            .input-field{
+                display: flex;
+                flex-direction: column;
+                margin: 12px 0;
+                width: 80%;
+                @include mQ('1025px'){
+                    width: 50%;
+                }
+                label{
+                    margin: 5px 0;
+                    cursor: default;
+                }
+                select{
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    color: #495057;
+                    background-color: #fff;
+                    background-clip: padding-box;
+                    border: 1px solid #ced4da;
+                    border-radius: .25rem;
+                }
+            }
+        }
         figure{
-            width: 220px;
-            height: 270px;
+            width: 200px;
+            height: 230px;
             box-shadow: 0px 0px 2px #ccc;
-            margin: 12px;
+            margin: 12px 5px;
             img{
                 width: 220px;
             }
@@ -51,4 +100,8 @@
             }
         }
     }
+}
+
+.failed{
+    color: #ff0000 !important;
 }

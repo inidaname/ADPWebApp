@@ -81,10 +81,10 @@ export class PaymentComponent implements OnInit {
     paymentDone(event) {
         console.log(event);
         const paymentData = {
-            amount: this.paymentForm.value.payAmount,
-            purpose: this.paymentForm.value.purpose,
-            fullName: this.paymentForm.value.payName,
-            phoneNumber: this.paymentForm.value.payPhone,
+            amount: this.payAmount,
+            purpose: this.purpose,
+            fullName: this.payName,
+            phoneNumber: this.payPhone,
             // message: event.message,
             reference: event.reference,
             status: event.status,

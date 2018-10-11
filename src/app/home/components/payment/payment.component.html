@@ -11,48 +11,37 @@
         <form [formGroup]="paymentForm">
             <div class="input-field">
                 <label for="payName">Full Name</label>
-                <input type="text" name="payName" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
+                <input type="text" readonly name="payName" [value]="payName" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
             </div>
             <div class="input-field">
                 <label for="payPurpose">Purpose of Payment</label>
                 <span>{{memberInst || ''}}</span>
-                <span *ngIf="purpose == 'Donation';else notDonationName">
-                    <input type="text" disabled value="Donation">
+                <span>
+                    <input type="text" readonly [value]="purpose">
                 </span>
-                <ng-template #notDonationName>
-                    <select name="payPurpose" formControlName="payPurpose" id="payPurpose">
-                        <option value="Membership Plus 3"></option>
-                    </select>
-                </ng-template>
             </div>
             <div class="input-field">
                 <label for="payAmount">Amount Due</label>
-                <span *ngIf="purpose == 'Donation';else notDonation">
-                    <input type="text" name="payAmount" id="payAmount" formControlName="payAmount">
+                <span>
+                    <input type="text" name="payAmount" readonly id="payAmount" [value]="viewAmount" formControlName="payAmount">
                 </span>
-                <ng-template #notDonation>
-                    <select name="payAmount" formControlName="payAmount" id="payAmount">
-                        <option value=""></option>
-                    </select>
-                </ng-template>
             </div>
             <div class="paycontacts">
                 <div class="input-field">
                     <label for="payPhone">Phone</label>
-                    <input type="text" name="payPhone" formControlName="payPhone" id="payPhone" placeholder="Phone Number">
+                    <input type="text" name="payPhone" readonly [value]="payPhone" formControlName="payPhone" id="payPhone" placeholder="Phone Number">
                 </div>
                 <div class="input-field">
                     <label for="payEmail">Email</label>
-                    <input type="email" name="payEmail" id="payEmail" formControlName="payEmail" placeholder="Email Address">
+                    <input type="email" name="payEmail" readonly [value]="payEmail" id="payEmail" formControlName="payEmail" placeholder="Email Address">
                 </div>
             </div>
-            <input type="hidden" name="purpose" formControlName="purpose" value="">
             <div class="input-field">
                 <button
                 angular4-paystack
                 [key]="payStackKey"
-                [email]="paymentForm.controls.payEmail.value"
-                [amount]="paymentForm.controls.payAmount.value + '00'"
+                [email]="payEmail"
+                [amount]="payAmount"
                 [ref]="theRegRef"
                 (close)="paymentCancel()"
                 (callback)="paymentDone($event)">Pay Here</button>

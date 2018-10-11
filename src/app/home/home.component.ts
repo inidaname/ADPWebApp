@@ -42,13 +42,5 @@ export class HomeComponent implements OnInit {
     this.share.changeModalState(this.objectData);
     this.share.triggerState(true);
     this.openModal('app-payment');
-    // const Payment = new PaymentComponent(this.share);
-    // Payment.ngOnInit();
   }
-  // closeModal(event) {
-  //   if (event.path[0].classList.contains('modal-container') || event.path[0].id === 'close') {
-  //     this.modalActive = true;
-  //   }
-  // }
-
 }
