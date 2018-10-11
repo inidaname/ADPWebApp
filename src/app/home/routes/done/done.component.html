@@ -1,7 +1,7 @@
 <div class="main">
   <div class="contents" *ngIf="!userData;else newTemplate">
     <div class="userDetail">
-      <!-- <figure>
+      <figure>
         <img [src]="userData.passport" [alt]="userData.fullName">
         <figcaption>{{userData.fullName}}</figcaption>
       </figure>
@@ -9,8 +9,9 @@
         <h4>{{userData.fullName}} <small>ID: {{userData.idNumber}}</small></h4>
         <p>Hello {{userData.fullName}}, <br> Welcome to the One Destiny Family, below are the required amount to pay.</p>
       </div>
-    </div> -->
+    </div>
     <section class="regPayment" [formGroup]="regPayment">
+      <h3>Payment Instructions</h3>
         <p>
           Membership registration is =N=100 only with =N=50 monthly fee
         </p>

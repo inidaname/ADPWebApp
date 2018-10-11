@@ -47,7 +47,6 @@ export class DoneComponent implements OnInit {
     this.modal.open(id);
   }
   changeValue() {
-    console.log(this.regPayment.controls.monthly.value)
     if (this.regPayment.controls.monthly.value === '3 months') {
       this.payMent = 250;
       this.amountDue = 25000;
