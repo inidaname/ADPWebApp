@@ -16,6 +16,7 @@ export class PaymentComponent implements OnInit {
     private element: any;
     closeX = faTimes;
     paymentForm: FormGroup;
+    thisBtn: any;
     theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
     typeOfPayment: string;
     viewAmount: any;
@@ -64,6 +65,9 @@ export class PaymentComponent implements OnInit {
             payPhone: [''],
             payPurpose: ['']
         });
+        this.thisBtn = (this.paymentForm.controls.payName.value === null &&
+            this.paymentForm.controls.payPhone.value === '' &&
+            this.paymentForm.controls.payEmail.value === '') ? true : false;
     }
 
     startForm() {

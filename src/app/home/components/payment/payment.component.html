@@ -11,7 +11,7 @@
         <form [formGroup]="paymentForm">
             <div class="input-field">
                 <label for="payName">Full Name</label>
-                <input type="text" readonly name="payName" [value]="payName" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
+                <input type="text" [attr.readonly]="payName" name="payName" [value]="payName || ''" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
             </div>
             <div class="input-field">
                 <label for="payPurpose">Purpose of Payment</label>
@@ -23,21 +23,22 @@
             <div class="input-field">
                 <label for="payAmount">Amount Due</label>
                 <span>
-                    <input type="text" name="payAmount" readonly id="payAmount" [value]="viewAmount" formControlName="payAmount">
+                    <input type="text" name="payAmount" [attr.readonly]="viewAmount" id="payAmount" [value]="viewAmount || ''" formControlName="payAmount">
                 </span>
             </div>
             <div class="paycontacts">
                 <div class="input-field">
                     <label for="payPhone">Phone</label>
-                    <input type="text" name="payPhone" readonly [value]="payPhone" formControlName="payPhone" id="payPhone" placeholder="Phone Number">
+                    <input type="text" name="payPhone" [attr.readonly]="payPhone" [value]="payPhone || ''" formControlName="payPhone" id="payPhone" placeholder="Phone Number">
                 </div>
                 <div class="input-field">
                     <label for="payEmail">Email</label>
-                    <input type="email" name="payEmail" readonly [value]="payEmail" id="payEmail" formControlName="payEmail" placeholder="Email Address">
+                    <input type="email" name="payEmail"  [value]="payEmail" id="payEmail" formControlName="payEmail" placeholder="Email Address">
                 </div>
             </div>
             <div class="input-field">
                 <button
+                #thisButton
                 angular4-paystack
                 [key]="payStackKey"
                 [email]="payEmail"
