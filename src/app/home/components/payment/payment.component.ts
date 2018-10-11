@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
 import { PaymentService } from '../../services/payment/payment.service';
+import { config } from '../../../../config';
 
 @Component({
     selector: 'app-payment',
@@ -28,6 +29,7 @@ export class PaymentComponent implements OnInit {
     topMessage: string;
     objectData: any;
     triggedState: boolean;
+    payStackKey: string = config.apiKey.paystack_test;
 
     constructor(
         private share: SharedService,
@@ -60,7 +62,7 @@ export class PaymentComponent implements OnInit {
             payEmail: ['', Validators.required],
             payAmount: ['', Validators.required],
             payPhone: [''],
-            purpose: ['']
+            payPurpose: ['']
         });
     }
 
@@ -68,7 +70,7 @@ export class PaymentComponent implements OnInit {
         this.paymentForm.controls.payAmount.setValue(this.viewAmount);
         this.paymentForm.controls.payEmail.setValue(this.payEmail);
         this.paymentForm.controls.payPhone.setValue(this.payPhone);
-        this.paymentForm.controls.purpose.setValue(this.purpose);
+        this.paymentForm.controls.payPurpose.setValue(this.purpose);
         this.paymentForm.controls.payName.setValue(this.payName);
         this.paymentForm.controls.payAmount.disable();
     }
