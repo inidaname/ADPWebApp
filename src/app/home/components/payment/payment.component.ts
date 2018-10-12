@@ -65,9 +65,6 @@ export class PaymentComponent implements OnInit {
             payPhone: [''],
             payPurpose: ['']
         });
-        this.thisBtn = (this.paymentForm.controls.payName.value === null &&
-            this.paymentForm.controls.payPhone.value === '' &&
-            this.paymentForm.controls.payEmail.value === '') ? true : false;
     }
 
     startForm() {

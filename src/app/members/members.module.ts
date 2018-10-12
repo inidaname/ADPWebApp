@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MembersRouteModule } from './routes/member-routes.module';
 
 import { MembersComponent } from './members.component';
 import { MemberSideMenuComponent } from './components/member-side-menu/member-side-menu.component';
@@ -11,30 +11,24 @@ import { MemberMessageComponent } from './routes/member-message/member-message.c
 import { MemberSecretariatComponent } from './routes/member-secretariat/member-secretariat.component';
 import { MemberCandidatesComponent } from './routes/member-candidates/member-candidates.component';
 import { MemberSettingsComponent } from './routes/member-settings/member-settings.component';
-import { MemberTopProfileComponent } from './components/member-top-profile/member-top-profile.component';
 import { config } from '../../config';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    MembersRouteModule,
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
     FontAwesomeModule
   ],
-  exports: [
-    MembersComponent
-  ],
+  exports: [],
   declarations: [
-    MembersComponent,
     MemberIndexComponent,
-    MemberSideMenuComponent,
     MemberMessageComponent,
     MemberSecretariatComponent,
     MemberCandidatesComponent,
-    MemberSettingsComponent,
-    MemberTopProfileComponent
+    MemberSettingsComponent
   ]
 })
 export class MembersModule { }

@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MemberIndexComponent implements OnInit {
+    lat = 9.0442358;
+    lng = 7.5100474;
+  
     constructor() {}
     ngOnInit() {
     }

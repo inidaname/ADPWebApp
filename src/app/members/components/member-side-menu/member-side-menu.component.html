@@ -1,17 +1,23 @@
-<div class="side-menu">
+<div class="side-menu" #sideMenu>
   <h4 class="admin-title">Member Dashboard</h4>
   <section class="profile">
     <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
     <p>Hassan Uche K.</p>
   </section>
   <section class="list-menu">
-    <ul>
+    <ul (click)="moveSide()">
       <li><a [routerLink]="['/member/']" routerLinkActive="router-link-active">Dashboard</a></li>
-      <li><a [routerLink]="['/member/message']" routerLinkActive="router-link-active">Messages</a></li>
-      <li><a [routerLink]="['/member/secretariat']" routerLinkActive="router-link-active">Secretariat</a></li>
-      <li><a [routerLink]="['/member/candidates']" routerLinkActive="router-link-active">Candidates</a></li>
+      <!-- <li><a [routerLink]="['/member/message']" routerLinkActive="router-link-active">Messages</a></li>
+      <li><a [routerLink]="['/member/secretariat']" routerLinkActive="router-link-active">Secretariat</a></li> -->
+      <li><a [routerLink]="['/member/platform']" routerLinkActive="router-link-active">Platform</a></li>
       <li><a [routerLink]="['/member/settings']" routerLinkActive="router-link-active">Settings</a></li>
       <li>Log Out</li>
     </ul>
   </section>
 </div>
+<div class="top-profile" #topSide>
+  <span id="menu-bar">
+    <fa-icon [icon]="bars" (click)="moveSide()"></fa-icon>
+  </span>
+</div>
+

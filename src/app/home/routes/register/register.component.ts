@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3), justOneName]],
       pvc: [''],
       phoneNumber: ['', Validators.required],
-      email: [''/*, Validators.email('ad@k.l')*/],
+      email: ['contact@adp.ng'/*, Validators.email('ad@k.l')*/],
       residenceAdd: [''],
       stateName: ['', Validators.required],
       lgaName: ['', Validators.required],
@@ -130,7 +130,6 @@ export class RegisterComponent implements OnInit {
   regUser(data: any) {
     const obs = this.register.registerUser(data);
     obs.subscribe((res: any) => {
-      console.log(data);
       if (res.message) {
         this.formReg.value.passport = this.passportValue;
         this.registered = true;

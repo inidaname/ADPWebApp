@@ -9,7 +9,6 @@ import { AboutComponent } from '../app/home/routes/about/about.component';
 import { ContactComponent } from '../app/home/routes/contact/contact.component';
 import { RegisterComponent } from '../app/home/routes/register/register.component';
 import { HomeComponent } from '../app/home/home.component';
-import { MembersComponent } from '../app/members/members.component';
 import { AdminComponent } from '../app/admin/admin.component';
 import { StructureComponent } from '../app/home/routes/structure/structure.component';
 import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
@@ -17,15 +16,13 @@ import { AdminModule } from '../app/admin/admin.module';
 import { MembersModule } from '../app/members/members.module';
 import { IndexComponent as AdminIndex } from '../app/admin/routes/index/index.component';
 import { ElectionTrackingComponent } from '../app/admin/routes/election-tracking/election-tracking.component';
-import { MemberIndexComponent } from '../app/members/routes/member-index/member-index.component';
 import { AdminManagementComponent } from '../app/admin/routes/admin-management/admin-management.component';
 import { AdminMessagesComponent } from '../app/admin/routes/admin-messages/admin-messages.component';
 import { UserpageComponent } from '../app/userpage/userpage.component';
-import { MemberMessageComponent } from '../app/members/routes/member-message/member-message.component';
-import { MemberSecretariatComponent } from '../app/members/routes/member-secretariat/member-secretariat.component';
-import { MemberCandidatesComponent } from '../app/members/routes/member-candidates/member-candidates.component';
-import { MemberSettingsComponent } from '../app/members/routes/member-settings/member-settings.component';
 import { DoneComponent } from '../app/home/routes/done/done.component';
+import { MembersComponent } from '../app/members/members.component';
+import { MemberSideMenuComponent } from '../app/members/components/member-side-menu/member-side-menu.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const appRoutes: Routes = [
   {
@@ -65,36 +62,10 @@ const appRoutes: Routes = [
       }
     ]
   },
-
   {
     path: 'member',
-    pathMatch: 'full',
     component: MembersComponent,
-    children: [
-      {
-        path: '',
-        component: MemberIndexComponent
-      },
-      {
-        path: 'message',
-        pathMatch: 'full',
-        component: MemberMessageComponent
-      },
-      {
-        path: 'secretariat',
-        pathMatch: 'full',
-        component: MemberSecretariatComponent
-      },
-      {
-        path: 'candidates',
-        component: MemberCandidatesComponent
-      },
-      {
-        path: 'settings',
-        pathMatch: 'full',
-        component: MemberSettingsComponent
-      }
-    ]
+    loadChildren: '../app/members/members.module#MembersModule'
   },
   {
     path: 'admin',
@@ -134,7 +105,7 @@ const appRoutes: Routes = [
     CommonModule,
     HomeModule,
     AdminModule,
-    MembersModule,
+    FontAwesomeModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false }
@@ -143,6 +114,9 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  declarations: []
+  declarations: [
+    MembersComponent,
+    MemberSideMenuComponent
+  ]
 })
 export class RoutesModule { }
