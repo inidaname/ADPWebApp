@@ -1,7 +1,7 @@
 <div class="main">
     <section>
         <h3>User Profile</h3>
-        <div class="user">
+        <div class="user" *ngIf="memberDetail !== undefined;else memberWaiting">
             <figure>
                 <img [src]="memberDetail.passport" alt="">
             </figure>
@@ -24,6 +24,9 @@
                 </ul>
             </div>
         </div>
+        <ng-template class="user" #memberWaiting>
+            <p>Your information is loading</p>
+        </ng-template>
         <div class="edit">
             <button>Edit Settings</button>
         </div>

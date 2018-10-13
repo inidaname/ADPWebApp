@@ -16,7 +16,6 @@ export class MembersComponent implements OnInit {
     const obs = this.member.getMemberByID();
     obs.subscribe((member: any) => {
       this.memberDetail = member;
-      console.log(this.memberDetail)
     });
   }
 
