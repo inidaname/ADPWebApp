@@ -36,7 +36,6 @@ import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
 import { FileUploadModule } from 'ng2-file-upload';
-import { HomeRoutesModule } from './routes/home-routes.module';
 
 @NgModule({
   imports: [
@@ -49,7 +48,6 @@ import { HomeRoutesModule } from './routes/home-routes.module';
     Angular4PaystackModule,
     NgxHmCarouselModule,
     InternationalPhoneNumberModule,
-    HomeRoutesModule,
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
@@ -77,6 +75,11 @@ import { HomeRoutesModule } from './routes/home-routes.module';
     CandidatesComponent,
     TruncatePipe,
     FormatPipe,
+    FooterBarComponent,
+    HeadBarComponent,
+    HomeComponent,
+    PaymentComponent,
+    ModalComponent,
     DoneComponent
   ],
   providers: [

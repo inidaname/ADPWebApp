@@ -9,7 +9,6 @@ import { ModalService } from './services/modals/modals.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = 'adpwebapp';
   activateModal = true;
   theState: Boolean = false;
   objectData: object;

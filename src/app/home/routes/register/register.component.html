@@ -18,7 +18,7 @@
                         <div class="prB" [ngStyle]="{width: progressBar}">{{progressBar || '&nbsp;'}}</div>
                     </figcaption>
                 </figure>
-                <input type="file" aria-label="Passport" name="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader">
+                <input type="file" aria-label="Passport" #picBar name="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader">
                 <button (click)="clickUpload()">upload passport <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.94922 6.875L1.92578 9.5H10.0742L7.44922 6L5.42578 8.625L3.94922 6.875ZM11.25 10.0742C11.25 10.3841 11.1315 10.6576 10.8945 10.8945C10.6576 11.1315 10.3841 11.25 10.0742 11.25H1.92578C1.61589 11.25 1.34245 11.1315 1.10547 10.8945C0.86849 10.6576 0.75 10.3841 0.75 10.0742V1.92578C0.75 1.61589 0.86849 1.34245 1.10547 1.10547C1.34245 0.86849 1.61589 0.75 1.92578 0.75H10.0742C10.3841 0.75 10.6576 0.86849 10.8945 1.10547C11.1315 1.34245 11.25 1.61589 11.25 1.92578V10.0742Z" fill="white"/>
                     </svg>
@@ -77,8 +77,8 @@
             </div>
         </section>
         <section class="voting-unit">
-            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.stateName.invalid && formReg.controls.stateName.touched}">
-                <label for="state">State <em *ngIf="formReg.controls.stateName.untouched || formReg.controls.stateName.valid;else stateError">*</em> <ng-template #stateError><em style="color: red;">*</em></ng-template></label>
+            <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.stName.invalid && formReg.controls.stName.touched}">
+                <label for="state">State <em *ngIf="formReg.controls.stName.untouched || formReg.controls.stName.valid;else stateError">*</em> <ng-template #stateError><em style="color: red;">*</em></ng-template></label>
                 <select name="state"  id="state" formControlName="stName" (change)="setStateName($event)">
                     <option value="">Select State</option>
                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
@@ -87,7 +87,7 @@
 
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.lgaName.invalid && formReg.controls.lgaName.touched}">
                 <label for="lga">Local Government <em *ngIf="formReg.controls.lgaName.untouched || formReg.controls.lgaName.valid;else lgaError">*</em> <ng-template #lgaError><em style="color: red;">*</em></ng-template></label>
-                <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, f.stateName.value)">
+                <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, f.stName.value)">
                     
                     <option value="" *ngIf="localGovt == undefined || localGovt.length === 0; else lgaOptions">Select State First</option>
                     <ng-template #lgaOptions>
@@ -98,7 +98,7 @@
             </div>
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.wardName.invalid && formReg.controls.wardName.touched}">
                 <label for="ward">Ward <em *ngIf="formReg.controls.wardName.untouched || formReg.controls.wardName.valid;else wardError">*</em> <ng-template #wardError><em style="color: red;">*</em></ng-template></label>
-                <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
+                <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, f.lgaName.value, f.stName.value)">
                     <option value="" *ngIf="wardList == undefined || wardList.length === 0; else wardOptions">Select Local Govt First</option>
 
                     <ng-template #wardOptions>

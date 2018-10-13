@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HomeComponentsModule } from '../app/home/components/home-components.module';
+import { HomeModule } from 'src/app/home/home.module';
 import { StorageServiceModule} from 'angular-webstorage-service';
 
 
@@ -17,13 +17,52 @@ import { AdminMessagesComponent } from '../app/admin/routes/admin-messages/admin
 import { UserpageComponent } from '../app/userpage/userpage.component';
 import { MembersComponent } from '../app/members/members.component';
 import { MemberSideMenuComponent } from '../app/members/components/member-side-menu/member-side-menu.component';
+import { IndexComponent } from '../app/home/routes/index/index.component';
+import { AboutComponent } from '../app/home/routes/about/about.component';
+import { ContactComponent } from '../app/home/routes/contact/contact.component';
+import { RegisterComponent } from '../app/home/routes/register/register.component';
+import { DoneComponent } from '../app/home/routes/done/done.component';
+import { StructureComponent } from '../app/home/routes/structure/structure.component';
+import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
 import { AuthGuard } from '../app/auth.guard';
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    loadChildren: '../app/home/home.module#HomeModule'
+    children: [
+      {
+        path: '',
+        component: IndexComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        data: {
+          title: 'Contact Us'
+        }
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'done',
+        component: DoneComponent
+      },
+      {
+        path: 'structure',
+        component: StructureComponent
+      },
+      {
+        path: 'candidates',
+        component: CandidatesComponent
+      }
+    ]
   },
   {
     path: 'member',
@@ -69,7 +108,7 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     AdminModule,
-    HomeComponentsModule,
+    HomeModule,
     FontAwesomeModule,
     StorageServiceModule,
     RouterModule.forRoot(

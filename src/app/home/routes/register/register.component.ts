@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { RegisterService } from '../../services/register/register.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { minimumAge, justOneName } from './singleName.directive';
@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
   activateModal: boolean;
   objectData: any;
   passportValue: string = null;
+  @ViewChild('picBar') picELement: ElementRef;
   progressBar = ' ';
   public uploader: FileUploader = new FileUploader({url: config.api.cloudinary});
 
@@ -100,7 +101,7 @@ export class RegisterComponent implements OnInit {
   }
 
   clickUpload() {
-    document.getElementById('passport').click();
+    this.picELement.nativeElement.click();
   }
 
   setWardname(event, stateName) {

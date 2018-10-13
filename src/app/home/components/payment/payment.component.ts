@@ -80,7 +80,6 @@ export class PaymentComponent implements OnInit {
     paymentCancel() {
     }
     paymentDone(event) {
-        console.log(event);
         const paymentData = {
             amount: this.payAmount,
             purpose: this.purpose,
