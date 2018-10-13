@@ -1,8 +1,9 @@
 <div class="side-menu" #sideMenu>
+<div *ngIf="member">
   <h4 class="admin-title">Member Dashboard</h4>
   <section class="profile">
-    <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
-    <p>Hassan Uche K.</p>
+    <img [src]="member.passport || 'assets/adplogo.jpg'" class="profile_img" [alt]="member.fullName">
+    <p>{{member.fullName}}</p>
   </section>
   <section class="list-menu">
     <ul (click)="moveSide()">
@@ -14,6 +15,7 @@
       <li>Log Out</li>
     </ul>
   </section>
+</div>
 </div>
 <div class="top-profile" #topSide>
   <span id="menu-bar">

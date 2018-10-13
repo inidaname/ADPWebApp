@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../../../../config';
 
 @Injectable({
@@ -14,8 +14,11 @@ export class LoginService {
             phoneNumber: phone,
             password: password
         };
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
         const login = this.http
-            .post(config.api.api + '/login', data);
+            .post(config.api.api + '/login', data, {headers});
 
         return login;
     }

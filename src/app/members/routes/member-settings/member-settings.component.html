@@ -3,25 +3,29 @@
         <h3>User Profile</h3>
         <div class="user">
             <figure>
-                <img src="" alt="">
+                <img [src]="memberDetail.passport" alt="">
             </figure>
             <div class="details">
                 <ul>
-                    <li>Person Name</li>
-                    <li>Party Status</li>
-                    <li>Fee</li>
-                    <li>User Name</li>
+                    <li>Name: {{memberDetail.fullName}}</li>
+                    <li>Status: {{(memberDetail.isSuspended === true)? 'Suspended' : 'Active'}}</li>
+                    <li>Fee: UnPaid</li>
+                    <li>Username: none</li>
+                    <li>PVC Number: {{memberDetail.pvc || 'Not Provided'}}</li>
                 </ul>
                 <ul>
-                    <li>State Constituency</li>
-                    <li>Senate Constituency</li>
-                    <li>Federal Constituency</li>
-                    <li>State</li>
+                    <li>Polling Unit: {{memberDetail.pollingUnit || 'Not Provided'}}</li>
+                    <li>Ward Name: {{memberDetail.wardName || 'Not Provided'}}</li>
+                    <li>LGA: {{memberDetail.lgaName || 'Not Provided'}}</li>
+                    <li>State Constituency: Not Provided</li>
+                    <li>Senate Constituency: {{memberDetail.Senatorial || 'Not Provided'}}</li>
+                    <li>Federal Constituency: {{memberDetail.FedConstituency || 'Not Provided'}}</li>
+                    <li>State: {{memberDetail.stateName || 'Not Provided'}}</li>
                 </ul>
             </div>
         </div>
         <div class="edit">
-            <button>Settings</button>
+            <button>Edit Settings</button>
         </div>
     </section>
     <section>

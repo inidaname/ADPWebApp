@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from '../../services/member/member.service';
 
 @Component({
   selector: 'app-member-settings',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberSettingsComponent implements OnInit {
 
-  constructor() { }
+  memberDetail: any;
+  constructor(private member: MemberService) { }
 
   ngOnInit() {
+    const obs = this.member.getMemberByID();
+    obs.subscribe((res: any) => this.memberDetail = res);
   }
 
 }

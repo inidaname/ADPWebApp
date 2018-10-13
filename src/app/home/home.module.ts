@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -21,7 +20,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { NewsComponent } from './components/news/news.component';
 import { MissionComponent } from './components/mission/mission.component';
 import { AboutSectionComponent } from './components/about-section/about-section.component';
-import { LoginSectionComponent } from '../../components/login-section/login-section.component';
+import { LoginSectionComponent } from './components/login-section/login-section.component';
 import { QuicklinksComponent } from './components/quicklinks/quicklinks.component';
 import { RouterModule } from '@angular/router';
 import { IndexComponent } from './routes/index/index.component';
@@ -37,6 +36,7 @@ import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
 import { FileUploadModule } from 'ng2-file-upload';
+import { HomeRoutesModule } from './routes/home-routes.module';
 
 @NgModule({
   imports: [
@@ -47,9 +47,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     FormsModule,
     HttpClientModule,
     Angular4PaystackModule,
-    BrowserModule,
     NgxHmCarouselModule,
     InternationalPhoneNumberModule,
+    HomeRoutesModule,
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
@@ -62,9 +62,6 @@ import { FileUploadModule } from 'ng2-file-upload';
     }),
   ],
   declarations: [
-    FooterBarComponent,
-    HeadBarComponent,
-    HomeComponent,
     SliderComponent,
     NewsComponent,
     MissionComponent,
@@ -80,16 +77,12 @@ import { FileUploadModule } from 'ng2-file-upload';
     CandidatesComponent,
     TruncatePipe,
     FormatPipe,
-    PaymentComponent,
-    ModalComponent,
     DoneComponent
   ],
   providers: [
     ModalService
   ],
 
-  exports: [
-    HomeComponent
-  ]
+  exports: []
 })
 export class HomeModule { }

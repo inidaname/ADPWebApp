@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NewsService } from '../../services/news/news.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { NewsService } from '../../services/news/news.service';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, AfterViewInit {
 
   newsList: any;
   readyState = false;
@@ -16,11 +16,14 @@ export class NewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const obs = this.newsService.headLines();
-    obs.subscribe((news: any) => {
-      this.readyState = true;
-      return this.newsList = news.items;
-    });
+  }
+
+  ngAfterViewInit() {
+    // const obs = this.newsService.headLines();
+    // obs.subscribe((news: any) => {
+    //   this.readyState = true;
+    //   return this.newsList = news.items;
+    // });
   }
 
 

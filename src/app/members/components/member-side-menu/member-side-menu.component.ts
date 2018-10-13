@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
 import { faBars, faComments } from '@fortawesome/free-solid-svg-icons';
+import { MembersComponent } from '../../members.component';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-member-side-menu',
@@ -9,6 +11,7 @@ import { faBars, faComments } from '@fortawesome/free-solid-svg-icons';
 
 export class MemberSideMenuComponent implements OnInit {
 
+    @Input() member: any;
     bars = faBars;
     message = faComments;
     @ViewChild('sideMenu') sideMenu: ElementRef;
@@ -16,7 +19,8 @@ export class MemberSideMenuComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
     moveSide() {
         if (this.sideMenu.nativeElement.classList.contains('checkMe')) {
             this.sideMenu.nativeElement.style.width = '0px';

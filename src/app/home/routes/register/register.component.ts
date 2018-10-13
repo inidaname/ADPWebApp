@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
       phoneNumber: ['', Validators.required],
       email: ['contact@adp.ng'/*, Validators.email('ad@k.l')*/],
       residenceAdd: [''],
-      stateName: ['', Validators.required],
+      stName: ['', Validators.required],
       lgaName: ['', Validators.required],
       wardName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],

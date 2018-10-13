@@ -79,7 +79,7 @@
         <section class="voting-unit">
             <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.stateName.invalid && formReg.controls.stateName.touched}">
                 <label for="state">State <em *ngIf="formReg.controls.stateName.untouched || formReg.controls.stateName.valid;else stateError">*</em> <ng-template #stateError><em style="color: red;">*</em></ng-template></label>
-                <select name="state"  id="state" formControlName="stateName" (change)="setStateName($event)">
+                <select name="state"  id="state" formControlName="stName" (change)="setStateName($event)">
                     <option value="">Select State</option>
                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
                 </select>

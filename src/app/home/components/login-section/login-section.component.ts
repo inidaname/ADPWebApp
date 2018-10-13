@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../app/home/services/login/login.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login/login.service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-section',
@@ -14,7 +16,8 @@ export class LoginSectionComponent implements OnInit {
 
   constructor(
     private login: LoginService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -27,14 +30,19 @@ export class LoginSectionComponent implements OnInit {
 
   loginUser() {
     if (this.loginForm.invalid) {
-      console.log(event);
       return;
     }
 
     const {loginPhone, loginPassword} = this.loginForm.value;
     const obs = this.login.logInUser(loginPhone, loginPassword);
 
-    obs.subscribe((data) => {
+    obs.subscribe((data: any) => {
+      if (data.token) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.user._id);
+        this.router.navigate(['/member']);
+      }
       console.log(data);
     });
 
