@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
     topMessage: string;
     objectData: any;
     triggedState: boolean;
-    payStackKey: string = config.apiKey.paystack_test;
+    payStackKey: string = config.apiKey.paystack_live;
 
     constructor(
         private share: SharedService,

@@ -1,3 +1,50 @@
-<p>
-  userpage works!
-</p>
+<section>
+  <div class="logOver"></div>
+  <div class="top">
+    <span><a [routerLink]="['/']">Home</a></span>
+    <span>links</span>
+  </div>
+  <div class="user">
+    <figure>
+      <img [src]="user.passport" alt="">
+    </figure>
+    <div class="detail">
+      <h3>{{user.fullName}}</h3>
+      <p>VI Number: {{user.pvc}}</p>
+    </div>
+  </div>
+</section>
+<section class="below">
+  <h3>Profile Detail</h3>
+  <div class="userDetail">
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>{{user.fullName}}</td>
+      </tr>
+      <tr>
+        <th>Party Position</th>
+        <td>{{user.adminLevel}}</td>
+      </tr>
+      <tr>
+        <th>Local Govt</th>
+        <td>{{user.lgaName}}</td>
+      </tr>
+      <tr>
+        <th>State</th>
+        <td>{{user.stateName}}</td>
+      </tr>
+      <tr>
+        <th>Member Since</th>
+        <td>{{ user.dateCreated | date:fullDate }}</td>
+      </tr>
+    </table>
+    <section>
+      <h4>Description</h4>
+      <p>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam vero porro consequuntur voluptatibus voluptates perspiciatis id dolores vitae. Aspernatur necessitatibus placeat deserunt repudiandae quos minus similique quae, error labore quo.
+      </p>
+    </section>
+  </div>
+</section>

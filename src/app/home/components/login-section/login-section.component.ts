@@ -13,6 +13,7 @@ export class LoginSectionComponent implements OnInit {
 
   loginForm: FormGroup;
   lgBtn = true;
+  userFailed: string;
 
   constructor(
     private login: LoginService,
@@ -42,8 +43,9 @@ export class LoginSectionComponent implements OnInit {
         localStorage.setItem('token', data.token);
         localStorage.setItem('id', data.user._id);
         this.router.navigate(['/member']);
+      } else {
+        this.userFailed = 'Login failed, please check your login details';
       }
-      console.log(data);
     });
 
   }

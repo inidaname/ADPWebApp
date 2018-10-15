@@ -22,4 +22,11 @@ export class MemberService {
 
         return member;
     }
+
+    getMemberByUName(username: string) {
+        const user = this.http
+        .get(config.api.api + '/username/' + username);
+
+        return user;
+    }
 }

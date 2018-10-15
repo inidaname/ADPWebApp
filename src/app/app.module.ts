@@ -5,11 +5,13 @@ import { RoutesModule } from '../routes/routes.module';
 
 import { AppComponent } from './app.component';
 import { UserpageComponent } from './userpage/userpage.component';
+import { StatesComponent } from './states/states.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserpageComponent
+    UserpageComponent,
+    StatesComponent
   ],
   imports: [
     BrowserModule,
