@@ -1,50 +1,177 @@
-<section>
-  <div class="logOver"></div>
-  <div class="top">
-    <span><a [routerLink]="['/']">Home</a></span>
-    <span>links</span>
-  </div>
-  <div class="user">
-    <figure>
-      <img [src]="user.passport" alt="">
-    </figure>
-    <div class="detail">
-      <h3>{{user.fullName}}</h3>
-      <p>VI Number: {{user.pvc}}</p>
+<ng-container *ngIf="setState; else userProfile">
+  <section>
+    <div class="top">
+      <span><a [routerLink]="['/']">Home</a></span>
+      <span>links</span>
     </div>
-  </div>
-</section>
-<section class="below">
-  <h3>Profile Detail</h3>
-  <div class="userDetail">
-    <table>
-      <tr>
-        <th>Name</th>
-        <td>{{user.fullName}}</td>
-      </tr>
-      <tr>
-        <th>Party Position</th>
-        <td>{{user.adminLevel}}</td>
-      </tr>
-      <tr>
-        <th>Local Govt</th>
-        <td>{{user.lgaName}}</td>
-      </tr>
-      <tr>
-        <th>State</th>
-        <td>{{user.stateName}}</td>
-      </tr>
-      <tr>
-        <th>Member Since</th>
-        <td>{{ user.dateCreated | date:fullDate }}</td>
-      </tr>
-    </table>
-    <section>
-      <h4>Description</h4>
-      <p>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam vero porro consequuntur voluptatibus voluptates perspiciatis id dolores vitae. Aspernatur necessitatibus placeat deserunt repudiandae quos minus similique quae, error labore quo.
-      </p>
-    </section>
-  </div>
-</section>
+    <h2>{{prad}} State Secretariat</h2>
+    <div class="logOver"></div>
+    <div class="user user-state">
+      <figure>
+        <h4>The State Chairman</h4>
+        <img [src]="chairmanImg" alt="Office Secretariat">
+        <figcaption>Name</figcaption>
+      </figure>
+      <div class="content">
+        <div class="contat-detail">
+          <h3>Contact Details of {{nameofState | titlecase }}</h3>
+          <ng-container *ngIf="contact; else noContact">
+            <table>
+              <tr>
+                <th>Phone:</th>
+                <td>{{contact.officeNo}}</td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td>{{contact.officeEmail}}</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>{{contact.address}}</td>
+              </tr>
+              <tr>
+                <th [innerText]="place"></th>
+                <td [innerText]="number"></td>
+              </tr>
+              <tr>
+                <th>Registered Members:</th>
+                <td>3212</td>
+              </tr>
+            </table>
+          </ng-container>
+          <ng-template #noContact>
+            <table>
+              <tr>
+                <th>Phone:</th>
+                <td>+234 906 000 0536</td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td>contact@adp.ng</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td></td>
+              </tr>
+            </table>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="other-detail">
+      <label for="localgovt">Local Govt</label>
+      <select name="localgovt" id="localgovt" #localGovt (change)="getWardCon()">
+        <option value="">Select Below</option>
+        <option *ngFor="let item of lgas" [value]="item._id">{{item._id}}</option>
+      </select>
+      <label for="wardList">Ward Area</label>
+      <select name="wardList" id="wardList">
+        <option value="">Select Below</option>
+        <option *ngFor="let item of wards" [value]="item._id">{{item._id}}</option>
+      </select>
+      <button (click)="getLocalGvtCont()">Back</button>
+    </div>
+    <div class="excoslist">
+      <ng-container *ngIf="excos !== undefined && excos.length > 0; then thenTemplate; else elseTemplate"></ng-container>
+      <ng-template #thenTemplate>
+        <ul class="displayExcos">
+          <li *ngFor="let item of excos;">
+            <figure *ngIf="item.position == 'Vice Chairman' || item.position == 'Secretary' || item.position == 'Organizing Secretary'">
+              <h5 [innerText]="item.position"></h5>
+              <img [src]="item.personalInfo.passport || '/assets/adplogo.jpg'" alt="">
+              <figcaption [innerText]="item.personalInfo.fullname"></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </ng-template>
+      <ng-template #elseTemplate>
+        <p>
+          There are no excos registered for this location please contact the head office for more information
+        </p>
+      </ng-template>
+      
+    </div>
+  </section>
+  <section>
+    <div class="candidates">
+      <h3>Some of the <span *ngIf="prad.toUpperCase() !== 'FCT'; else fctSpan">{{prad | titlecase}} </span> <ng-template #fctSpan> <span>{{prad | uppercase}}</span> </ng-template> <span *ngIf="prad.toUpperCase() !== 'FCT'">State</span> Candidates for the 2019 Election</h3>
+      <ul class="candidates-list">
+          <li>
+              <figure>
+                <h5>Vice Chairman</h5>
+                <img src="/assets/adplogo.jpg" alt="">
+                <figcaption>Hassan Sani</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <h5>Vice Chairman</h5>
+                <img src="/assets/adplogo.jpg" alt="">
+                <figcaption>Hassan Sani</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <h5>Vice Chairman</h5>
+                <img src="/assets/adplogo.jpg" alt="">
+                <figcaption>Hassan Sani</figcaption>
+              </figure>
+            </li>
+        </ul>
+    </div>
+  </section>
+</ng-container>
+<ng-template #userProfile>
+  <section>
+    <div class="logOver"></div>
+    <div class="top">
+      <span><a [routerLink]="['/']">Home</a></span>
+      <span>links</span>
+    </div>
+    <div class="user">
+      <figure>
+        <img [src]="user.passport" alt="">
+      </figure>
+      <div class="detail">
+        <h3>{{user.fullName}}</h3>
+        <p>VI Number: {{user.pvc}}</p>
+      </div>
+    </div>
+  </section>
+  <section class="below">
+    <h3>Profile Detail</h3>
+    <div class="userDetail">
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>{{user.fullName}}</td>
+        </tr>
+        <tr>
+          <th>Party Position</th>
+          <td>{{user.adminLevel}}</td>
+        </tr>
+        <tr>
+          <th>Local Govt</th>
+          <td>{{user.lgaName}}</td>
+        </tr>
+        <tr>
+          <th>State</th>
+          <td>{{user.stateName}}</td>
+        </tr>
+        <tr>
+          <th>Member Since</th>
+          <td>{{ user.dateCreated | date:fullDate }}</td>
+        </tr>
+      </table>
+      <section>
+        <h4>Description</h4>
+        <p>
+  
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam vero porro consequuntur voluptatibus voluptates perspiciatis id dolores vitae. Aspernatur necessitatibus placeat deserunt repudiandae quos minus similique quae, error labore quo.
+        </p>
+      </section>
+    </div>
+  </section>
+</ng-template>

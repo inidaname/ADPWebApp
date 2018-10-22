@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges } from '@ang
 import { faBars, faComments } from '@fortawesome/free-solid-svg-icons';
 import { MembersComponent } from '../../members.component';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/home/services/auth/auth.service';
+import { AuthService } from '../../../home/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

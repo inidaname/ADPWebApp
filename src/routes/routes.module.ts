@@ -25,6 +25,8 @@ import { DoneComponent } from '../app/home/routes/done/done.component';
 import { StructureComponent } from '../app/home/routes/structure/structure.component';
 import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
 import { AuthGuard } from '../app/auth.guard';
+import { AdminSecretariatComponent } from '../app/admin/routes/admin-secretariat/admin-secretariat.component';
+
 
 const appRoutes: Routes = [
   {
@@ -88,6 +90,10 @@ const appRoutes: Routes = [
         component: AdminManagementComponent
       },
       {
+        path: 'secretariat',
+        component: AdminSecretariatComponent
+      },
+      {
         path: 'messages',
         component: AdminMessagesComponent
       }
@@ -102,7 +108,6 @@ const appRoutes: Routes = [
     redirectTo: '/'
   }
 ];
-
 
 @NgModule({
   imports: [

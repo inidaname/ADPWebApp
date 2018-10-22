@@ -12,6 +12,7 @@ import { SideMuneComponent } from './components/side-menu/side-menu.component';
 import { TopProfileComponent } from './components/top-profile/top-profile.component';
 import { AdminManagementComponent } from './routes/admin-management/admin-management.component';
 import { AdminMessagesComponent } from './routes/admin-messages/admin-messages.component';
+import { AdminSecretariatComponent } from './routes/admin-secretariat/admin-secretariat.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { AdminMessagesComponent } from './routes/admin-messages/admin-messages.c
     SideMuneComponent,
     TopProfileComponent,
     AdminManagementComponent,
-    AdminMessagesComponent
+    AdminMessagesComponent,
+    AdminSecretariatComponent
   ]
 })
 export class AdminModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../home/services/auth/auth.service';
 
 
 @Component({
@@ -8,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SideMuneComponent implements OnInit {
-    constructor() {}
+    constructor(
+        private logout: AuthService,
+    ) {}
 
     ngOnInit() {
+    }
+    userLogout() {
+        this.logout.logout();
     }
 }
