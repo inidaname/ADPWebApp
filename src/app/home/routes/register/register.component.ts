@@ -8,6 +8,7 @@ import { ModalService } from '../../services/modals/modals.service';
 import {  FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { config } from '../../../../config';
+import { IUserData } from '../../interface/userData';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   error = false;
   registered = false;
-  member: any;
+  member: IUserData;
   formOk = false;
   message: string;
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
@@ -128,7 +129,7 @@ export class RegisterComponent implements OnInit {
 
 
   // finally register user
-  regUser(data: any) {
+  regUser(data: IUserData) {
     const obs = this.register.registerUser(data);
     obs.subscribe((res: any) => {
       if (res.message) {

@@ -36,6 +36,7 @@ import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
 import { FileUploadModule } from 'ng2-file-upload';
+import { FormatPhonePipe } from './pipes/format-phone/format-phone.pipe';
 
 @NgModule({
   imports: [
@@ -80,7 +81,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     HomeComponent,
     PaymentComponent,
     ModalComponent,
-    DoneComponent
+    DoneComponent,
+    FormatPhonePipe
   ],
   providers: [
     ModalService

@@ -4,16 +4,35 @@
             <img src="assets/adplogo.jpg" alt="ADP Logo">
             <figcaption>Member Corner</figcaption>
         </figure>
-        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-            <input type="text" formControlName="loginPhone" placeholder="Phone Number">
-            <input type="password" placeholder="Password" formControlName="loginPassword">
-            <span class="keep"><input type="checkbox"> Keep me logged.</span>
-            <button type="submit" (click)="loginUser()">Login</button>
-            <p>
-                <span *ngIf="userFailed !== undefined" style="color:red;">{{userFailed}}</span>
-                <span>Don't have an account? </span>
-                <span><a [routerLink]="['/register']">Register</a></span>
-            </p>
-        </form>
+        <ng-container *ngIf="loading; else notLoading">
+            <div class="loading">
+                <img src="/assets/loading.gif" alt="">
+            </div>
+        </ng-container>
+        <ng-template #notLoading>
+            <ng-container *ngIf="loggedIn; else notLoggedIn">
+                <div class="loggedIn">
+
+                        <img [src]="userData.passport || '/assets/adplogo.jpg'" alt="">
+                        <h3 [innerText]="userData.fullName"></h3>
+                    <p>
+                        <a [routerLink]="[ '/member' ]">Go To Member Section</a> <span (click)="userLogout()">Log Out</span>
+                    </p>
+                </div>
+            </ng-container>
+            <ng-template #notLoggedIn>
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                    <input type="text" formControlName="loginPhone" placeholder="Phone Number">
+                    <input type="password" placeholder="Password" formControlName="loginPassword">
+                    <span class="keep"><input type="checkbox"> Keep me logged.</span> 
+                    <button type="submit" (click)="loginUser()">Login</button>
+                    <p>
+                        <span *ngIf="userFailed !== undefined" style="color:red;">{{userFailed}}</span>
+                        <span>Don't have an account? </span>
+                        <span><a [routerLink]="['/register']">Register</a></span>
+                    </p>
+                </form>
+            </ng-template>
+        </ng-template>
     </div>
 </div>

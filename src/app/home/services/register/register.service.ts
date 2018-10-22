@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { config } from '../../../../config';
+import { IUserData } from '../../interface/userData';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class RegisterService {
     return getPolling;
   }
 
-  registerUser(data: object) {
+  registerUser(data: IUserData) {
     const regData = this.register
     .post(config.api.api + '/register', data);
     return regData;
