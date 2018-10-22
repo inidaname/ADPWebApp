@@ -5,12 +5,12 @@
             <figcaption>Member Corner</figcaption>
         </figure>
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-            <span [innerText]="userFailed"></span>
             <input type="text" formControlName="loginPhone" placeholder="Phone Number">
             <input type="password" placeholder="Password" formControlName="loginPassword">
             <span class="keep"><input type="checkbox"> Keep me logged.</span>
-            <button (click)="loginUser()">Login</button>
+            <button type="submit" (click)="loginUser()">Login</button>
             <p>
+                <span *ngIf="userFailed !== undefined" style="color:red;">{{userFailed}}</span>
                 <span>Don't have an account? </span>
                 <span><a [routerLink]="['/register']">Register</a></span>
             </p>

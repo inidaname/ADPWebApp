@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login/login.service';
 import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { Router } from '@angular/router';
+import { ILogIndata } from '../../interface/logInData';
 
 @Component({
   selector: 'app-login-section',
@@ -13,7 +14,7 @@ export class LoginSectionComponent implements OnInit {
 
   loginForm: FormGroup;
   lgBtn = true;
-  userFailed: string;
+  userFailed: string = null;
 
   constructor(
     private login: LoginService,
@@ -30,6 +31,7 @@ export class LoginSectionComponent implements OnInit {
   }
 
   loginUser() {
+    event.preventDefault();
     if (this.loginForm.invalid) {
       return;
     }
@@ -37,15 +39,18 @@ export class LoginSectionComponent implements OnInit {
     const {loginPhone, loginPassword} = this.loginForm.value;
     const obs = this.login.logInUser(loginPhone, loginPassword);
 
-    obs.subscribe((data: any) => {
+    obs.subscribe((data: ILogIndata) => {
       if (data.token) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('token', data.token);
-        localStorage.setItem('id', data.user._id);
+        localStorage.setItem('id', data.user.id);
         this.router.navigate(['/member']);
       } else {
         this.userFailed = 'Login failed, please check your login details';
       }
+    },
+    (error: Error) => {
+      this.userFailed = 'Login failed, please check your login details and try again';
     });
 
   }
