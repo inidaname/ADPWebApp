@@ -14,23 +14,23 @@ export class StateService {
 
   getLocalGovt(stateName: any) {
     const lga = this.http
-    .get(config.api.local + '/getlga?stateName=' + stateName);
+    .get(config.api.api + '/getlga?stateName=' + stateName);
     const excos = this.http
-    .get(config.api.local + '/exco/' + stateName);
+    .get(config.api.api + '/exco/' + stateName);
     const candidates = this.http
-    .get(config.api.local + '/interest/' + stateName);
+    .get(config.api.api + '/interest/' + stateName);
     const contact = this.http
-    .get(config.api.local + '/contact/' + stateName);
+    .get(config.api.api + '/contact/' + stateName);
     return forkJoin([lga, excos, candidates, contact]);
   }
 
   getWard(lgaName: string, stateName: string) {
     const wards = this.http
-    .get(config.api.local + '/getward?stateName=' + stateName + '&lgaName=' + lgaName);
+    .get(config.api.api + '/getward?stateName=' + stateName + '&lgaName=' + lgaName);
     const excos = this.http
-    .get(config.api.local + '/exco/' + stateName + '/' + lgaName);
+    .get(config.api.api + '/exco/' + stateName + '/' + lgaName);
     const contact = this.http
-    .get(config.api.local + '/contact/lga/' + stateName + '/' + lgaName);
+    .get(config.api.api + '/contact/lga/' + stateName + '/' + lgaName);
     return forkJoin([wards, excos, contact]);
   }
 
