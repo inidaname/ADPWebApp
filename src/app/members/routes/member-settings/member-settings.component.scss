@@ -104,3 +104,32 @@
         }
     }
 }
+
+.editable{
+    input[type=file]{
+        display: none;
+    }
+    figcaption{
+        border: 1px solid adjust-color($color: #ccc, $red: 1, $green: 2, $blue: 3, $alpha: 1.0);
+        width: 100%;
+        border-radius: 20px;
+        height: 30px;
+        background-color: #ccc;
+        position: relative;
+        padding: 0;
+        .prB{
+            height: 100%;
+            position: static;
+            width: 0%;
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #173fc2 0%, #180452 186.42%);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+    }
+}

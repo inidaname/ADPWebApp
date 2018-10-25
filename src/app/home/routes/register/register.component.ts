@@ -5,7 +5,7 @@ import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
-import {  FileUploader} from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
 import { config } from '../../../../config';
 import { IUserData } from '../../interface/userData';

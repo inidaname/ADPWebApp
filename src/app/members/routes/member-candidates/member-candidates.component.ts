@@ -28,7 +28,7 @@ export class MemberCandidatesComponent implements OnInit {
 
   ngOnInit() {
     this.readOnly = false;
-    this.member.currentUserData.subscribe((res: IUserData) =>{
+    this.member.currentUserData.subscribe((res: IUserData) => {
       if (res !== null) {
         this.userData = res;
         this.readOnly = true;
@@ -45,7 +45,7 @@ export class MemberCandidatesComponent implements OnInit {
       if (err.status === 404) {
         this.contesting = false;
       }
-    })
+    });
   }
 
   pickForm(form: string) {

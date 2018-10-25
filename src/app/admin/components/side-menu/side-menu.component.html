@@ -1,17 +1,25 @@
-<div class="side-menu">
-  <h4 class="admin-title">Admin Panel</h4>
-  <section class="profile">
-    <img src="/assets/nChairman.jpg" class="profile_img" alt="Profile Image">
-    <p>Hassan Uche K.</p>
-  </section>
-  <section class="list-menu">
-    <ul>
-      <li><a [routerLink]="['/admin/']" routerLinkActive="router-link-active">Dashboard</a></li>
-      <li><a [routerLink]="['/admin/messages']" routerLinkActive="router-link-active">Messages</a></li>
-      <li><a [routerLink]="['/admin/members']" routerLinkActive="router-link-active">Manage Members</a></li>
-      <li><a [routerLink]="['/admin/secretariat']" routerLinkActive="router-link-active">Manage Secretariats</a></li>
-      <li><a [routerLink]="['/admin/elections']" routerLinkActive="router-link-active">Elections</a></li>
-      <li><a (click)="userLogout()">Log Out</a></li>
-    </ul>
-  </section>
+<div class="side-menu" #sideMenu>
+  <div>
+    <h4 class="admin-title">Admin Panel</h4>
+    <section class="profile">
+      <img [src]="proPic || '/assets/adplogo.jpg'" class="profile_img" alt="Profile Image">
+      <p>{{fullName}}</p>
+    </section>
+    <section class="list-menu">
+      <ul>
+        <li><a [routerLink]="['/admin/']" routerLinkActive="router-link-active">Dashboard</a></li>
+        <li><a [routerLink]="['/admin/messages']" routerLinkActive="router-link-active">Messages</a></li>
+        <li><a [routerLink]="['/admin/members']" routerLinkActive="router-link-active">Manage Members</a></li>
+        <li><a [routerLink]="['/admin/secretariat']" routerLinkActive="router-link-active">Manage Secretariats</a></li>
+        <li><a [routerLink]="['/admin/elections']" routerLinkActive="router-link-active">Elections</a></li>
+        <li><a (click)="userLogout()">Log Out</a></li>
+      </ul>
+    </section>
+  </div>
+  </div>
+<div class="top-profile" #topSide>
+  <span id="menu-bar">
+    <fa-icon [icon]="bars" (click)="moveSide()"></fa-icon>
+  </span>
 </div>
+

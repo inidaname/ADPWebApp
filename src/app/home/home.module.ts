@@ -7,6 +7,7 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { AgmCoreModule } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
 
@@ -35,7 +36,6 @@ import { ModalService } from './services/modals/modals.service';
 import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
-import { FileUploadModule } from 'ng2-file-upload';
 import { FormatPhonePipe } from './pipes/format-phone/format-phone.pipe';
 
 @NgModule({

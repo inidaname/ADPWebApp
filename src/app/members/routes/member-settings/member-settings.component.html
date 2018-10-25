@@ -4,11 +4,69 @@
         <div class="user" *ngIf="memberDetail; else memberWaiting">
             <ng-container *ngIf="editInit; then editable; else showUser"></ng-container>
             <ng-template #editable>
-                we came
+                <!-- <figure class="editable">
+                    <img [src]="passportValue" (click)="clickUpload()" alt="User Passport">
+                    <figcaption>
+                        <div class="prB" [ngStyle]="{width: progressBar}">{{progressBar || '&nbsp;'}}</div>
+                    </figcaption>
+                </figure> -->
+                <form [formGroup]="editProfile">
+                        <input type="file" aria-label="Passport" #picBar formControlName="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader">
+                    <div class="details">
+                        <ul>
+                            <li>Name: <input type="text" formControlName="fullName"></li>
+                            <li>Username: <input type="text" formControlName="username"></li>
+                            <li>PVC Number: <input type="text" formControlName="pvc"></li>
+                        </ul>
+                        <ul>
+
+                            <li>State:
+                                <select name="state"  id="state" formControlName="stName" (change)="setStateName($event)">
+                                    <option value="">Select State</option>
+                                    <option *ngFor="let item of state" [value]="item">{{item}}</option>
+                                </select>                        
+                            </li>
+                            <li>Senate Constituency: <input type="text" formControlName="Senatorial"></li>
+                            <li>Federal Constituency: <input type="text" formControlName="FedConstituency"></li>
+                            <li>State Constituency: <input type="text" formControlName="StateConstituency"></li>
+                            <li>LGA: 
+                            <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, editProfile.controls.stName.value)">
+                                
+                                <option value="" *ngIf="localGovt == undefined || localGovt.length === 0; else lgaOptions">Select State First</option>
+                                <ng-template #lgaOptions>
+                                    <option value="">Select Local Government</option>
+                                    <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+                                </ng-template>
+                            </select>
+
+                            </li>
+                            <li>Ward Name:
+                                <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, editProfile.controls.lgaName.value, editProfile.controls.stName.value)">
+                                    <option value="" *ngIf="wardList == undefined || wardList.length === 0; else wardOptions">Select Local Govt First</option>
+
+                                    <ng-template #wardOptions>
+                                        <option value="">Select Ward Area</option>
+                                        <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>
+                                    </ng-template>
+                                </select>
+                            </li>
+                            <li>Polling Unit:
+                            <select name="polling" formControlName="pollingUnit" id="polling" aria-label="Voting Unit">
+                                <option value="" *ngIf="pollingList == undefined || pollingList.length === 0; else pollingOptions">Select Ward Area First</option>
+
+                                <ng-template #pollingOptions>
+                                    <option value="">Select Voting Unit</option>
+                                    <option *ngFor="let item of pollingList" [value]="item._id">{{item._id}}</option>
+                                </ng-template>
+                            </select>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
             </ng-template>
             <ng-template #showUser>
             <figure>
-                <img [src]="memberDetail.passport || '/assets/adplogo.jpg'" alt="">
+                <img [src]="memberDetail.passport || '/assets/adplogo.jpg'" #thisImg alt="">
             </figure>
             <div class="details">
                 <ul>

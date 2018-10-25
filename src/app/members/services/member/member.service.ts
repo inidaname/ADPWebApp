@@ -30,4 +30,14 @@ export class MemberService {
 
         return user;
     }
+
+    upDateMember(member: IUserData) {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'authorization': this.token
+        });
+
+        const update = this.http.patch(config.api.api + '/member/' + this.id, member, {headers: headers})
+        return update;
+    }
 }

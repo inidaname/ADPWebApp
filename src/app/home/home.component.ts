@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from './services/shared/shared.service';
 import { ModalService } from './services/modals/modals.service';
@@ -10,7 +10,7 @@ import { NewsService } from './services/news/news.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, DoCheck {
+export class HomeComponent implements OnInit {
   activateModal = true;
   theState: Boolean = false;
   objectData: object;
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, DoCheck {
   theRef: number = Math.floor((Math.random() * 1000000000) + 1);
   router: string;
   newsA: boolean;
+  loading: boolean;
 
   constructor(
     private route: Router,
@@ -28,18 +29,14 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.share.currentStatus.subscribe((obj: any) => this.activateModal = obj.state);
-  }
-
-  ngDoCheck() {
-    if (!this.newsA) {
-      const obs = this.news.headLines();
-      obs.subscribe((news: any) => {
-        this.share.newsContent(news);
-      });
-      console.log('home');
-      this.newsA = true;
-    }
+    const obs = this.news.headLines();
+    obs.subscribe((news: any) => {
+      this.share.newsContent(news);
+      this.loading = false;
+    });
+    this.newsA = true;
   }
 
   openModal(id: string) {

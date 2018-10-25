@@ -1,35 +1,41 @@
 <div class="main">
   <section class="check-member">
     <div class="member">
-      <div class="group-field">
+      <div class="group-field" [formGroup]="memberCheck" >
         <label for="member">Member Info</label>
-        <input type="text" name="member" id="member" placeholder="Member ID Number">
+        <input type="text" formControlName="memberField" id="member" placeholder="Member ID Number">
         <ul>
-          <li><label><input type="radio" name="memberBy" id="idnumber" value="PVC Number"> By PVC Number</label></li>
-          <li><label><input type="radio" name="memberBy" id="phoneNumber" value="Phone Number"> By Phone Number</label></li>
-          <li><label><input type="radio" name="memberBy" id="cardnumber" value="Card Number"> By Card Number</label></li>
+          <li><label><input type="radio" formControlName="memberBy" id="idnumber" value="PVC Number"> By PVC Number</label></li>
+          <li><label><input type="radio" formControlName="memberBy" id="phoneNumber" value="Phone Number"> By Phone Number</label></li>
+          <li><label><input type="radio" formControlName="memberBy" id="cardnumber" value="Card Number"> By Card Number</label></li>
         </ul>
-        <button>Check Member</button>
+        <button (click)="checkMember()" [disabled]="!memberCheck.valid">Check Member</button>
       </div>
     </div>
     <div class="member">
       <div class="member-details">
+        <ng-container *ngIf="change; else changed">
+          it here
+        </ng-container>
+        <ng-template #changed>
         <figure>
-          <img src="" alt="Member Name">
+          <img [src]="passport" [alt]="gotName">
         </figure>
         <div class="details">
           <table>
-            <tr><th>Name:</th><td>Hassan Check</td></tr>
-            <tr><th>Local Govt:</th><td>Bida</td></tr>
-            <tr><th>State:</th><td>Niger</td></tr>
-            <tr><th>Status:</th><td>Paid</td></tr>
-            <tr><th>Date Joined:</th><td>June 17, 2018</td></tr>
+            <tr><th>Name:</th><td>{{gotName}}</td></tr>
+            <tr><th>Local Govt:</th><td>{{gotLGA}}</td></tr>
+            <tr><th>State:</th><td>{{gotState}}</td></tr>
+            <tr><th>Status:</th><td>{{gotStatus}}</td></tr>
+            <tr><th>Date Joined:</th><td>{{ gotDate | date }}</td></tr>
           </table>
+          {{msg}}
         </div>
+        </ng-template>
       </div>
     </div>
   </section>
-  <section class="list-members">
+  <!-- <section class="list-members">
     <div class="member">
       <h4>Members By States</h4>
       <table>
@@ -104,5 +110,5 @@
         </tbody>
       </table>
     </div>
-  </section>
+  </section> -->
 </div>

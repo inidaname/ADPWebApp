@@ -9,6 +9,7 @@ export class NewsService {
     constructor (private http: HttpClient) {}
 
     headLines() {
-        return this.http.get(config.api.rsstojson + '?rss_url=' + config.api.medium);
+        const news = this.http.get(config.api.api + '/news/');
+        return news;
     }
 }

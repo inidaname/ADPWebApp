@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
 
@@ -7,7 +7,7 @@ import { SharedService } from '../../services/shared/shared.service';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
-export class IndexComponent implements OnInit, AfterViewInit {
+export class IndexComponent implements OnInit {
   newsList: any;
 
   constructor(
@@ -22,24 +22,20 @@ export class IndexComponent implements OnInit, AfterViewInit {
       }
       window.scrollTo(0, 0);
     });
-    // let headlines;
-    // this.shared.currentNews.subscribe((news) => {
-    //   news.items.forEach((element: any, io) => {
-    //     const categories: Array<string> = element.categories;
-    //     categories.find(function(v: string, i: number) {
-    //       if (v === 'headlines') {
-    //         return headlines = news.items.splice(0, io)[0];
-    //       }
-    //     });
-    //   });
-    //   this.newsList = headlines;
-    // });
+    let headlines;
+    this.shared.currentNews.subscribe((news) => {
+      news.items.forEach((element: any, io) => {
+        const categories: Array<string> = element.categories;
+        categories.find(function(v: string, i: number) {
+          if (v === 'headlines') {
+            return headlines = news.items.splice(0, io)[0];
+          }
+        });
+      });
+      this.newsList = headlines;
+    });
 
   }
-
-  ngAfterViewInit() {
-  }
-
 
   btnClick(route: string) {
     this.router.navigateByUrl(route);

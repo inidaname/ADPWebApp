@@ -1,8 +1,16 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<div class="wrapper">
-  <app-side-menu></app-side-menu>
-  <div class="main">
-    <app-top-profile></app-top-profile>    
-    <router-outlet></router-outlet>
+<ng-container *ngIf="loading; then loadingPage; else doneLoading"></ng-container>
+<ng-template #loadingPage>
+  <p class="loading">
+    Loading
+  </p>
+</ng-template>
+<ng-template #doneLoading>
+  <div class="wrapper">
+    <app-side-menu></app-side-menu>
+    <div class="main">
+      <app-top-profile></app-top-profile>    
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+</ng-template>

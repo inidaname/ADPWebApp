@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MembersRouteModule } from './routes/member-routes.module';
+import { FileUploadModule } from 'ng2-file-upload';
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 
 import { MembersComponent } from './members.component';
 import { MemberSideMenuComponent } from './components/member-side-menu/member-side-menu.component';
@@ -24,7 +26,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot(Cloudinary, {
+      cloud_name: config.apiKey.cloudinary,
+      api_key: config.apiKey.clKey,
+      api_secret: config.apiKey.clSe,
+      upload_preset: 'adpnigeria'
+    })
   ],
   exports: [],
   declarations: [
