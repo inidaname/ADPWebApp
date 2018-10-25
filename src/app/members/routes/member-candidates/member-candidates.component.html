@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
   <div class="candidates">
     <h3>The Party Candidates for the coming election</h3>
     <ul>
@@ -21,21 +21,218 @@
       </li>
     </ul>
   </div>
-</section>
+</section> -->
 <section>
   <div class="contest">
     <h3>Party Forms for Contesting</h3>
+    <p *ngIf="contesting">You have already applied for a position</p>
     <ul>
       <li>
         <h4>Forms for Electoral Position</h4>
-        <img src="" alt="">
-        <button>Pick Form</button>
+        <img src="/assets/adplogo.jpg" alt="">
+        <button (click)="pickForm('electoral')" [disabled]="contesting">Pick Form</button>
       </li>
       <li>
         <h4>Forms for Party Officials</h4>
-        <img src="" alt="">
-        <button>Pick Form</button>
+        <img src="/assets/adplogo.jpg" alt="">
+        <button (click)="pickForm('exco')" [disabled]="contesting">Pick Form</button>
       </li>
     </ul>
   </div>
+</section>
+
+<section class="candForm" *ngIf="pickingForm">
+  <ng-container *ngIf="pickingForm === 'electoral'; then thenTemplate; else elseTemplate"></ng-container>
+  <ng-template #thenTemplate>
+    <form [formGroup]="PubexpressOfIn" (ngSubmit)="onSubmit('electoral')" class="formPart">
+      <h4>Expression of Interest for Public Office</h4>
+      <div class="innerForm">
+        <div class="input-field">
+          <label for="posterPic">Poster Picture <small>You Can always Change</small></label>
+          <input type="file" id="posterPic" formControlName="posterPic">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.position.touched && PubexpressOfIn.controls.position.invalid}">
+          <label for="position">Position Contesting For*</label>
+          <select name="position" id="position" formControlName="position">
+            <option value="">Select One Please</option>
+            <option value="Councilorship">Councilorship</option>
+            <option value="Council Chairman">Council Chirman</option>
+            <option value="State House of Assembly">State House of Assembly</option>
+            <option value="Federal House of Assembly">Federal House of Assembly</option>
+            <option value="Senator">Senator</option>
+            <option value="Governorship">Governorship</option>
+            <option value="Presidency">Presidency</option>
+          </select>
+        </div>
+        <div class="input-field"  [ngClass]="{'in-valid': PubexpressOfIn.controls.candidateName.touched && PubexpressOfIn.controls.candidateName.invalid}">
+          <label for="candidateName">Full Name*</label>
+          <input type="text" id="candidateName" [readonly]="readOnly" formControlName="candidateName" placeholder="Your Full Name">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.voterCard.touched && PubexpressOfIn.controls.voterCard.invalid}">
+          <label for="voterCard">Voter's Card Number <small>This is issued by INEC</small>*</label>
+          <input formControlName="voterCard" id="voterCard" [readonly]="readOnly" type="text" placeholder="Voter Card Number">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.maritalStatus.touched && PubexpressOfIn.controls.maritalStatus.invalid}">
+          <label for="maritalStatus">Marital Status*</label>
+          <select formControlName="maritalStatus" id="maritalStatus">
+            <option value="">Please Select One</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widow">Widow</option>
+          </select>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.withKids.touched && PubexpressOfIn.controls.withKids.invalid}">
+          <label for="withKids">Do You Have Children*</label>
+          <label class="radio">
+            <input type="radio" formControlName="withKids" value="Yes">
+            Yes
+          </label>
+          <label class="radio">
+            <input type="radio" formControlName="withKids" value="No">
+            No
+          </label>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.addressCand.touched && PubexpressOfIn.controls.addressCand.invalid}">
+          <label for="addressCand">Address</label>
+          <textarea formControlName="addressCand" [readonly]="readOnly" rows="3" cols="20"></textarea>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.eduLevel.touched && PubexpressOfIn.controls.eduLevel.invalid}">
+          <label for="eduLevel">Highest Level of Education*</label>
+          <select formControlName="eduLevel" id="eduLevel">
+            <option value="">Please Select One Below</option>
+            <option value="Secondary School">Secondary School</option>
+            <option value="NCE Level">NCE Level</option>
+            <option value="ND Level">ND Level</option>
+            <option value="HND Level">HND Level</option>
+            <option value="Bachelor Degree">Bachelor Degree</option>
+            <option value="Masters Degree">Masters Degree</option>
+            <option value="PhD">PhD</option>
+          </select>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': PubexpressOfIn.controls.secondarySch.touched && PubexpressOfIn.controls.secondarySch.invalid}">
+          <label for="secondarySch">Name of Secondary School*</label>
+          <input type="text" id="secondarySch" formControlName="secondarySch" placeholder="">
+        </div>
+        <div class="input-field">
+          <label for="highInstitute">Name of High Institution (If Applicable)</label>
+          <input type="text" formControlName="highInstitute" placeholder="">
+        </div>
+        <div class="input-field">
+          <label for="SechighInstitute">Name of Second High Institution (If Applicable)</label>
+          <input type="text" formControlName="SechighInstitute" placeholder="">
+        </div>
+        <div class="input-field">
+          <label>Place of Work</label>
+          <input type="text" formControlName="placeofwork" placeholder="Place of Work">
+        </div>
+        <input type="hidden" formControlName="category" value="Public Office">
+        <div class="input-field">
+          <label for="positionofwork">Position at Working Place</label>
+          <input type="text" formControlName="positionofwork" placeholder="Position Work">
+        </div>
+        <div class="input-field">
+          <button type="submit" [disabled]="!PubexpressOfIn.valid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #elseTemplate>
+    <form [formGroup]="ExoForm" (ngSubmit)="onSubmit('exco')" class="formPart">
+      <h4>Expression of Interest for Party Executives</h4>
+      <div class="innerForm innerForm-exco">
+        <div class="input-field">
+          <label for="posterPic">Poster Picture <small>You Can always Change</small></label>
+          <input type="file" id="posterPic" formControlName="posterPic" value="">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.position.touched && ExoForm.controls.position.invalid}">
+          <label class="label">Position Contesting For*</label>
+            <input type="text" formControlName="position" class="input" value="">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.level.touched && ExoForm.controls.level.invalid}">
+          <label for="level">Level of Position*</label>
+          <select name="level" id="level" formControlName="level">
+            <option value="">Select One Please</option>
+            <option value="Polling Unit">Polling Unit</option>
+            <option value="Ward">Ward</option>
+            <option value="Local Govt">Local Govt</option>
+            <option value="State">State</option>
+            <option value="National">National</option>
+          </select>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.candidateName.touched && ExoForm.controls.candidateName.invalid}">
+          <label for="candidateName">Full Name*</label>
+          <input type="text" id="candidateName" [readonly]="readOnly" formControlName="candidateName" placeholder="Your Full Name">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.voterCard.touched && ExoForm.controls.voterCard.invalid}">
+          <label for="voterCard">Voter's Card Number <small>This is issued by INEC</small>*</label>
+          <input formControlName="voterCard" [readonly]="readOnly" id="voterCard" type="text" placeholder="Voter Card Number">
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.maritalStatus.touched && ExoForm.controls.maritalStatus.invalid}">
+          <label for="maritalStatus">Marital Status*</label>
+          <select formControlName="maritalStatus" id="maritalStatus">
+            <option value="">Please Select One</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widow">Widow</option>
+          </select>
+        </div>
+        <div class="input-field"[ngClass]="{'in-valid': ExoForm.controls.withKids.touched && ExoForm.controls.withKids.invalid}">
+          <label for="withKids">Do You Have Children*</label>
+          <label class="radio">
+            <input type="radio" formControlName="withKids" value="Yes">
+            Yes
+          </label>
+          <label class="radio">
+            <input type="radio" formControlName="withKids" value="No">
+            No
+          </label>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.addressCand.touched && ExoForm.controls.addressCand.invalid}">
+          <label for="addressCand">Address*</label>
+          <textarea formControlName="addressCand" [readonly]="readOnly" rows="3" cols="20"></textarea>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.eduLevel.touched && ExoForm.controls.eduLevel.invalid}">
+          <label for="eduLevel">Highest Level of Education*</label>
+          <select formControlName="eduLevel" id="eduLevel">
+            <option value="">Please Select One Below</option>
+            <option value="Secondary School">Secondary School</option>
+            <option value="NCE Level">NCE Level</option>
+            <option value="ND Level">ND Level</option>
+            <option value="HND Level">HND Level</option>
+            <option value="Bachelor Degree">Bachelor Degree</option>
+            <option value="Masters Degree">Masters Degree</option>
+            <option value="PhD">PhD</option>
+          </select>
+        </div>
+        <div class="input-field" [ngClass]="{'in-valid': ExoForm.controls.secondarySch.touched && ExoForm.controls.secondarySch.invalid}">
+          <label for="secondarySch">Name of Secondary School*</label>
+          <input type="text" id="secondarySch" formControlName="secondarySch" placeholder="">
+        </div>
+        <div class="input-field">
+          <label for="highInstitute">Name of High Institution (If Applicable)</label>
+          <input type="text" formControlName="highInstitute" placeholder="">
+        </div>
+        <div class="input-field">
+          <label for="SechighInstitute">Name of Second High Institution (If Applicable)</label>
+          <input type="text" formControlName="SechighInstitute" placeholder="">
+        </div>
+        <div class="input-field">
+          <label>Place of Work</label>
+          <input type="text" formControlName="placeofwork" placeholder="Place of Work">
+        </div>
+        <input type="hidden" formControlName="category" value="Party Exco">
+        <div class="input-field">
+          <label for="positionofwork">Position at Working Place</label>
+          <input type="text" formControlName="positionofwork" placeholder="Position Work">
+        </div>
+        <div class="input-field">
+          <button type="submit" [disabled]="!ExoForm.valid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
 </section>

@@ -1,6 +1,14 @@
-<div class="wrapper">
-  <app-member-side-menu [member]="memberDetail"></app-member-side-menu>
-  <div class="main">
-    <router-outlet></router-outlet>
+<!-- <ng-container *ngIf="!isloggedin; else anotherPage">
+  <p class="beforeLoad">
+    Loading
+    <br> <span style="color: red;">{{bdNtwk}}</span>
+  </p>
+</ng-container> -->
+<!-- <ng-template #anotherPage> -->
+  <div class="wrapper">
+    <app-member-side-menu></app-member-side-menu>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
+<!-- </ng-template> -->

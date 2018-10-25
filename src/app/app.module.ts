@@ -5,6 +5,7 @@ import { RoutesModule } from '../routes/routes.module';
 
 import { AppComponent } from './app.component';
 import { UserpageComponent } from './userpage/userpage.component';
+import { MembersModule } from './members/members.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UserpageComponent } from './userpage/userpage.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RoutesModule
+    RoutesModule,
+    MembersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -47,14 +47,12 @@ export class ContactComponent implements OnInit {
       return;
     }
 
-    this.sentMessage = true;
-
-    // const obs = this.contactService.sendMessage(this.contactForm.value);
-    // obs.subscribe((sent: any) => {
-    //   if (sent.msg) {
-    //     this.sentMessage = true;
-    //   }
-    // });
+    const obs = this.contactService.sendMessage(this.contactForm.value);
+    obs.subscribe((sent: any) => {
+      if (sent.msg) {
+        this.sentMessage = true;
+      }
+    });
   }
 
 }

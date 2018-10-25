@@ -1,31 +1,31 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { NewsService } from '../../services/news/news.service';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { SharedService } from '../../services/shared/shared.service';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit, AfterViewInit {
+export class NewsComponent implements OnInit, AfterViewChecked {
 
-  newsList: any;
+  newsList: Array<any> = [];
   readyState = false;
 
   constructor(
-    private newsService: NewsService
+    private newsService: SharedService
   ) { }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    // const obs = this.newsService.headLines();
-    // obs.subscribe((news: any) => {
-    //   this.readyState = true;
-    //   return this.newsList = news.items;
-    // });
+  ngAfterViewChecked() {
+    // if (this.newsList.length === 0) {
+    //   this.newsService.currentNews.subscribe((news) => {
+    //     console.log(news);
+    //     this.readyState = true;
+    //     return this.newsList = news.items;
+    //   });
+    // }
   }
-
-
 
 }

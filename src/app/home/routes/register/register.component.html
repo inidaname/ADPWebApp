@@ -45,14 +45,15 @@
             <div>
                 <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched}">
                     <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
-                    <international-phone-number 
+                    <input type="number" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter phone number">
+                    <!-- <international-phone-number 
                     id="phoneNumber"
                     formControlName="phoneNumber"
                     placeholder="Enter phone number" 
                     [maxlength]="20" [defaultCountry]="'ng'"
                     aria-label="Phone Number"
                     [required]="true" 
-                    name="phoneNumber"></international-phone-number>
+                    name="phoneNumber"></international-phone-number> -->
                 </div>
                 <div class="input-field">
                     <label for="email">Email Address</label>

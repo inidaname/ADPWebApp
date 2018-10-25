@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { NewsService } from '../../services/news/news.service';
+import { SharedService } from '../../services/shared/shared.service';
 
 @Component({
   selector: 'app-index',
@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   constructor(
     private router: Router,
-    // private news: NewsService
+    private shared: SharedService
     ) { }
 
   ngOnInit() {
@@ -22,12 +22,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
       }
       window.scrollTo(0, 0);
     });
-  }
-
-  ngAfterViewInit() {
     // let headlines;
-    // const obs = this.news.headLines();
-    // obs.subscribe((news: any) => {
+    // this.shared.currentNews.subscribe((news) => {
     //   news.items.forEach((element: any, io) => {
     //     const categories: Array<string> = element.categories;
     //     categories.find(function(v: string, i: number) {
@@ -38,7 +34,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
     //   });
     //   this.newsList = headlines;
     // });
+
   }
+
+  ngAfterViewInit() {
+  }
+
 
   btnClick(route: string) {
     this.router.navigateByUrl(route);

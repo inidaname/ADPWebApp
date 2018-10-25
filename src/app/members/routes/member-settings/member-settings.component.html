@@ -1,9 +1,14 @@
 <div class="main">
     <section>
         <h3>User Profile</h3>
-        <div class="user" *ngIf="memberDetail !== undefined;else memberWaiting">
+        <div class="user" *ngIf="memberDetail; else memberWaiting">
+            <ng-container *ngIf="editInit; then editable; else showUser"></ng-container>
+            <ng-template #editable>
+                we came
+            </ng-template>
+            <ng-template #showUser>
             <figure>
-                <img [src]="memberDetail.passport" alt="">
+                <img [src]="memberDetail.passport || '/assets/adplogo.jpg'" alt="">
             </figure>
             <div class="details">
                 <ul>
@@ -23,12 +28,13 @@
                     <li>State: {{memberDetail.stateName || 'Not Provided'}}</li>
                 </ul>
             </div>
+            </ng-template>
         </div>
         <ng-template class="user" #memberWaiting>
             <p>Your information is loading</p>
         </ng-template>
         <div class="edit">
-            <button>Edit Settings</button>
+            <button (click)="EditProfile()" [innerText]="editBtn"></button>
         </div>
     </section>
     <section>

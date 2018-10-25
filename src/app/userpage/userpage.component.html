@@ -97,29 +97,20 @@
   <section>
     <div class="candidates">
       <h3>Some of the <span *ngIf="prad.toUpperCase() !== 'FCT'; else fctSpan">{{prad | titlecase}} </span> <ng-template #fctSpan> <span>{{prad | uppercase}}</span> </ng-template> <span *ngIf="prad.toUpperCase() !== 'FCT'">State</span> Candidates for the 2019 Election</h3>
-      <ul class="candidates-list">
-          <li>
-              <figure>
-                <h5>Vice Chairman</h5>
-                <img src="/assets/adplogo.jpg" alt="">
-                <figcaption>Hassan Sani</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <h5>Vice Chairman</h5>
-                <img src="/assets/adplogo.jpg" alt="">
-                <figcaption>Hassan Sani</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <h5>Vice Chairman</h5>
-                <img src="/assets/adplogo.jpg" alt="">
-                <figcaption>Hassan Sani</figcaption>
-              </figure>
-            </li>
-        </ul>
+      <ng-container *ngIf="candidate && candidate.length > 0; else noCandidate">
+        <ul class="candidates-list">
+            <li *ngFor="let item of candidate">
+                <figure>
+                  <h5>item.position</h5>
+                  <img [src]=" item.posterPic ||'/assets/adplogo.jpg'" alt="">
+                  <figcaption [innerText]="item.fullName"></figcaption>
+                </figure>
+              </li>
+          </ul>
+      </ng-container>
+      <ng-template #noCandidate>
+        There no candidates registeredfor this state
+      </ng-template>
     </div>
   </section>
 </ng-container>
@@ -165,13 +156,13 @@
           <td>{{ user.dateCreated | date:fullDate }}</td>
         </tr>
       </table>
-      <section>
+      <!-- <section>
         <h4>Description</h4>
         <p>
   
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam vero porro consequuntur voluptatibus voluptates perspiciatis id dolores vitae. Aspernatur necessitatibus placeat deserunt repudiandae quos minus similique quae, error labore quo.
         </p>
-      </section>
+      </section> -->
     </div>
   </section>
 </ng-template>

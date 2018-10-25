@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../../../../config';
+import { IUserData } from 'src/app/home/interface/userData';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class MemberService {
-    token: string = localStorage.getItem('token');
-    id: string  = localStorage.getItem('id');
+    private token: string = localStorage.getItem('token');
+    private id: string  = localStorage.getItem('id');
     constructor(private http: HttpClient) {}
 
     getMemberByID() {

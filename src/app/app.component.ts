@@ -19,16 +19,4 @@ export class AppComponent {
   constructor (private route: Router) {
     this.route.events.subscribe(() => this.router = this.route.url );
   }
-
-  toggleModal(theCon: String, shwAmt: any,  theSt: Boolean) {
-    this.modalActive = !this.modalActive;
-    this.theAmt = theCon;
-    this.theState = theSt;
-    this.viewAmt = shwAmt;
-  }
-  closeModal(event) {
-    if (event.path[0].classList.contains('modal-container')) {
-      this.modalActive = true;
-    }
-  }
 }

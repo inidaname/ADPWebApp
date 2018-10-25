@@ -17,11 +17,13 @@ export class SharedService {
         Phone: null
     });
 
+    private newsShared = new BehaviorSubject<any>(null);
     private dataGotten = new BehaviorSubject<any>(null);
     private t = new BehaviorSubject<boolean>(false);
     currentStatus = this.dataChange.asObservable();
     currentTrigger = this.t.asObservable();
     currentData = this.dataGotten.asObservable();
+    currentNews = this.newsShared.asObservable();
     constructor() {}
 
     changeModalState(state: object) {
@@ -30,6 +32,11 @@ export class SharedService {
 
     sendData(data: any) {
         this.dataGotten.next(data);
+    }
+
+    newsContent(news: any) {
+        console.log(news)
+        this.newsShared.next(news);
     }
 
     triggerState(state: boolean) {

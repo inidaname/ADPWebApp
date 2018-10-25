@@ -12,11 +12,15 @@ import { MemberSecretariatComponent } from './routes/member-secretariat/member-s
 import { MemberCandidatesComponent } from './routes/member-candidates/member-candidates.component';
 import { MemberSettingsComponent } from './routes/member-settings/member-settings.component';
 import { config } from '../../config';
+import { RoutesModule } from 'src/routes/routes.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    MembersRouteModule,
+    RoutesModule,
+    ReactiveFormsModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
@@ -24,6 +28,8 @@ import { config } from '../../config';
   ],
   exports: [],
   declarations: [
+    MembersComponent,
+    MemberSideMenuComponent,
     MemberIndexComponent,
     MemberMessageComponent,
     MemberSecretariatComponent,

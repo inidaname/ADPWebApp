@@ -5,6 +5,7 @@ import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
 import { PaymentService } from '../../services/payment/payment.service';
 import { config } from '../../../../config';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-payment',
@@ -36,7 +37,8 @@ export class PaymentComponent implements OnInit {
         private share: SharedService,
         private fb: FormBuilder,
         private modalService: ModalService,
-        private payment: PaymentService
+        private payment: PaymentService,
+        private router: Router
         ) {}
 
     ngOnInit() {
@@ -53,11 +55,13 @@ export class PaymentComponent implements OnInit {
             this.viewAmount = state.viewAmt;
             this.memberInst = state.memberInst;
         });
-        this.share.currentTrigger.subscribe((state: boolean) => {
-            if (state === true) {
-                this.startForm();
-            }
-        });
+        if (this.router.url === '/register') {
+            this.share.currentTrigger.subscribe((state: boolean) => {
+                if (state === true) {
+                    this.startForm();
+                }
+            });
+        }
         this.paymentForm = this.fb.group({
             payName: ['', Validators.required],
             payEmail: ['', Validators.required],

@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
   activateModal: boolean;
   objectData: any;
-  passportValue: string = null;
+  passportValue = 'https://avatars.io/static/default_128.jpg';
   @ViewChild('picBar') picELement: ElementRef;
   progressBar = ' ';
   public uploader: FileUploader = new FileUploader({url: config.api.cloudinary});
@@ -48,7 +48,6 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService) {}
 
   ngOnInit() {
-    this.passportValue = 'https://avatars.io/static/default_128.jpg';
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onBuildItemForm = (file: any, form: FormData): any => {
 
@@ -90,6 +89,10 @@ export class RegisterComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['/']);
+    }
   }
 
   setStateName(event) {
@@ -133,7 +136,6 @@ export class RegisterComponent implements OnInit {
     const obs = this.register.registerUser(data);
     obs.subscribe((res: any) => {
       if (res.message) {
-        this.formReg.value.passport = this.passportValue;
         this.registered = true;
         this.member = res.body;
         this.objectData = {
@@ -173,7 +175,7 @@ export class RegisterComponent implements OnInit {
       event.preventDefault();
         return;
     }
-
+    this.formReg.value.passport = this.passportValue;
     this.regUser(this.formReg.value);
   }
 

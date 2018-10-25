@@ -26,6 +26,11 @@ import { StructureComponent } from '../app/home/routes/structure/structure.compo
 import { CandidatesComponent } from '../app/home/routes/candidates/candidates.component';
 import { AuthGuard } from '../app/auth.guard';
 import { AdminSecretariatComponent } from '../app/admin/routes/admin-secretariat/admin-secretariat.component';
+import { MemberIndexComponent } from 'src/app/members/routes/member-index/member-index.component';
+import { MemberMessageComponent } from 'src/app/members/routes/member-message/member-message.component';
+import { MemberSecretariatComponent } from 'src/app/members/routes/member-secretariat/member-secretariat.component';
+import { MemberCandidatesComponent } from 'src/app/members/routes/member-candidates/member-candidates.component';
+import { MemberSettingsComponent } from 'src/app/members/routes/member-settings/member-settings.component';
 
 
 const appRoutes: Routes = [
@@ -70,7 +75,31 @@ const appRoutes: Routes = [
     path: 'member',
     component: MembersComponent,
     canActivate: [AuthGuard],
-    loadChildren: '../app/members/members.module#MembersModule'
+    children: [
+      {
+        path: '',
+        component: MemberIndexComponent
+      },
+      {
+        path: 'message',
+        pathMatch: 'full',
+        component: MemberMessageComponent
+      },
+      {
+        path: 'secretariat',
+        pathMatch: 'full',
+        component: MemberSecretariatComponent
+      },
+      {
+        path: 'platform',
+        component: MemberCandidatesComponent
+      },
+      {
+        path: 'settings',
+        pathMatch: 'full',
+        component: MemberSettingsComponent
+      }
+    ]
   },
   {
     path: 'admin',
@@ -124,10 +153,7 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  declarations: [
-    MembersComponent,
-    MemberSideMenuComponent,
-  ],
+  declarations: [],
   providers: [AuthGuard]
 })
 export class RoutesModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faTwitter, faFacebook, faInstagram, faMedium, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { UsersService } from 'src/app/members/services/users/users.service';
 
 @Component({
   selector: 'app-head-bar',
@@ -16,12 +17,19 @@ export class HeadBarComponent implements OnInit {
   bars = faBars;
   search = faSearch;
   youtube = faYoutube;
+  isLoggedIn = false;
 
   navOpen = true;
 
-  constructor () {}
+  constructor (
+    private LoggedIn: UsersService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.LoggedIn.LoggedIn.subscribe((status: boolean) => {
+      this.isLoggedIn = status;
+    });
+  }
 
   toggleMenu() {
     this.navOpen = !this.navOpen;

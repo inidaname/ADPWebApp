@@ -14,9 +14,16 @@
           <li class="menu">
             <a [routerLink]="['/structure']"  routerLinkActive="router-link-active">Structure</a>
           </li>
-          <li class="menu">
-            <a [routerLink]="['/register']" routerLinkActive="router-link-active"> Register</a>
-          </li>
+          <ng-container *ngIf="!isLoggedIn; else itMember">
+            <li class="menu">
+              <a [routerLink]="['/register']" routerLinkActive="router-link-active"> Register</a>
+            </li>
+          </ng-container>
+          <ng-template #itMember>
+            <li class="menu">
+              <a [routerLink]="['/member']" routerLinkActive="router-link-active"> Member</a>
+            </li>
+          </ng-template>
           <li class="menu">
             <a [routerLink]="['/candidates']" routerLinkActive="router-link-active"> Candidates</a>
           </li>

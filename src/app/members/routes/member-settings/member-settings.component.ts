@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberService } from '../../services/member/member.service';
+import { UsersService } from '../../services/users/users.service';
+import { IUserData } from 'src/app/home/interface/userData';
 
 @Component({
   selector: 'app-member-settings',
@@ -8,12 +9,27 @@ import { MemberService } from '../../services/member/member.service';
 })
 export class MemberSettingsComponent implements OnInit {
 
-  memberDetail: any;
-  constructor(private member: MemberService) { }
+  memberDetail: IUserData;
+  editInit: boolean;
+  editBtn: string;
+  constructor(
+    private userService: UsersService
+    ) { }
 
   ngOnInit() {
-    const obs = this.member.getMemberByID();
-    obs.subscribe((res: any) => this.memberDetail = res);
+    this.editInit = false;
+    this.editBtn = 'Edit Profile';
+    this.userService.currentUserData.subscribe((res: IUserData) => this.memberDetail = res);
+  }
+
+  EditProfile() {
+    if (this.editInit === false) {
+      this.editInit = true;
+      this.editBtn = 'Save Profile';
+    } else {
+      this.editBtn = 'Edit Profile';
+      this.editInit = false;
+    }
   }
 
 }

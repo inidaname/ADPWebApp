@@ -60,7 +60,6 @@ export class UserpageComponent implements OnInit {
       this.excos = res[1];
       this.number = this.lgas.length;
       this.place = 'Number of LGA:';
-      console.log(this.excos);
     },
     error => console.log(error));
   }

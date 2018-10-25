@@ -281,3 +281,52 @@ section{
         }
     }
 }
+
+.below{
+    margin-top: 53px;
+    @include mQ('1025px'){
+        display: flex;
+        flex-direction: column !important;
+    }
+    h3{
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        font-size: 36px;
+        color: #373535;
+        margin-left: 102px;
+    }
+    .userDetail{
+        width: 85%;
+        margin: 50px auto;
+        display: flex;
+        flex-direction: column;
+        @include mQ('1025px'){
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        table{
+            width: 100%;
+            margin: auto;
+            @include mQ('1025px'){
+                margin: 0;
+                width: 392px;
+                height: 283px;
+            }
+            tr{
+                margin: 10px;
+            }
+            td, th{
+                width: 50%;
+                margin: 10px 0;
+                text-align-last: left;
+            }
+        }
+        &>section{
+            width: 499px;
+            flex-direction: column !important;
+        }
+    }
+}
