@@ -4,6 +4,7 @@ import { MemberService } from '../../../members/services/member/member.service';
 import { IUserData } from '../../../home/interface/userData';
 import { UsersService } from 'src/app/members/services/users/users.service';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 
 
@@ -23,6 +24,7 @@ export class SideMuneComponent implements OnInit {
     constructor(
         private logout: AuthService,
         private memberService: MemberService,
+        private router: Router,
         private userService: UsersService
     ) {}
 
@@ -50,5 +52,7 @@ export class SideMuneComponent implements OnInit {
 
     userLogout() {
         this.logout.logout();
+        this.userService.changeLoggedIn(false);
+        this.router.navigate(['/']);
     }
 }

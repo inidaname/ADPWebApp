@@ -1,8 +1,12 @@
+<ng-container *ngIf="loading; then itLoading; else notLoading"></ng-container>
+<ng-template #itLoading>
+  <p style="width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">Loading</p>
+</ng-template>
+<ng-template #notLoading>
 <ng-container *ngIf="setState; else userProfile">
   <section>
     <div class="top">
       <span><a [routerLink]="['/']">Home</a></span>
-      <span>links</span>
     </div>
     <h2>{{prad}} State Secretariat</h2>
     <div class="logOver"></div>
@@ -115,7 +119,9 @@
   </section>
 </ng-container>
 <ng-template #userProfile>
-  <section>
+  <ng-container *ngIf="!noroute; then userExit; else ErrorRoute"></ng-container>
+  <ng-template #userExit>
+      <section>
     <div class="logOver"></div>
     <div class="top">
       <span><a [routerLink]="['/']">Home</a></span>
@@ -165,4 +171,18 @@
       </section> -->
     </div>
   </section>
+
+  </ng-template>
+  <ng-template #ErrorRoute>
+    <div class="P404Page">
+      <div class="checkPage">
+        <img src="/assets/yy.jpg" alt="The ADP Candidate">
+        <div>
+          <h3>Vote Y Y Sani for President 2019.</h3>
+          <p>This page is being displayed to you because the link you try to visit does not exist <a [routerLink]="[ '/' ]">Go Home</a>. <br>Thank you</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
 </ng-template>

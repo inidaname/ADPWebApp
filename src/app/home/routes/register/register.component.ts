@@ -5,10 +5,11 @@ import { minimumAge, justOneName } from './singleName.directive';
 import { Router, NavigationEnd } from '@angular/router';
 import { SharedService } from '../../services/shared/shared.service';
 import { ModalService } from '../../services/modals/modals.service';
-import { FileUploader} from 'ng2-file-upload/ng2-file-upload';
-import { Cloudinary } from '@cloudinary/angular-5.x';
+import { FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload/ng2-file-upload';
 import { config } from '../../../../config';
 import { IUserData } from '../../interface/userData';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
@@ -31,16 +32,16 @@ export class RegisterComponent implements OnInit {
   member: IUserData;
   formOk = false;
   message: string;
-  theRegRef: number = Math.floor((Math.random() * 1000000000) + 1);
+  theRegRef = `ADP${Math.floor((Math.random() * 1000000000) + 1)}`;
   activateModal: boolean;
   objectData: any;
   passportValue = 'https://avatars.io/static/default_128.jpg';
   @ViewChild('picBar') picELement: ElementRef;
   progressBar = ' ';
-  public uploader: FileUploader = new FileUploader({url: config.api.cloudinary});
+  public uploader: FileUploader;
+  errorMsg: string;
 
   constructor(
-    private cloudinary: Cloudinary,
     private fb: FormBuilder,
     private register: RegisterService,
     private router: Router,
@@ -48,12 +49,14 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService) {}
 
   ngOnInit() {
+    const uploaderOptions: FileUploaderOptions = {
+      url: `${config.api.api}/upload`,
+      autoUpload: true
+    };
+    this.uploader = new FileUploader(uploaderOptions);
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onBuildItemForm = (file: any, form: FormData): any => {
-
-      // Add Cloudinary's unsigned upload preset to the upload form
-      form.append('upload_preset', this.cloudinary.config().upload_preset);
-
+      file.alias = 'passport';
       return { file, form };
     };
     this.uploader.onProgressItem = (progress: any) => {
@@ -69,13 +72,13 @@ export class RegisterComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3), justOneName]],
       pvc: [''],
       phoneNumber: ['', Validators.required],
-      email: ['contact@adp.ng'/*, Validators.email('ad@k.l')*/],
+      email: ['', [Validators.required, Validators.email]],
       residenceAdd: [''],
       stName: ['', Validators.required],
       lgaName: ['', Validators.required],
       wardName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      dateofBirth: ['', [Validators.required, minimumAge(18)]],
+      dateofBirth: ['', [Validators.required, minimumAge(1)]],
       gender: ['', Validators.required],
       pollingUnit: [''],
       passport: [''],
@@ -95,7 +98,13 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  private uploaderHere() {
+  }
+
   setStateName(event) {
+    this.localGovt = [];
+    this.wardList = [];
+    this.pollingList = [];
     if (event.target.value) {
       const obs = this.register.getLocalGovt(event.target.value);
       obs.subscribe((res: any) => {
@@ -109,6 +118,8 @@ export class RegisterComponent implements OnInit {
   }
 
   setWardname(event, stateName) {
+    this.wardList = [];
+    this.pollingList = [];
     if (event.target.value) {
       const obs = this.register.getWard(event.target.value, stateName);
       obs.subscribe((res: any) => {
@@ -118,6 +129,7 @@ export class RegisterComponent implements OnInit {
   }
 
   pollingUnits(event, lgaName: string, stateName: string) {
+    this.pollingList = [];
     if (event.target.value) {
       const obs = this.register.getPolling(event.target.value, lgaName, stateName);
       obs.subscribe((res: any) => {
@@ -155,6 +167,10 @@ export class RegisterComponent implements OnInit {
       } else {
         this.error = true;
       }
+    }, (err: HttpErrorResponse) => {
+      if (err.status === 401) {
+        this.errorMsg = 'The User already exist';
+      }
     });
   }
 
@@ -169,6 +185,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.errorMsg = '';
 
     // stop here if form is invalid
     if (this.formReg.invalid) {

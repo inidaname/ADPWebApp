@@ -18,7 +18,7 @@ export class AdminManagementComponent implements OnInit {
   gotStatus: string;
   gotDate: Date;
   msg: string;
-  passport: string;
+  passport: string = null;
   change: boolean;
 
   constructor(
@@ -27,6 +27,7 @@ export class AdminManagementComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.msg = '';
     this.memberCheck = this.fb.group({
       memberField: ['', Validators.required],
       memberBy: ['', Validators.required]
@@ -34,6 +35,13 @@ export class AdminManagementComponent implements OnInit {
   }
 
   checkMember() {
+    this.gotName = '';
+    this.gotLGA = '';
+    this.gotState = '';
+    this.gotStatus = '';
+    this.gotDate = null;
+    this.passport = '';
+    this.msg = '';
     this.change = true;
     const {memberField, memberBy} = this.memberCheck.value;
     const obs = this.admin.getUserBy(memberField, memberBy);

@@ -14,25 +14,25 @@
                         <input type="file" aria-label="Passport" #picBar formControlName="passport" (change)="uploader.uploadAll()" id="passport" ng2FileSelect [uploader]="uploader">
                     <div class="details">
                         <ul>
-                            <li>Name: <input type="text" formControlName="fullName"></li>
-                            <li>Username: <input type="text" formControlName="username"></li>
-                            <li>PVC Number: <input type="text" formControlName="pvc"></li>
+                            <li>Name: <input type="text" formControlName="fullName" [value]="memberDetail.fullName"></li>
+                            <li>Username: <input type="text" formControlName="username" [value]="memberDetail.username"></li>
+                            <li>PVC Number: <input type="text" formControlName="pvc" [value]="memberDetail.pvc"></li>
                         </ul>
                         <ul>
 
                             <li>State:
                                 <select name="state"  id="state" formControlName="stName" (change)="setStateName($event)">
-                                    <option value="">Select State</option>
+                                    <option [value]="memberDetail.stateName"></option>
                                     <option *ngFor="let item of state" [value]="item">{{item}}</option>
                                 </select>                        
                             </li>
-                            <li>Senate Constituency: <input type="text" formControlName="Senatorial"></li>
-                            <li>Federal Constituency: <input type="text" formControlName="FedConstituency"></li>
-                            <li>State Constituency: <input type="text" formControlName="StateConstituency"></li>
+                            <li>Senate Constituency: <input type="text" formControlName="Senatorial" [value]="memberDetail.Senatorial"></li>
+                            <li>Federal Constituency: <input type="text" formControlName="FedConstituency" [value]="memberDetail.FedConstituency"></li>
+                            <li>State Constituency: <input type="text" formControlName="StateConstituency" [value]="memberDetail.StateConstituency"></li>
                             <li>LGA: 
                             <select name="lga" formControlName="lgaName" id="lga" (change)="setWardname($event, editProfile.controls.stName.value)">
                                 
-                                <option value="" *ngIf="localGovt == undefined || localGovt.length === 0; else lgaOptions">Select State First</option>
+                                <option [value]="memberDetail.lgaName" *ngIf="localGovt == undefined || localGovt.length === 0; else lgaOptions">{{memberDetail.lgaName}}</option>
                                 <ng-template #lgaOptions>
                                     <option value="">Select Local Government</option>
                                     <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
@@ -42,7 +42,7 @@
                             </li>
                             <li>Ward Name:
                                 <select name="ward" formControlName="wardName" id="ward" (change)="pollingUnits($event, editProfile.controls.lgaName.value, editProfile.controls.stName.value)">
-                                    <option value="" *ngIf="wardList == undefined || wardList.length === 0; else wardOptions">Select Local Govt First</option>
+                                    <option [value]="memberDetail.wardName" *ngIf="wardList == undefined || wardList.length === 0; else wardOptions">{{memberDetail.wardName}}</option>
 
                                     <ng-template #wardOptions>
                                         <option value="">Select Ward Area</option>
@@ -52,7 +52,7 @@
                             </li>
                             <li>Polling Unit:
                             <select name="polling" formControlName="pollingUnit" id="polling" aria-label="Voting Unit">
-                                <option value="" *ngIf="pollingList == undefined || pollingList.length === 0; else pollingOptions">Select Ward Area First</option>
+                                <option [value]="memberDetail.pollingUnit" *ngIf="pollingList == undefined || pollingList.length === 0; else pollingOptions">{{memberDetail.pollingUnit}}</option>
 
                                 <ng-template #pollingOptions>
                                     <option value="">Select Voting Unit</option>
@@ -96,7 +96,7 @@
         </div>
     </section>
     <section>
-        <div class="candidature">
+        <!-- <div class="candidature">
             <ul>
                 <li>Previous Position Contested: None</li>
                 <li>Previous Position Held: None</li>
@@ -104,6 +104,6 @@
                 <li>Invite Link: uqyedd</li>
                 <li>Member invited: 30</li>
             </ul>
-        </div>
+        </div> -->
     </section>
 </div>

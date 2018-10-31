@@ -15,7 +15,7 @@
     <div class="member">
       <div class="member-details">
         <ng-container *ngIf="change; else changed">
-          it here
+          <p style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">Getting User data</p>
         </ng-container>
         <ng-template #changed>
         <figure>
@@ -35,6 +35,34 @@
       </div>
     </div>
   </section>
+  <!-- <ng-container *ngIf="memberHere; then memberEdit; else nothingHere"></ng-container>
+  <ng-template #memberEdit>
+
+  </ng-template>
+  <ng-template #nothingHere>
+   <section class="nothingHere">
+    <div class="otherDetails">
+      <div class="input-field">
+        <label for="candidate">Assign Position</label>
+          <select type="text" name="state" id="state" formControlName="candidatePosition">
+            <option value="">Select Position</option>
+            <option value="Presidential">Presidential</option>
+            <option value="Governorship">Governorship</option>
+            <option value="Senatorila">Senatorial</option>
+            <option value="House Of Reps">House of Reps</option>
+            <option value="House of Assembly">House of Assembly</option>
+          </select>
+      </div>
+      <div class="input-field">
+        <label for="bio">Little Bio</label>
+        <textarea name="little_bio" cols="30" rows="10"></textarea>
+      </div>
+      <div class="buttons">
+        <button>Appoint</button>
+      </div>
+    </div>
+   </section>
+  </ng-template> -->
   <!-- <section class="list-members">
     <div class="member">
       <h4>Members By States</h4>

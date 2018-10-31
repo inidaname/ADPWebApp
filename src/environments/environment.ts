@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  cloudinary: {
+    upload: {
+      cloud_name: 'inidaname', // Your cloud name
+      upload_preset: 'adpnigeria' // Your preset
+    },
+    baseApiUrl: 'https://api.cloudinary.com/v1_1/inidaname/image/upload',
+    // Other configuration stuff necessary for cloudinary
+  }
 };
 
 /*

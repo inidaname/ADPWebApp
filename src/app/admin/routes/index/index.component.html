@@ -19,12 +19,12 @@
       <div class="messages">
         <span>
           <fa-icon [icon]="message"></fa-icon>
-          <label>0</label>
+          <label [innerText]="messages"></label>
         </span>
 
         <span>
           <fa-icon [icon]="male"></fa-icon>
-          <label>0</label>
+          <label [innerText]="adminRequests"></label>
         </span>
       </div>
     </div>
@@ -35,8 +35,8 @@
   <section>
     <ngx-chartjs [data]="member" type="line"></ngx-chartjs>
   </section>
-  <section>
-      <h3>Members Genda Distribution</h3>
+  <section class="hereMe">
+      <h3>Age Distribution</h3>
       <ngx-chartjs [data]="ageDis" type="doughnut"></ngx-chartjs>
   </section>
 </div>

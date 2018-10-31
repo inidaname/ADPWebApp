@@ -35,7 +35,6 @@ export class SharedService {
     }
 
     newsContent(news: any) {
-        console.log(news)
         this.newsShared.next(news);
     }
 

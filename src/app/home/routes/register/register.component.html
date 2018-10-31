@@ -7,7 +7,6 @@
                 <h4>All fields marked * must be filled</h4>
                 <ul>
                     <li>Please note that Full Name must contain at least First and Last Name preferably, a third name may be added.</li>
-                    <li>Date of Birth must be at least 18 years old at the time of registration</li>
                     <li>Please provide at least a phone number and/or email address</li>
                 </ul>
             </div>
@@ -44,8 +43,8 @@
         <section class="contacts">
             <div>
                 <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched}">
-                    <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched">Invlida</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
-                    <input type="number" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter phone number">
+                    <label for="phoneNumber">Phone Number * <span *ngIf="formReg.controls.phoneNumber.invalid && formReg.controls.phoneNumber.touched">Invalid</span> <var *ngIf="formReg.controls.phoneNumber.valid">Valid </var></label>
+                    <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter phone number">
                     <!-- <international-phone-number 
                     id="phoneNumber"
                     formControlName="phoneNumber"
@@ -55,9 +54,9 @@
                     [required]="true" 
                     name="phoneNumber"></international-phone-number> -->
                 </div>
-                <div class="input-field">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" aria-label="Email Address" formControlName="email" placeholder="contact@adp.ng">
+                <div class="input-field" [ngClass]="{'is-invalid': formReg.controls.email.invalid && formReg.controls.email.touched}">
+                    <label for="email">Email Address * <span *ngIf="formReg.controls.email.invalid && formReg.controls.email.touched">Invalid Email Format</span> <var *ngIf="formReg.controls.email.valid">Valid </var></label>
+                    <input type="email" name="email" id="email" aria-label="Email Address" [value]="'contact@adp.ng'" formControlName="email" placeholder="contact@adp.ng">
                 </div>
             </div>
             <div>
@@ -72,7 +71,7 @@
                 </div>
                 <div class="input-field"
                 [ngClass]="{'is-invalid': formReg.controls.dateofBirth.invalid && formReg.controls.dateofBirth.touched}">
-                    <label for="dateOfBirth">Date of Birth *<span *ngIf="formReg.controls.dateofBirth.errors">Must be at least 18</span></label>
+                    <label for="dateOfBirth">Date of Birth *<span *ngIf="formReg.controls.dateofBirth.errors">Invalid Age</span></label>
                     <input type="date" [ngClass]="{ 'is-invalid': submitted && f.dateofBirth.errors }" formControlName="dateofBirth" name="dateOfBirth" id="dateOfBirth" aria-label="Date of Birth">
                 </div>
             </div>
@@ -125,6 +124,7 @@
                 <label for="address">Residential Address</label>
                 <textarea formControlName="residenceAdd" name="address" id="address" cols="30" rows="2" aria-label="Address" placeholder="Full Address"></textarea>
             </div>
+            <p style="color: red;">{{errorMsg}}</p>
         </section>
         <section class="submit">
             <button type="submit" [disabled]="!formReg.valid">Register</button>

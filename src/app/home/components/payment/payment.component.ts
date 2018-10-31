@@ -47,7 +47,7 @@ export class PaymentComponent implements OnInit {
         this.share.currentStatus.subscribe((state: any) => {
             this.objectData = state;
             this.payAmount = state.theAmt;
-            this.payEmail = (state.Email) ? state.Email : 'contact@adp.ng';
+            this.payEmail = state.Email;
             this.payName = state.Name;
             this.purpose = state.purpose;
             this.payPhone = state.Phone;
@@ -64,8 +64,8 @@ export class PaymentComponent implements OnInit {
         }
         this.paymentForm = this.fb.group({
             payName: ['', Validators.required],
-            payEmail: ['', Validators.required],
-            payAmount: ['', Validators.required],
+            payEmail: ['', [Validators.required, Validators.email]],
+            payAmount: [''],
             payPhone: [''],
             payPurpose: ['']
         });

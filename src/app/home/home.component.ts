@@ -4,7 +4,6 @@ import { SharedService } from './services/shared/shared.service';
 import { ModalService } from './services/modals/modals.service';
 import { NewsService } from './services/news/news.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,10 +14,11 @@ export class HomeComponent implements OnInit {
   theState: Boolean = false;
   objectData: object;
   viewAmt: any;
-  theRef: number = Math.floor((Math.random() * 1000000000) + 1);
+  theRef: number;
   router: string;
   newsA: boolean;
   loading: boolean;
+  bdNtwk: string;
 
   constructor(
     private route: Router,
@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
     obs.subscribe((news: any) => {
       this.share.newsContent(news);
       this.loading = false;
+    }, (err) => {
+      this.bdNtwk = 'This is taking longer than expected, you may have lost acces to the network';
     });
     this.newsA = true;
   }
@@ -43,9 +45,13 @@ export class HomeComponent implements OnInit {
     this.modalService.open(id);
   }
 
-  toggleModal(theCon: string, shwAmt: string) {
+  toggleModal(fullAmt: string, shwAmt: string) {
+    this.theRef = Math.floor((Math.random() * 1000000000) + 1);
     this.objectData = {
-      theAmt: theCon,
+      Name: '',
+      Email: '',
+      Phone: '',
+      theAmt: fullAmt,
       viewAmt: shwAmt,
       state: true,
       purpose: 'Donation'

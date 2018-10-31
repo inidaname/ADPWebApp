@@ -9,9 +9,9 @@
             <p> {{topMessage || 'Donate: Help build a better Future'}} </p>
         </div>
         <form [formGroup]="paymentForm">
-            <div class="input-field">
-                <label for="payName">Full Name</label>
-                <input type="text" [attr.readonly]="payName" name="payName" [value]="payName || ''" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
+            <div class="input-field" [ngClass]="{'is-invalid': paymentForm.controls.payName.touched && paymentForm.controls.payName.errors}">
+                <label for="payName">Full Name* <span>Your name is required</span></label>
+                <input type="text" [attr.readonly]="payName && payName.length" name="payName" [value]="payName || ''" formControlName="payName" id="payName" placeholder="Full Name" aria-placeholder="Full Name">
             </div>
             <div class="input-field">
                 <label for="payPurpose">Purpose of Payment</label>
@@ -20,10 +20,10 @@
                     <input type="text" readonly [value]="purpose">
                 </span>
             </div>
-            <div class="input-field">
-                <label for="payAmount">Amount Due</label>
+            <div class="input-field" [ngClass]="{'is-invalid': paymentForm.controls.payAmount.touched && paymentForm.controls.payAmount.errors}">
+                <label for="payAmount">Amount Due <span>Please specify amount</span></label>
                 <span>
-                    <input type="text" name="payAmount" [attr.readonly]="viewAmount" id="payAmount" [value]="viewAmount || ''" formControlName="payAmount">
+                    <input type="text" name="payAmount" [attr.readonly]="viewAmount" [attr.required]="!viewAmount" id="payAmount" [value]="viewAmount || ''" formControlName="payAmount">
                 </span>
             </div>
             <div class="paycontacts">
@@ -31,20 +31,25 @@
                     <label for="payPhone">Phone</label>
                     <input type="text" name="payPhone" [attr.readonly]="payPhone" [value]="payPhone || ''" formControlName="payPhone" id="payPhone" placeholder="Phone Number">
                 </div>
-                <div class="input-field">
-                    <label for="payEmail">Email</label>
-                    <input type="email" name="payEmail"  [value]="payEmail" id="payEmail" formControlName="payEmail" placeholder="Email Address">
+                <div class="input-field" [ngClass]="{'is-invalid': paymentForm.controls.payEmail.touched && paymentForm.controls.payEmail.errors}">
+                    <label for="payEmail">Email* <span *ngIf="paymentForm.controls.payEmail.errors">Invalid Email Format</span></label>
+                    <input type="email" name="payEmail" [attr.readonly]="payEmail"  [value]="payEmail || ''" id="payEmail" formControlName="payEmail" placeholder="Email Address">
                 </div>
             </div>
             <div class="input-field">
+                <ng-container *ngIf="!paymentForm.valid; else getPaid">
+                    <button disabled="disabled">Fill The Form</button>
+                </ng-container>
+                <ng-template #getPaid>
                 <button
                 angular4-paystack
                 [key]="payStackKey"
-                [email]="payEmail"
+                [email]="paymentForm.value.payEmail"
                 [amount]="payAmount"
                 [ref]="theRegRef"
                 (close)="paymentCancel()"
                 (callback)="paymentDone($event)">Pay Here</button>
+                </ng-template>
             </div>
         </form>
     </div>

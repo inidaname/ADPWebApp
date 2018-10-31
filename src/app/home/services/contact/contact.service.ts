@@ -14,4 +14,9 @@ export class ContactService {
             .post(config.api.api + '/complain', content);
         return send;
     }
+
+    contacts() {
+        const getContacts = this.http.get(config.api.api + '/contact/state');
+        return getContacts;
+    }
 }

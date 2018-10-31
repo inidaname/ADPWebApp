@@ -51,6 +51,7 @@ export class LoginSectionComponent implements OnInit {
     this.user.currentUserData.subscribe((res: IUserData) => {
       if (res !== null) {
         this.userData = res;
+        this.loading = false;
       }
     });
 
@@ -80,7 +81,7 @@ export class LoginSectionComponent implements OnInit {
         this.user.changeUserData(data.user);
         this.userData = data.user;
         this.user.changeLoggedIn(true);
-        // this.router.navigate(['/member']);
+        this.router.navigate(['/member']);
         // location.reload();
         this.loggedIn = true;
       } else {

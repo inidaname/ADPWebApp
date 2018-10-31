@@ -31,6 +31,7 @@ import { MemberMessageComponent } from 'src/app/members/routes/member-message/me
 import { MemberSecretariatComponent } from 'src/app/members/routes/member-secretariat/member-secretariat.component';
 import { MemberCandidatesComponent } from 'src/app/members/routes/member-candidates/member-candidates.component';
 import { MemberSettingsComponent } from 'src/app/members/routes/member-settings/member-settings.component';
+import { AdminGuard } from '../app/admin.guard';
 
 
 const appRoutes: Routes = [

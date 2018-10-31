@@ -4,6 +4,9 @@ import { faBars, faComments, faCaretDown, faEllipsisH, faMale } from '@fortaweso
 import { AdminService } from '../../services/admin/admin.service';
 import { IUserData } from 'src/app/home/interface/userData';
 import * as moment from 'moment';
+import { Message } from '../admin-messages/message';
+import { AdminMember } from '../../Interface/admin';
+import { AdminStatus } from '../../services/admin-status/admin-status.service';
 
 @Component({
     selector: 'app-admin-index',
@@ -19,6 +22,8 @@ export class IndexComponent implements OnInit {
     down = faCaretDown;
     threeDots = faEllipsisH;
     male = faMale;
+    messages = 0;
+    adminRequests = 0;
     total = 0;
     memFemale: Array<IUserData> = [];
     memMale: Array<IUserData> = [];
@@ -130,7 +135,8 @@ export class IndexComponent implements OnInit {
 
 
     constructor(
-      private adminRights: AdminService
+      private adminRights: AdminService,
+      private adminstats: AdminStatus
     ) {}
 
     ngOnInit() {
@@ -154,6 +160,12 @@ export class IndexComponent implements OnInit {
 
         this.data = {
           labels: ['Male', 'Female'],
+          options: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: '#fff'
+            }
+          },
           datasets: [
             {
               label: 'Female and Male members',
@@ -172,11 +184,25 @@ export class IndexComponent implements OnInit {
           ]
         };
         this.ageDis = {
-          labels: ['Youth', 'Old'],
+          labels: ['below 38 years old', 'above 38 years old'],
+          options: {
+              labels: {
+                  // This more specific font property overrides the global property
+                  fontColor: 'white'
+              }
+          },
           datasets: [
             {
               label: 'Female and Male members',
               data: [this.young.length, this.old.length],
+              options: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontColor: 'white'
+                    }
+                }
+              },
               fill: true,
               backgroundColor: [
                 '#4BA0FD',
@@ -191,5 +217,13 @@ export class IndexComponent implements OnInit {
           ]
         };
       });
+
+      this.adminstats.adminInActive.subscribe((res: Array<AdminMember>) => {
+        this.adminRequests = res.length;
+      });
+      this.adminstats.msgUnread.subscribe((res: Array<Message>) => {
+        this.messages = res.length;
+      });
+
     }
 }

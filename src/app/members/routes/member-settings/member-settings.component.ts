@@ -76,17 +76,17 @@ export class MemberSettingsComponent implements OnInit {
       this.editInit = true;
       this.editBtn = 'Save Profile';
       this.editProfile = this.fb.group({
-        passport: [this.memberDetail.passport],
-        fullName: [this.memberDetail.fullName, Validators.required],
-        username: [this.memberDetail.username, Validators.required],
-        pvc: [this.memberDetail.pvc, Validators.required],
-        stName: [this.memberDetail.stateName, Validators.required],
-        Senatorial: [this.memberDetail.Senatorial],
-        FedConstituency: [this.memberDetail.FedConstituency],
-        StateConstituency: [this.memberDetail.StateConstituency],
-        lgaName: [this.memberDetail.lgaName, Validators.required],
-        wardName: [this.memberDetail.wardName, Validators.required],
-        pollingUnit: [this.memberDetail.pollingUnit],
+        passport: [''],
+        fullName: ['', Validators.required],
+        username: ['', Validators.required],
+        pvc: ['', Validators.required],
+        stName: ['', Validators.required],
+        Senatorial: [''],
+        FedConstituency: [''],
+        StateConstituency: [''],
+        lgaName: ['', Validators.required],
+        wardName: ['', Validators.required],
+        pollingUnit: [''],
       });
     } else {
       this.member.upDateMember(this.editProfile.value).subscribe((res: IUserData) => {

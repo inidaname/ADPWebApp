@@ -9,25 +9,25 @@ import { Message } from './message';
 })
 export class AdminMessagesComponent implements OnInit {
 
-  fullName: string;
-  subject: string;
-  message: string;
-  tags: string;
-  status: string;
-  dateSent: Date;
-
+  messages: Array<Message> = [];
+  viewMsg: Message;
   constructor(
     private admin: AdminService
   ) { }
 
   ngOnInit() {
     const obs = this.admin.getMessages();
-    obs.subscribe((res: Message) => {
-      this.fullName = res.fullName;
-      this.subject = res.subject;
-      this.message = res.message;
-      this.status = (res.status === true) ? 'unread' : 'read';
-      this.dateSent = res.dateCreated;
+    obs.subscribe((res: Array<Message>) => {
+      this.messages = res;
+    });
+  }
+
+  getMail(mailID: string) {
+    this.messages.forEach(v => {
+      if (v._id === mailID) {
+        this.viewMsg = v;
+        this.admin.markRead(v._id).subscribe(() => this.viewMsg.status = true)
+      }
     })
   }
 

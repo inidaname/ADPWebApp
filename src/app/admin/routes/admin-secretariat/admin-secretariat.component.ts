@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from 'src/app/home/services/register/register.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AdminService } from '../../services/admin/admin.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AdminStatus } from '../../services/admin-status/admin-status.service';
+import { AdminMember } from '../../Interface/admin';
 
 @Component({
   selector: 'app-admin-secretariat',
@@ -19,12 +22,15 @@ export class AdminSecretariatComponent implements OnInit {
    wardList;
    pollingList;
    contactCreate: FormGroup;
-   sent;
+   sent = '';
+   err = '';
+   inActiveAdmins: Array<AdminMember> = [];
 
   constructor(
     private register: RegisterService,
     private fb: FormBuilder,
-    private admin: AdminService
+    private admin: AdminService,
+    private adminStatus: AdminStatus
   ) { }
 
   ngOnInit() {
@@ -38,6 +44,11 @@ export class AdminSecretariatComponent implements OnInit {
       ward: [''],
       address: ['']
     });
+
+    this.adminStatus.adminInActive.subscribe((res: Array<AdminMember>) => {
+      this.inActiveAdmins = res;
+      console.log(res)
+    })
   }
 
   setStateName(event) {
@@ -67,8 +78,15 @@ export class AdminSecretariatComponent implements OnInit {
   }
 
   sendContact() {
+    this.err = '';
+    this.sent = '';
     this.admin.createContact(this.contactCreate.value).subscribe((res) => {
-      this.sent = true;
+      this.sent = 'Successfully Created';
+      this.contactCreate.reset();
+    }, (err: HttpErrorResponse) => {
+      if (err.status) {
+        this.err = 'State already exist';
+      }
     });
   }
 

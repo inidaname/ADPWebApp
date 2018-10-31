@@ -12,6 +12,7 @@ export class MemberService {
     private id: string  = localStorage.getItem('id');
     constructor(private http: HttpClient) {}
 
+
     getMemberByID() {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',

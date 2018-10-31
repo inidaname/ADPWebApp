@@ -8,8 +8,6 @@ import { Angular4PaystackModule } from 'angular4-paystack';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { AgmCoreModule } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
-import { CloudinaryModule } from '@cloudinary/angular-5.x';
-import * as  Cloudinary from 'cloudinary-core';
 
 import { FormatPipe } from './pipes/format/format.pipe';
 import { TruncatePipe } from './pipes/truncate/truncate.pipe';
@@ -37,6 +35,7 @@ import { ModalComponent } from './components/payment/modal.component';
 import { DoneComponent } from './routes/done/done.component';
 import { config } from '../../config';
 import { FormatPhonePipe } from './pipes/format-phone/format-phone.pipe';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   imports: [
@@ -52,13 +51,7 @@ import { FormatPhonePipe } from './pipes/format-phone/format-phone.pipe';
     AgmCoreModule.forRoot({
       apiKey: config.apiKey.google
     }),
-    FileUploadModule,
-    CloudinaryModule.forRoot(Cloudinary, {
-      cloud_name: config.apiKey.cloudinary,
-      api_key: config.apiKey.clKey,
-      api_secret: config.apiKey.clSe,
-      upload_preset: 'adpnigeria'
-    }),
+    FileUploadModule
   ],
   declarations: [
     SliderComponent,

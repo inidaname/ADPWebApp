@@ -2,6 +2,7 @@
 <ng-template #itLoading>
   <p class="loading">
     Loading
+    <br> <span style="color: red;">{{bdNtwk}}</span>
   </p>
 </ng-template>
 <ng-template #nowDone>
@@ -40,7 +41,7 @@
                  N500
                 </li>
           <li>
-                <input type="text" name="otherAmunt" placeholder="Enter other amount" #otherAmount id="otherAmunt" class="others">
+                <input type="number" name="otherAmunt" placeholder="Enter other amount" #otherAmount id="otherAmunt" class="others">
               </li>
           <li><button (click)="(otherAmount.value !== '') ? toggleModal(otherAmount.value + '00', otherAmount.value) : false">Donate</button></li>
         </ul>

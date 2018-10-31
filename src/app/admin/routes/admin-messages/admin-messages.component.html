@@ -10,12 +10,12 @@
             <th>Time</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let item of messages">
-            <td>{{fullName}}</td>
-            <td>{{message}}</td>
-            <td>{{status}}</td>
-            <td>{{dateSent}}</td>
+        <tbody *ngIf="messages.length >= 1">
+          <tr *ngFor="let item of messages" (click)="getMail(item._id)">
+            <td>{{item.fullName}}</td>
+            <td>{{item.subject}}</td>
+            <td>{{(item.status === false) ? 'unread' : 'read'}}</td>
+            <td>{{item.dateSent}}</td>
           </tr>
         </tbody>
       </table>
@@ -24,22 +24,23 @@
       <div class="msg-top">
         <div class="sender">
           <p>From:</p>
-          <h4></h4>
+          <h4 *ngIf="viewMsg">{{viewMsg.fullName || ''}}</h4>
         </div>
         <div class="subject">
           <p>Subject:</p>
-          <p></p>
+          <p *ngIf="viewMsg">{{viewMsg.subject || ''}}</p>
         </div>
       </div>
       <div class="msg-body">
-        <p>
+        <p *ngIf="viewMsg">
+          {{viewMsg.message || ''}}
         </p>
       </div>
-      <div class="actions">
+      <!-- <div class="actions">
         <button>Acknowledged</button>
         <button>Respond</button>
         <button>Next</button>
-      </div>
+      </div> -->
     </div>
   </section>
   <section>

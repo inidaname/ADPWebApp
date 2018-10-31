@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faFacebook, faTwitter, faInstagram, faMedium, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../../services/contact/contact.service';
 import { Router } from '@angular/router';
+import { Contacts } from './contacts';
 
 @Component({
   selector: 'app-contact',
@@ -19,6 +20,8 @@ export class ContactComponent implements OnInit {
   sentMessage = false;
   lat = 9.0442358;
   lng = 7.5100474;
+  contacts: Contacts[] = [];
+  @ViewChild('modalSent') modalSent: ElementRef<any>;
 
 
   constructor(
@@ -26,12 +29,19 @@ export class ContactComponent implements OnInit {
     private contactService: ContactService,
     private router: Router
   ) { }
-
   ngOnInit() {
     this.contactForm = this.fb.group({
-      contactName: ['', [Validators.required, Validators.minLength(3)]],
-      contactEmail: ['', Validators.required],
-      contactMessage: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(500)]]
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', Validators.required],
+      subject: ['Member contact head Office'],
+      message: ['', [Validators.required, Validators.minLength(5)]],
+      tags: ['Messgae']
+    });
+
+    this.contactService.contacts().subscribe((res: Contacts[]) => {
+      if (res.length >= 1) {
+        this.contacts = res;
+      }
     });
   }
 
@@ -49,9 +59,8 @@ export class ContactComponent implements OnInit {
 
     const obs = this.contactService.sendMessage(this.contactForm.value);
     obs.subscribe((sent: any) => {
-      if (sent.msg) {
+        this.contactForm.reset();
         this.sentMessage = true;
-      }
     });
   }
 

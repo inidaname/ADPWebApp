@@ -15,6 +15,7 @@
       <li><a [routerLink]="['/']" routerLinkActive="router-link-active">Go Home</a></li>
       <li><a (click)="userLogout()" id="logout">Log Out</a></li>
     </ul>
+    <button [innerText]="(adminLevel)? 'Go To Admin Page' : 'Request to be Admin'" (click)="goToAdmin()"></button>
   </section>
 </div>
 </div>
@@ -22,5 +23,108 @@
   <span id="menu-bar">
     <fa-icon [icon]="bars" (click)="moveSide()"></fa-icon>
   </span>
+</div>
+
+<div class="thisModal" [ngClass]="{'show': !modalView}" (click)="closeIt($event)" #Modal>
+  <ng-container *ngIf="needLoading; else sent">
+    <div class="innerModal">
+      Loading
+    </div>
+  </ng-container>
+  <ng-template #sent>
+    <ng-container *ngIf="requested; else newRequest">
+      <div class="innerModal">
+          <ng-container *ngIf="deleteMe; else abtDelete">
+            <p>
+              You are about to delete you Admin request <br>
+              <button (click)="deleteRequest()" class="delete">Continue</button>
+              <button (click)="modalView = false">Cancel Delete</button>
+            </p>
+          </ng-container>
+          <ng-template #abtDelete>
+              <p>
+                {{returnMsg}}
+                <br> <br>
+        
+                <button (click)="deleteMe = true" class="delete">Detele Request</button>
+                <button (click)="modalView = false">Close</button>
+              </p>
+          </ng-template>
+      </div>
+    </ng-container>
+    <ng-template #newRequest>
+  <div class="innerModal">
+      <span> 
+          <fa-icon [icon]="close" (click)="closeIt('closeMe')"></fa-icon>
+      </span>
+      <div class="userPro">
+        <img [src]="proPic" alt="">
+        <div>
+          <p>{{fullName}} <small>Member Since: {{ memberSince | date:"dd/MM/yy" }}</small></p>
+          <p>{{pollingUnit}}, {{wardName}}, {{lgaName}}, {{stateName}}</p>
+          <p>
+            Thank you for showing interest to become an admin, as an admin of a region you have the responsibilty to manage the activities of the region. This request will have to be approved by someone from the Party Office.
+            Fill the form below for the appropriate level you wish to manage. thank You
+          </p>
+        </div>
+      </div>
+      <form [formGroup]="adminRequest" (ngSubmit)="ngSubmit()">
+        <div class="input-field">
+          <label for="level">Intended Level</label>
+          <select formControlName="level" id="level">
+            <option value="">Select below</option>
+            <option value="pollingUnit">Polling Unit</option>
+            <option value="ward">Ward Area</option>
+            <option value="lga">Local Govt</option>
+            <option value="state">State</option>
+            <option value="national">National</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="place">
+            <input type="checkbox" name="place" [(ngModel)]="checkPlace" [ngModelOptions]="{standalone: true}" id="place"> I want to be admin of a different place other than my registered location
+          </label>
+        </div>
+        <ng-container *ngIf="checkPlace; else elseNo">
+  
+        <div class="input-field">
+          <label for="stateName">State</label>
+          <select formControlName="stateName" id="stateName" (change)="setStateName($event)">
+            <option value="">Select below</option>
+            <option *ngFor="let item of statesList" [value]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="lga">Local Govt</label>
+          <select formControlName="lgaName" id="lga" (change)="setWardname($event, f.stateName.value)">
+            <option value="">Select below</option>
+            <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="ward">Ward</label>
+          <select formControlName="ward" id="wardName" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
+            <option value="">Select below</option>
+            <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="pollingUnit">Polling Unit</label>
+          <select formControlName="pollingUnit" id="pollingUnit">
+            <option value="">Select below</option>
+            <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+          </select>
+        </div>
+      </ng-container>
+          <div class="input-field">
+            <button type="submit" [disabled]="(!adminRequest.valid && !checkPlace) || (checkPlace && (!adminRequest.valid || !f.stateName.value || !f.lga.value || !f.ward.value))">Send Request</button>
+          </div>
+        <ng-template #elseNo>
+          
+        </ng-template>
+      </form>
+    </div>
+    </ng-template>
+  </ng-template>
 </div>
 

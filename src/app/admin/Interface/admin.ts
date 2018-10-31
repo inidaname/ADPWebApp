@@ -6,4 +6,6 @@ export interface AdminMember {
     level: string;
     position: string;
     nameOfLocation: string;
+    dateCreated: Date;
+    approve: boolean;
 }

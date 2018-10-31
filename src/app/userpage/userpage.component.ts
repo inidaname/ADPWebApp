@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MemberService } from '../members/services/member/member.service';
 import { StateService } from './state.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-userpage',
@@ -27,6 +28,8 @@ export class UserpageComponent implements OnInit {
   'SOKOTO', 'TARABA', 'YOBE', 'ZAMFARA'];
   private sub: any;
   setState = false;
+  loading: boolean;
+  noroute = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,18 +38,26 @@ export class UserpageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.noroute = false;
     this.sub = this.route.params.subscribe((params: Array<string>) => {
       this.prad = params['user'];
       if (this.states.includes(this.prad.toUpperCase())) {
+        this.loading = false;
         this.setState = true;
         this.getLocalGvtCont();
       } else {
         const obs = this.userService.getMemberByUName(params['user']);
         obs.subscribe(res => {
           this.user = res;
-          console.log(res);
+          this.loading = false;
         },
-        err => console.log(err));
+        (err: HttpErrorResponse) => {
+          if (err.status === 404) {
+            this.loading = false;
+            this.noroute = true;
+          }
+        });
       }
    });
   }
