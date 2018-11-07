@@ -15,7 +15,7 @@
       <li><a [routerLink]="['/']" routerLinkActive="router-link-active">Go Home</a></li>
       <li><a (click)="userLogout()" id="logout">Log Out</a></li>
     </ul>
-    <button [innerText]="(adminLevel)? 'Go To Admin Page' : 'Request to be Admin'" (click)="goToAdmin()"></button>
+    <button class="adminBtn" [innerText]="(adminLevel)? 'Go To Admin Page' : 'Request to be Admin'" (click)="goToAdmin()"></button>
   </section>
 </div>
 </div>
@@ -105,14 +105,14 @@
           <label for="ward">Ward</label>
           <select formControlName="ward" id="wardName" (change)="pollingUnits($event, f.lgaName.value, f.stateName.value)">
             <option value="">Select below</option>
-            <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+            <option *ngFor="let item of wardList" [value]="item._id">{{item._id}}</option>
           </select>
         </div>
         <div class="input-field">
           <label for="pollingUnit">Polling Unit</label>
           <select formControlName="pollingUnit" id="pollingUnit">
             <option value="">Select below</option>
-            <option *ngFor="let item of localGovt" [value]="item._id">{{item._id}}</option>
+            <option *ngFor="let item of pollingList" [value]="item._id">{{item._id}}</option>
           </select>
         </div>
       </ng-container>

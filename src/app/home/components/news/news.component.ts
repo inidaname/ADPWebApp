@@ -12,7 +12,7 @@ export class NewsComponent implements OnInit {
   readyState = false;
 
   constructor(
-    private newsService: SharedService
+    private newsService: SharedService,
   ) { }
 
   ngOnInit() {
@@ -22,6 +22,8 @@ export class NewsComponent implements OnInit {
         return this.newsList = news.items;
       });
     }
+
+
   }
 
 }

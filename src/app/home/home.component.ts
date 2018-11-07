@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SharedService } from './services/shared/shared.service';
 import { ModalService } from './services/modals/modals.service';
 import { NewsService } from './services/news/news.service';
+import { INews } from './services/news/news.interface';
 
 @Component({
   selector: 'app-home',
@@ -32,11 +33,13 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.share.currentStatus.subscribe((obj: any) => this.activateModal = obj.state);
     const obs = this.news.headLines();
-    obs.subscribe((news: any) => {
+    obs.subscribe((news: INews[]) => {
       this.share.newsContent(news);
       this.loading = false;
     }, (err) => {
-      this.bdNtwk = 'This is taking longer than expected, you may have lost acces to the network';
+      if (err.status === 0) {
+        this.bdNtwk = 'This is taking longer than expected, you may have lost acces to the network';
+      }
     });
     this.newsA = true;
   }
@@ -48,9 +51,6 @@ export class HomeComponent implements OnInit {
   toggleModal(fullAmt: string, shwAmt: string) {
     this.theRef = Math.floor((Math.random() * 1000000000) + 1);
     this.objectData = {
-      Name: '',
-      Email: '',
-      Phone: '',
       theAmt: fullAmt,
       viewAmt: shwAmt,
       state: true,

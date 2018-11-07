@@ -101,6 +101,7 @@ export class PaymentComponent implements OnInit {
     }
 
     closeModal(id: string) {
+        console.log(this.paymentForm);
         this.modalService.close(id);
     }
 }

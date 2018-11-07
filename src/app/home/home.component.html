@@ -1,9 +1,17 @@
 <ng-container *ngIf="loading; then itLoading; else nowDone"></ng-container>
 <ng-template #itLoading>
-  <p class="loading">
-    Loading
+    <div class="beforeLoad">
+      <br> <span style="color: red;">{{bdNtwk}}</span>
+      <div class="checkPage">
+          <h4 style="color: red; text-align: center;">The Page Loading</h4>
+        <img src="/assets/yy.jpg" alt="The ADP Candidate">
+        <div>
+          <h3>Vote Y Y Sani for President 2019.</h3>
+          <p>The Alternative 2019</p>
+        </div>
+      </div>
+    </div>
     <br> <span style="color: red;">{{bdNtwk}}</span>
-  </p>
 </ng-template>
 <ng-template #nowDone>
 

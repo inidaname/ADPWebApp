@@ -25,6 +25,8 @@ export class AdminSecretariatComponent implements OnInit {
    sent = '';
    err = '';
    inActiveAdmins: Array<AdminMember> = [];
+   gettingList: boolean;
+   showNone: string;
 
   constructor(
     private register: RegisterService,
@@ -45,10 +47,15 @@ export class AdminSecretariatComponent implements OnInit {
       address: ['']
     });
 
+    this.getAdminList();
+  }
+
+  getAdminList() {
+    this.gettingList = false;
     this.adminStatus.adminInActive.subscribe((res: Array<AdminMember>) => {
       this.inActiveAdmins = res;
-      console.log(res)
-    })
+      this.gettingList = true;
+    });
   }
 
   setStateName(event) {
@@ -87,6 +94,16 @@ export class AdminSecretariatComponent implements OnInit {
       if (err.status) {
         this.err = 'State already exist';
       }
+    });
+  }
+
+  acceptAdmin(id: string) {
+  }
+
+  deleteAdmin(id: string) {
+    this.admin.deleteAdmin(id).subscribe(res => {
+      this.showNone = 'none';
+      this.getAdminList();
     });
   }
 
