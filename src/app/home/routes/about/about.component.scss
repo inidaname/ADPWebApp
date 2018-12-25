@@ -178,12 +178,11 @@ button{
             }
             figure{
                 img{
+                    width: 238px;
                     @include mQ('1025px'){
-                        width: 238px;
                         height: 276px;
                     }
                     @include mQ('1025px', '1360px'){
-                        width: 238px;
                         height: 285px;;
                     }
                 }

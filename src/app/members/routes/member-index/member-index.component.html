@@ -1,27 +1,174 @@
 <div class="main">
-    <section>
-        <div class="voting-map">
-            <h5>Your Polling Unit</h5>
-            <agm-map [zoom]="16" [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-            </agm-map>
-        </div>
-        <div class="announce">
-            <h5>Annoucement from: The State Chairman</h5>
-            <p>Any important message will be show here</p>
-            <div><button>Read</button>
-            <button>Agreed</button>
-            <button>Respond</button></div>
-        </div>
-    </section>
-    <section>
-        <!-- <div class="news">
+  <section>
+    <div>
+      <h2>Donate Now</h2>
+      <div class="small">Help Build a better future</div>
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d)">
+          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="10" y="0" width="80" height="80">
+            <path d="M10 0H90V80H10V0Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask0)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint0_linear)" stroke-width="8" />
+          </g>
+          <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="90" y="0" width="80" height="160">
+            <path d="M90 0H170V160H90V80V0Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask1)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint1_linear)" stroke-width="8" />
+          </g>
+          <mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="10" y="80" width="160" height="80">
+            <path d="M10 80H90L170 160H10V80Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask2)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint2_linear)" stroke-width="8" />
+          </g>
+        </g>
+        <g clip-path="url(#clip0)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M104.28 38H101.675C99.0696 39.7426 79.0981 45.8416 73.8881 48.4554C69.5465 50.198 68.6782 51.0693 66.0732 54.5545C55.6532 69.3663 57.3899 71.1089 62.5999 86.7921C63.4682 87.6634 63.4682 87.6634 63.4682 88.5347L64.3365 89.4059C64.3365 90.2772 64.3365 90.2772 64.3365 90.2772L65.2049 91.1485C66.0732 85.9208 69.5465 83.3069 73.0198 79.8218C73.0198 77.2079 72.1515 75.4653 71.2831 72.8515C77.3614 71.9802 78.2298 67.6238 80.8347 65.0099C82.5714 65.8812 84.3081 66.7525 86.913 66.7525C90.3864 66.7525 92.123 66.7525 94.728 65.8812L87.7814 74.5941C82.5714 81.5644 85.1764 77.2079 78.2298 81.5644C75.6248 83.3069 73.0198 85.0495 72.1515 85.9208C67.8098 90.2772 66.0732 97.2475 72.1515 100.733C80.8347 105.96 87.7814 94.6337 92.9913 92.0198C99.0696 88.5347 106.885 87.6634 112.963 78.9505C116.436 75.4653 118.173 69.3663 119.909 64.1386C122.514 56.297 123.383 55.4257 127.724 50.198C124.251 43.2277 113.831 40.6139 106.885 38.8713L104.28 38Z"
+            fill="white" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M75.6389 126H79.9806C81.7172 124.258 89.5322 124.258 93.0055 115.545C95.6105 109.446 94.7421 102.476 91.2688 98.1193C87.7955 100.733 83.4539 105.09 77.3756 105.09C69.5606 105.961 67.824 100.733 65.219 98.1193H64.3507C64.3507 98.9906 64.3507 98.9906 64.3507 98.9906C64.3507 98.9906 64.3507 98.9906 63.4823 99.8619C63.4823 99.8619 63.4823 100.733 62.614 101.604C60.8774 105.961 60.8774 111.189 62.614 115.545C66.9557 125.129 73.0339 124.258 75.6389 126Z"
+            fill="white" />
+        </g>
+        <defs>
+          <filter id="filter0_d" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dy="10" />
+            <feGaussianBlur stdDeviation="5" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+          </filter>
+          <linearGradient id="paint0_linear" x1="10" y1="0" x2="89.9987" y2="-0.327207" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E60000" />
+            <stop offset="1" stop-color="white" />
+          </linearGradient>
+          <linearGradient id="paint1_linear" x1="10" y1="80" x2="308.272" y2="80" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4BA0FD" />
+            <stop offset="1" stop-color="#030D42" />
+          </linearGradient>
+          <linearGradient id="paint2_linear" x1="10" y1="80" x2="10" y2="160" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4BA0FD" />
+            <stop offset="1" stop-color="white" />
+          </linearGradient>
+          <clipPath id="clip0">
+            <rect width="70" height="88" fill="white" transform="translate(58 38)" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div class="small">Make Payment Here</div>
+    </div>
+
+    <div>
+        <h2>Pay Due</h2>
+        <div class="small">Statistic of Previous Payments</div>
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d)">
+          <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="10" y="0" width="80" height="80">
+            <path d="M10 0H90V80H10V0Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask0)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint0_linear)" stroke-width="8" />
+          </g>
+          <mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="90" y="0" width="80" height="160">
+            <path d="M90 0H170V160H90V80V0Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask1)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint1_linear)" stroke-width="8" />
+          </g>
+          <mask id="mask2" mask-type="alpha" maskUnits="userSpaceOnUse" x="10" y="80" width="160" height="80">
+            <path d="M10 80H90L170 160H10V80Z" fill="#C4C4C4" />
+          </mask>
+          <g mask="url(#mask2)">
+            <circle cx="90" cy="80" r="76" stroke="url(#paint2_linear)" stroke-width="8" />
+          </g>
+        </g>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M63.435 106.352L55.0059 98.1193L58.3135 94.7824L63.435 99.7571L75.3229 88.1174L78.6305 91.3054L63.435 106.352ZM50 95.6407C50 100.808 51.3159 104.574 54.9259 108.13C56.4196 109.593 57.5933 110.416 59.585 111.406C63.8173 113.507 69.7924 113.543 74.0336 111.458C79.5107 108.761 83.7075 103.269 83.7075 97.1208C83.7075 94.0817 83.4763 91.9184 82.1604 89.3085C80.3199 85.6826 77.8125 83.1777 74.1314 81.356C66.2891 77.4761 56.0106 80.5765 51.6005 89.2122C50.7913 90.8062 50 93.311 50 95.6407Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M93.3429 86.2956C93.3429 87.8458 93.3162 88.6077 94.0364 90.0616C95.1212 92.2336 97.6197 94.0116 99.9581 94.0116C101.674 94.0116 101.914 94.0816 103.559 93.3985C104.279 93.0919 104.768 92.6365 105.382 92.2336C107.774 93.8101 107.72 94.0116 110.797 94.0116C114.06 94.0116 117.421 90.7009 117.421 87.4867C117.421 85.9452 117.448 85.1745 116.719 83.7294C115.643 81.5486 113.144 79.7794 110.797 79.7794C107.72 79.7794 107.774 79.9721 105.382 81.5574C102.981 79.9721 103.035 79.7794 99.9581 79.7794C99.0868 79.7794 97.9931 80.156 97.3529 80.4626C95.877 81.172 94.7566 82.2755 94.0364 83.7294C93.7252 84.36 93.3429 85.4373 93.3429 86.2956Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M64.3875 60.7476H122.173V65.4858H64.3875V60.7476ZM59.5684 60.4498V74.9797H122.173V98.697H88.4656V103.435H122.475C124.796 103.435 126.992 101.281 126.992 98.9948V60.4498C126.992 58.1639 124.796 56.0007 122.475 56.0007H64.0852C61.7557 56.0007 59.5684 58.1639 59.5684 60.4498Z"
+          fill="white" />
+        <defs>
+          <filter id="filter0_d" x="0" y="0" width="180" height="180" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dy="10" />
+            <feGaussianBlur stdDeviation="5" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+          </filter>
+          <linearGradient id="paint0_linear" x1="10" y1="0" x2="89.9987" y2="-0.327207" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E60000" />
+            <stop offset="1" stop-color="white" />
+          </linearGradient>
+          <linearGradient id="paint1_linear" x1="10" y1="80" x2="308.272" y2="80" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4BA0FD" />
+            <stop offset="1" stop-color="#030D42" />
+          </linearGradient>
+          <linearGradient id="paint2_linear" x1="10" y1="80" x2="10" y2="160" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4BA0FD" />
+            <stop offset="1" stop-color="white" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="small">Click to see your payment history</div>
+    </div>
+    <div class="third">
+      <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d)">
+          <path d="M60.7188 34C60.7188 34.9375 60.3542 35.7188 59.625 36.3438C59 36.9688 58.2188 37.2812 57.2812 37.2812H24L10.7188 50.7188V4C10.7188 3.0625 11.0312 2.28125 11.6562 1.65625C12.2812 1.03125 13.0625 0.71875 14 0.71875H57.2812C58.2188 0.71875 59 1.03125 59.625 1.65625C60.3542 2.28125 60.7188 3.0625 60.7188 4V34ZM74 14C74.9375 14 75.7188 14.3125 76.3438 14.9375C76.9688 15.5625 77.2812 16.3438 77.2812 17.2812V67.2812L64 54H27.2812C26.3438 54 25.5625 53.6875 24.9375 53.0625C24.3125 52.4375 24 51.6562 24 50.7188V44H67.2812V14H74Z"
+            fill="white" />
+        </g>
+        <defs>
+          <filter id="filter0_d" x="0.71875" y="0.71875" width="86.5625" height="86.5625" filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dy="10" />
+            <feGaussianBlur stdDeviation="5" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+          </filter>
+        </defs>
+      </svg>
+      <h2>0</h2>
+      <div class="small">Unread Messages</div>
+      <div class="small">Click to read messages</div>
+    </div>
+  </section>
+  <section>
+    <!-- <div class="news">
 
         </div> -->
-        <div class="secretariat">
-            <address>
-                No 20 Mungo Park Close, <br> Asokoro <br>Abuja
-            </address>
-        </div>
-    </section>
+    <div class="voting-map">
+      <agm-map [zoom]="16" [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+    <div class="third">
+      <svg width="105" height="97" viewBox="0 0 105 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5537 36.8081C17.5537 46.1616 19.9045 54.8916 24.6059 61.9067C33.3821 61.9067 40.1209 59.7242 52.8149 60.8154C59.397 61.439 65.5089 63.1538 71.9343 64.5568C73.9716 65.0245 76.6358 65.3363 78.0462 65.9599C78.0462 41.7966 74.1283 24.6486 63.4716 4.6944C59.2403 7.50046 53.9119 15.7627 36.6731 25.8957L23.5089 32.7549C22.0985 33.3785 17.5537 34.7815 17.5537 36.8081Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M25.8154 65.4917C27.2259 68.1419 28.1662 70.9479 29.7333 73.754C33.4945 81.2368 38.0393 96.9818 45.2483 96.9818C51.0468 96.9818 55.7483 94.9552 55.7483 88.2519C55.7483 85.9135 52.7707 81.0809 52.7707 78.2748C52.7707 74.5334 55.1214 73.9098 55.1214 65.9594C55.1214 62.5298 44.4647 64.2446 41.6438 64.2446C36.3154 64.2446 31.4572 65.4917 25.8154 65.4917Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 49.7466C0 54.7352 4.70149 63.1533 9.40299 63.1533C18.1791 63.1533 16.4552 62.0621 19.903 61.9062C16.4552 54.7352 13.6343 45.0699 13.4776 36.8076C7.05224 38.3666 0 42.108 0 49.7466Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M65.2246 1.26452C65.2246 3.13522 67.4186 6.72073 68.3589 8.59143C69.6127 11.0857 70.553 13.4241 71.65 15.7625C76.038 25.7395 78.7022 38.3668 79.956 49.591C80.4261 52.7088 80.4261 55.6707 80.4261 59.568C80.4261 62.8418 79.4858 68.298 82.7768 68.298C85.7545 68.298 84.6574 62.9976 84.6574 54.8913C84.6574 45.0701 81.6798 32.4429 79.1724 24.6483C78.5455 22.4658 70.8664 0.0173874 67.5754 0.0173874C66.6351 0.0173874 65.2246 0.0173874 65.2246 1.26452Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M101.028 34.4693C101.028 46.1612 92.4082 52.5527 98.6768 52.5527C104.632 52.5527 110.901 22.9333 94.2888 10.1502C83.7888 2.1997 84.4156 7.81181 84.8858 8.90305C85.5126 9.68251 101.028 16.23 101.028 34.4693Z"
+          fill="white" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M81.0576 17.0097C81.0576 18.5686 82.9382 19.1921 84.3487 20.1275C91.871 24.8043 93.5949 35.7167 89.677 43.0436C89.0502 44.4466 85.7591 48.4998 89.8337 48.4998C92.8113 48.4998 95.789 40.7052 95.789 37.4315C95.789 30.2605 95.6322 25.4278 90.6173 19.6598C89.3636 18.2568 81.0576 11.5535 81.0576 17.0097Z"
+          fill="white" />
+      </svg>
+      <h2>0</h2>
+      <div class="small">Unread Announcement</div>
+      <div class="small">Posted by Admin</div>
+    </div>
+  </section>
 </div>

@@ -13,7 +13,7 @@ export class NewsService {
 
     headLines(): Observable<INews[]> {
         return this.http.get<INews[]>(`${config.api.rsstojson}?rss_url=${config.api.medium}`).pipe(
-            tap(data => console.log(data)),
+            tap(),
             catchError(this.handleError)
         );
     }

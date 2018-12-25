@@ -10,9 +10,9 @@
       <li><a [routerLink]="['/member/']" routerLinkActive="router-link-active">Dashboard</a></li>
       <!-- <li><a [routerLink]="['/member/message']" routerLinkActive="router-link-active">Messages</a></li>
       <li><a [routerLink]="['/member/secretariat']" routerLinkActive="router-link-active">Secretariat</a></li> -->
-      <li><a [routerLink]="['/member/platform']" routerLinkActive="router-link-active">Platform</a></li>
+      <li><a [routerLink]="['/member/platform']" routerLinkActive="router-link-active">Election Platform</a></li>
       <li><a [routerLink]="['/member/settings']" routerLinkActive="router-link-active">Settings</a></li>
-      <li><a [routerLink]="['/']" routerLinkActive="router-link-active">Go Home</a></li>
+      <li><a [routerLink]="['/']" routerLinkActive="router-link-active">Party Website</a></li>
       <li><a (click)="userLogout()" id="logout">Log Out</a></li>
     </ul>
     <button class="adminBtn" [innerText]="(adminLevel)? 'Go To Admin Page' : 'Request to be Admin'" (click)="goToAdmin()"></button>
